@@ -1,12 +1,11 @@
 import socket
-import struct
 import pygame
-import numpy as np
+from time import time
 
 HOST = ''
-PORT = 8080
+PORT = 8000
 clock = pygame.time.Clock()
-m = 8
+m = 4
 
 class DisplayDVS128:
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
@@ -14,21 +13,20 @@ class DisplayDVS128:
     def __init__(self, width, height):
         self.width = width * m
         self.height = width * m
-        self.black = (0, 0, 0)
-        self.white = (255, 255, 255)
-        self.red = (255, 0, 0)
-        self.green = (0, 255, 0)
+        self.background = (255, 255, 255)
+        self.colorPos = (255, 0, 0)
+        self.colorNeg = (0, 0, 0)
         self.gameDisplay = pygame.display.set_mode((self.width, self.height))
-        self.gameDisplay.fill(self.black)
+        self.gameDisplay.fill(self.background)
 
     def plotEvents(self, pol, x, y, ts):
         i = 0
         while i < len(pol):
             if pol[i] == 0:
-                self.gameDisplay.fill(self.green, ((127 - x[i]) * m, (127 - y[i]) * m, m, m))
+                self.gameDisplay.fill(self.colorPos, ((127 - x[i]) * m, (127 - y[i]) * m, m, m))
                 i += 1
             else:
-                self.gameDisplay.fill(self.red, ((127 - x[i]) * m, (127 - y[i]) * m, m, m))
+                self.gameDisplay.fill(self.colorNeg, ((127 - x[i]) * m, (127 - y[i]) * m, m, m))
                 i += 1
 		
 		
@@ -41,21 +39,22 @@ def main():
     pol, x, y, ts = [], [], [], []
     while True:
         vet = []
+        t = time()
         msg, cliente = udp.recvfrom(65535)
         for a in msg:
             vet.append(a)
-        pol.append(vet[0])
-        x.append(vet[1])
-        y.append(vet[2])
-        ts.append((vet[3] << 24) | (vet[4] << 16) | (vet[5] << 8) | (vet[6] << 0))
-        if (ts[-1] - ts[0]) >= 33000:
-            display.gameDisplay.fill(display.black)
+        size = int(len(vet)/4)
+        pol.extend(vet[ : size])
+        x.extend(vet[size : 2 * size])
+        y.extend(vet[2 * size : 3 * size])
+        ts.extend(vet[3 * size : ])
+        print(time()-t)
+        if sum(ts) >= 16700: # 60 fps
+            display.gameDisplay.fill(display.background)
             display.plotEvents(pol, x, y, ts)
             pol, x, y, ts = [], [], [], []        
-
+        
         pygame.display.update()
-        clock.tick()
-
     pygame.quit()
     udp.close()
 
