@@ -107,22 +107,26 @@ def loadaerdat(datafile='path.aedat', length=0, version=V2, debug=1, camera='DVS
 
     return np.array(timestamps), np.array(xaddr), np.array(yaddr), np.array(pol)
 
-#T, X, Y, P = loadaerdat('TrackingCopo.aedat')
+T, X, Y, P = loadaerdat('TrackingCopo.aedat')
 
 
 
 '''
 t, x, y, p = openAEDAT.loadaerdat('TrackingCopo.aedat')
-t = (t - t[0]).astype(float)0/100000
+t = (t - t[0]).astype(float)/100000
 t = torch.from_numpy(t)
 x = torch.from_numpy(x)
 y = torch.from_numpy(y)
 p = torch.from_numpy(p)
 '''
 
+a = tuple(map(tuple, np.ones((126,126),dtype=int)))
+a = (a,a,a,a)
+a = (a,a,a,a,a,a,a,a,a,a,a,a,a,a,a)
+a = (a,a)
+a = tuple([a])*100
 
-
-def matrix_active(x=X, y=Y, pol=P, e_ini=0, e_fin=1000, filtro=None, matrixType=1):
+def matrix_active(x, y, pol, e_ini=0, e_fin=1000, filtro=None, matrixType=1):
     '''
     Gera uma imagem somando todos os eventos dentro do intervalo de tI e tF.
     '''
@@ -179,7 +183,7 @@ def matrix_active(x=X, y=Y, pol=P, e_ini=0, e_fin=1000, filtro=None, matrixType=
 
 
 
-def bounding_boxe(x=X,y=Y, e_ini=0, e_fin=1000, m=0.01):
+def bounding_boxe(x,y, e_ini=0, e_fin=1000, m=0.01):
     gap = e_fin - e_ini
     Hx, Hy = [], []
     x, y = x[e_ini:e_fin], y[e_ini:e_fin]
@@ -197,7 +201,7 @@ def bounding_boxe(x=X,y=Y, e_ini=0, e_fin=1000, m=0.01):
     
     return np.array(P1), np.array(P2)
 
-def particula(x=X, y=Y, e_ini=0, e_fin=1000, limiar=30):
+def particula(x, y, e_ini=0, e_fin=1000, limiar=30):
     x = X[e_ini:e_fin].copy()
     y = Y[e_ini:e_fin].copy()
     xy1 = list(zip(x,y))
@@ -291,7 +295,7 @@ def particula(x=X, y=Y, e_ini=0, e_fin=1000, limiar=30):
     return centro, pMax, pMin
 
 
-def create_images(fps=50, t=T, x=X, y=Y, p=P, lim='part'):
+def create_images(fps=100, t=T, x=X, y=Y, p=P, lim='part'):
     '''
     Divide a quantidade de eventos totais em varias imagens. Salva as imagens na pasta imagens.
     '''
@@ -300,6 +304,7 @@ def create_images(fps=50, t=T, x=X, y=Y, p=P, lim='part'):
     events = int(len(t)/frames)
     i, f = 0, events
     frame = 0
+    matrices = []
     while frame < frames:
         m = matrix_active(x, y, p, i, f, matrixType=1)
         im.imsave('imagens\\img'+str(frame)+'.png', m, cmap='gray')
@@ -318,11 +323,15 @@ def create_images(fps=50, t=T, x=X, y=Y, p=P, lim='part'):
             p1, p2 = bounding_boxe(e_ini=i, e_fin=f, m=0.025)
             draw.rectangle([p1[0],p1[1], p2[0], p2[1]], outline=(255,0,0,255))
         
-        #image = ndimage.rotate(image,180)
-        im.imsave('imagens\\img'+str(frame)+'.png', image)
-        i += events
-        f += events
-        frame += 1
+        if saveImage: 
+        	#image = ndimage.rotate(image,180)
+        	im.imsave('imagens\\img'+str(frame)+'.png', image)
+    	i += events
+    	f += events
+    	frame += 1
+    	matrices.append(image)
+    	return matrices
+
 
 
 # Chama a função para criar os frames 
