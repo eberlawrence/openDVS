@@ -1,4 +1,5 @@
 import numpy as np
+import math 
 from scipy import signal
 import pygame
 
@@ -16,15 +17,19 @@ def boundingBoxPart(screen, x, y, M):
             if m >= 5:
                 p.append((l, c))  
                 pygame.draw.circle(screen, (255, 0, 0), (l * M, c * M), 2, 1)              
-            l += 3
-        c += 3
-    if len(p) > 10:
+            l += 5
+        c += 5
+    if len(p) > 2:
         particle = np.array(p)
         Px = int(np.sum(particle[:, 0])/len(particle))
         Py = int(np.sum(particle[:, 1])/len(particle))
-        if np.std(particle[:, 0]) > np.std(particle[:, 1]):
-            pygame.draw.circle(screen, (255, 0, 0), (Px * M, Py * M), 2*int(np.std(particle[:, 0])), 3)
-        else:
-            pygame.draw.circle(screen, (255, 0, 0), (Px * M, Py * M), 2*int(np.std(particle[:, 1])), 3)
+        medianX = int(np.median(particle[:, 0]))
+        medianY = int(np.median(particle[:, 1]))
+        squareDiff = 0
+        for i in particle[:, 0]:
+            squareDiff += ((i - medianX)**2)
+        
+        d = math.sqrt(squareDiff/len(particle))
+        pygame.draw.circle(screen, (0, 255, 0), (medianX * M, medianY * M), M * 10, 3)
 
 
