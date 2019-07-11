@@ -1,6 +1,7 @@
 import socket
 import pygame
 from time import time
+import numpy as np
 import utilsDVS128
 
 
@@ -14,10 +15,10 @@ class DisplayDVS128:
 
     def __init__(self, width, height):
         self.width = width * m
-        self.height = width * m
-        self.background = (0, 0, 0)
-        self.colorPos = (0, 0, 255)
-        self.colorNeg = (0, 255, 0)
+        self.height = height * m
+        self.background = (255, 255, 255)
+        self.colorPos = (255, 0, 0)
+        self.colorNeg = (0, 0, 0)
         self.gameDisplay = pygame.display.set_mode((self.width, self.height))
         self.gameDisplay.fill(self.background)
 
@@ -33,7 +34,7 @@ class DisplayDVS128:
 	
     def printFPS(self, fps):
         font = pygame.font.SysFont('Segoe UI', 20)
-        txtFPS = font.render('FPS: {0:.2f}'.format(fps), True, (0, 0, 100))
+        txtFPS = font.render('FPS: {0:.2f}'.format(fps), True, (0, 0, 0))
         self.gameDisplay.blit(txtFPS,(0,0))
 		
 
@@ -47,7 +48,7 @@ def main():
 
     while True:
         vet = []
-        msg, cliente = udp.recvfrom(65535)
+        msg, cliente = udp.recvfrom(10000)
 
         for a in msg:
             vet.append(a)
@@ -57,14 +58,16 @@ def main():
         x.extend(vet[size : 2 * size])
         y.extend(vet[2 * size : 3 * size])
         ts.extend(vet[3 * size : ])
-
-        if sum(ts) >= 16700: # 60 fps
+        #print(np.sum(ts))
+        if np.sum(ts) >= 10000: # 6 fps
+            
             displayEvents.gameDisplay.fill(displayEvents.background)
-            displayEvents.plotEvents(pol, x, y, ts)
+            #displayEvents.plotEvents(pol, x, y, ts)
             utilsDVS128.boundingBoxPart(displayEvents.gameDisplay, x, y, m)  
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()
+            #print(t2)
             t = time()
             pol, x, y, ts = [], [], [], [] 
        
