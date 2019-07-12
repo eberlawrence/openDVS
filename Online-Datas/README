@@ -1,7 +1,9 @@
 Use:
-    - C++: g++ -std=c++11 -pedantic -Wall -Wextra -O2 -o dvs128-cpp dvs128.cpp -D_DEFAULT_SOURCE=1 -lcaer
-           ./dvs128-cpp
-    - C: gcc -std=c11 -pedantic -Wall -Wextra -O2 -o dvs128-c dvs128.c -D_DEFAULT_SOURCE=1 -lcaer
-         ./dvs128-c
+    - C++: 
+        $: g++ -std=c++11 -pedantic -Wall -Wextra -O2 -o dvs128-cpp dvs128.cpp -D_DEFAULT_SOURCE=1 -lcaer
+        $: ./dvs128-cpp
+    - C: 
+        $: gcc -std=c11 -pedantic -Wall -Wextra -O2 -o dvs128-c dvs128.c -D_DEFAULT_SOURCE=1 -lcaer
+        $: ./dvs128-c
 
 
