@@ -62,7 +62,7 @@ def main():
         if np.sum(ts) >= 10000: # 6 fps
             
             displayEvents.gameDisplay.fill(displayEvents.background)
-            #displayEvents.plotEvents(pol, x, y, ts)
+            displayEvents.plotEvents(pol, x, y, ts)
             utilsDVS128.boundingBoxPart(displayEvents.gameDisplay, x, y, m)  
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
