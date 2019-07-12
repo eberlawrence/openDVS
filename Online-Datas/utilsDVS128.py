@@ -16,7 +16,7 @@ def boundingBoxPart(screen, x, y, M):
             m = np.sum([matrix[l - 2 : l + 3, c - 2 : c + 3]])
             if m >= 5:
                 p.append((l, c))  
-                pygame.draw.circle(screen, (255, 0, 0), (l * M, c * M), 2, 1)              
+                screen.fill((0, 255, 0), (l * M, c * M, M, M))              
             l += 5
         c += 5
     if len(p) > 2:
