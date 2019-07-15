@@ -16,8 +16,8 @@ class DisplayDVS128:
     def __init__(self, width, height):
         self.width = width * m
         self.height = height * m
-        self.background = (255, 255, 255)
-        self.colorPos = (255, 0, 0)
+        self.background = (128, 128, 128)
+        self.colorPos = (255, 255, 255)
         self.colorNeg = (0, 0, 0)
         self.gameDisplay = pygame.display.set_mode((self.width, self.height))
         self.gameDisplay.fill(self.background)
@@ -63,7 +63,8 @@ def main():
             
             displayEvents.gameDisplay.fill(displayEvents.background)
             displayEvents.plotEvents(pol, x, y, ts)
-            utilsDVS128.boundingBoxPart(displayEvents.gameDisplay, x, y, m)  
+            bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y, m)
+            bB.plotParticles()
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()
