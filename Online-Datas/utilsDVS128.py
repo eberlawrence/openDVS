@@ -2,6 +2,8 @@ import numpy as np
 import math 
 from scipy import signal
 import pygame
+from random import randint
+from time import time
 
 class BoundingBox(object):
     
@@ -13,29 +15,57 @@ class BoundingBox(object):
         self.partic = []
         self.M = M
     
-    def checkNeighborhood(self, pos, l=3):        
-        return pos[(-l <= pos[:,0]) & (pos[:,0] <= l) & (-l <= pos[:,1]) & (pos[:,1] <= l)]
+    def checkNeighborhood(self, pos):
+        cond = False
+        l = 10
+        while not cond:            
+            p = pos[(-l <= pos[:,0]) & (pos[:,0] <= l) & (-l <= pos[:,1]) & (pos[:,1] <= l)]
+            if len(p) < (((2*l+1)**2)*0.2):
+                cond = True
+                return p
+            else:
+                l += 5                
         
     def createParticles(self):
         xy = np.array(list(zip(self.x, self.y)))
-        while len(xy) > 0:            
+        while len(xy) > 0:     
             auxXY = xy - xy[0]
             auxXY = self.checkNeighborhood(auxXY) + xy[0]
-            self.partic.append(auxXY)
-            
-            break
-            var1 = list(map(tuple, xy))        
-            var2 = list(map(tuple, auxXY))           
-            xy = np.array(list(set(var1) - set(var2)))       
-    
+            xy = np.array(list(set(list(map(tuple, xy))) - set(list(map(tuple, auxXY)))))
+            if len(auxXY) > 30:
+                self.partic.append(auxXY)  
+                
+    def createParticles2(self):
+        xy = np.array(list(zip(self.x, self.y)))
+        i = len(xy)
+        j = 0
+        while i > 0:     
+            auxXY = xy - xy[j]
+            auxXY = self.checkNeighborhood(auxXY) + xy[j]
+            i -= 20
+            j += 20
+            if len(auxXY) > 20:
+                self.partic.append(auxXY)
+              
+    def createParticles3(self):
+        xy = np.array(list(zip(self.x, self.y)))
+        i = len(xy)
+        while len(xy) > 0 and i > 0:     
+            auxXY = xy - xy[0]
+            auxXY = self.checkNeighborhood(auxXY) + xy[0]
+            i -= 20
+            xy = np.array(list(set(list(map(tuple, xy))) - set(list(map(tuple, auxXY)))))
+            if len(auxXY) > 10:
+                self.partic.append(auxXY)
+        
     def plotParticles(self):
-        self.createParticles()
-        print("\n", self.partic[0])   
+        self.createParticles3()   
         for p in self.partic:            
-            if len(p) > 3:
-                Px = int(np.mean(np.array(p[:,0])))
-                Py = int(np.mean(np.array(p[:,1])))
-                pygame.draw.circle(self.screen, (255, 0, 0), (Px * self.M, Py * self.M), self.M * 10, 2)
+            Pxmin = int(np.amin(np.array(p[:,0])) * self.M) 
+            Pymin = int(np.amin(np.array(p[:,1])) * self.M)
+            Pxmax = int(np.amax(np.array(p[:,0])) * self.M - Pxmin)
+            Pymax = int(np.amax(np.array(p[:,1])) * self.M - Pymin)
+            pygame.draw.rect(self.screen, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 5)
             
             
     

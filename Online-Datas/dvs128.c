@@ -48,6 +48,8 @@ int main(void)
 	servaddr.sin_port = htons(PORT); 
 	servaddr.sin_addr.s_addr = INADDR_ANY;
     bool flag = true;
+    int32_t ts2 = 0;
+    printf("Reading datas...\n");
 	while (!atomic_load_explicit(&globalShutdown, memory_order_relaxed)) 
 	{
 		caerEventPacketContainer packetContainer = caerDeviceDataGet(dvs128_handle);
@@ -58,15 +60,12 @@ int main(void)
 			caerEventPacketHeader packetHeader = caerEventPacketContainerGetEventPacket(packetContainer, i);
 			if (packetHeader == NULL){continue;}
 
-			printf("Packet %d of type %d -> size is %d\n", i, caerEventPacketHeaderGetEventType(packetHeader),
-				caerEventPacketHeaderGetEventNumber(packetHeader));
-
 			// Packet 0 is always the special events packet for DVS128, while packet is the polarity events packet.
 			if (i == POLARITY_EVENT) 
 			{
 				caerPolarityEventPacket polarity = (caerPolarityEventPacket) packetHeader;
 				int8_t arrayToSend[4 * caerEventPacketHeaderGetEventNumber(packetHeader)];
-				int32_t ts2;
+				
 				for(int16_t j = 0; j < caerEventPacketHeaderGetEventNumber(packetHeader); j++)
 				{
 					// Get full timestamp and addresses of first event.

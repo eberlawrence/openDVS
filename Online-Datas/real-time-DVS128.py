@@ -8,7 +8,7 @@ import utilsDVS128
 HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
-m = 4
+m = 7
 
 class DisplayDVS128:
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
@@ -58,8 +58,7 @@ def main():
         x.extend(vet[size : 2 * size])
         y.extend(vet[2 * size : 3 * size])
         ts.extend(vet[3 * size : ])
-        #print(np.sum(ts))
-        if np.sum(ts) >= 10000: # 6 fps
+        if np.sum(ts) >= 5000: # 6 fps
             
             displayEvents.gameDisplay.fill(displayEvents.background)
             displayEvents.plotEvents(pol, x, y, ts)
@@ -68,7 +67,6 @@ def main():
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()
-            #print(t2)
             t = time()
             pol, x, y, ts = [], [], [], [] 
        

@@ -9,7 +9,6 @@
 #include <sys/socket.h> 
 #include <arpa/inet.h> 
 #include <netinet/in.h> 
-#include <opencv2/openCV.hpp>
 
 #define PORT     8000 
 
@@ -44,6 +43,7 @@ int main(void)
 	servaddr.sin_addr.s_addr = INADDR_ANY;
     bool flag = true;
 
+    printf("Reading datas...\n");
 	while (!globalShutdown.load(memory_order_relaxed)) 
 	{
 		std::unique_ptr<libcaer::events::EventPacketContainer> packetContainer = dvs128Handle.dataGet();
@@ -65,6 +65,7 @@ int main(void)
 				  uint8_t x = firstEvent.getX();
 				  uint8_t y = firstEvent.getY();				  
 				  int32_t ts1 = firstEvent.getTimestamp();
+				  
           if (flag == true){ts2 = ts1; flag = false;}
           int8_t ts = ts1 - ts2;
 					
