@@ -26,10 +26,10 @@ class DisplayDVS128:
         i = 0
         while i < len(pol):
             if pol[i] == 0:
-                self.gameDisplay.fill(self.colorPos, (x[i] * m, y[i] * m, m, m))
+                self.gameDisplay.fill(self.colorPos, ((127 - x[i]) * m, y[i] * m, m, m))
                 i += 1
             else:
-                self.gameDisplay.fill(self.colorNeg, (x[i] * m, y[i] * m, m, m))
+                self.gameDisplay.fill(self.colorNeg, ((127 - x[i]) * m, y[i] * m, m, m))
                 i += 1
 	
     def printFPS(self, fps):

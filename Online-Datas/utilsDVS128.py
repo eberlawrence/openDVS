@@ -17,14 +17,14 @@ class BoundingBox(object):
     
     def checkNeighborhood(self, pos):
         cond = False
-        l = 10
+        l = 5
         while not cond:            
             p = pos[(-l <= pos[:,0]) & (pos[:,0] <= l) & (-l <= pos[:,1]) & (pos[:,1] <= l)]
-            if len(p) < (((2*l+1)**2)*0.2):
+            if len(p) < (((2*l+1)**2)*0.1):
                 cond = True
                 return p
             else:
-                l += 5                
+                l += 2                
         
     def createParticles(self):
         xy = np.array(list(zip(self.x, self.y)))
@@ -33,39 +33,28 @@ class BoundingBox(object):
             auxXY = self.checkNeighborhood(auxXY) + xy[0]
             xy = np.array(list(set(list(map(tuple, xy))) - set(list(map(tuple, auxXY)))))
             if len(auxXY) > 30:
-                self.partic.append(auxXY)  
-                
+                self.partic.append(auxXY)                  
+              
     def createParticles2(self):
         xy = np.array(list(zip(self.x, self.y)))
-        i = len(xy)
-        j = 0
-        while i > 0:     
-            auxXY = xy - xy[j]
-            auxXY = self.checkNeighborhood(auxXY) + xy[j]
-            i -= 20
-            j += 20
-            if len(auxXY) > 20:
-                self.partic.append(auxXY)
-              
-    def createParticles3(self):
-        xy = np.array(list(zip(self.x, self.y)))
-        i = len(xy)
+        i, j = len(xy),  int(len(xy)*0.1)
         while len(xy) > 0 and i > 0:     
             auxXY = xy - xy[0]
             auxXY = self.checkNeighborhood(auxXY) + xy[0]
-            i -= 20
+            i -= j
             xy = np.array(list(set(list(map(tuple, xy))) - set(list(map(tuple, auxXY)))))
-            if len(auxXY) > 10:
+            if len(auxXY) > 5:
                 self.partic.append(auxXY)
         
+    
     def plotParticles(self):
-        self.createParticles3()   
+        self.createParticles2()   
         for p in self.partic:            
-            Pxmin = int(np.amin(np.array(p[:,0])) * self.M) 
+            Pxmin = int((127 - np.amin(np.array(p[:,0]))) * self.M) 
             Pymin = int(np.amin(np.array(p[:,1])) * self.M)
-            Pxmax = int(np.amax(np.array(p[:,0])) * self.M - Pxmin)
+            Pxmax = int((127 - np.amax(np.array(p[:,0]))) * self.M - Pxmin)
             Pymax = int(np.amax(np.array(p[:,1])) * self.M - Pymin)
-            pygame.draw.rect(self.screen, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 5)
+            pygame.draw.rect(self.screen, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 4)
             
             
     
