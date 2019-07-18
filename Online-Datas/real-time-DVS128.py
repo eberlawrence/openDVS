@@ -38,7 +38,7 @@ def main():
             displayEvents.gameDisplay.fill(displayEvents.background)
             displayEvents.plotEvents(pol, x, y, ts)
             bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
-            bB.particlesFromFrames()
+            bB.particlesFromEvents()
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()

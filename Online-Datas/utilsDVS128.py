@@ -7,7 +7,7 @@ from time import time
 class DisplayDVS128:
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
 
-    def __init__(self, width, height, m=1):
+    def __init__(self, width, height, m=7):
         self.m = m
         self.width = width * self.m
         self.height = height * self.m
@@ -36,7 +36,7 @@ class DisplayDVS128:
 		
 class BoundingBox(object):
     
-    def __init__(self, screen, x, y, M=1):
+    def __init__(self, screen, x, y, M=7):
         self.x = x
         self.y = y
         self.screen = screen
