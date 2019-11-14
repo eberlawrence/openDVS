@@ -29,6 +29,10 @@ int main(void)
 	if (dvs128_handle == NULL) {return (EXIT_FAILURE);}
 
 	caerDeviceSendDefaultConfig(dvs128_handle);
+	
+	// Tweak some biases, to increase bandwidth in this case.
+	caerDeviceConfigSet(dvs128_handle, DVS128_CONFIG_BIAS, DVS128_CONFIG_BIAS_PR, 695);
+	caerDeviceConfigSet(dvs128_handle, DVS128_CONFIG_BIAS, DVS128_CONFIG_BIAS_FOLL, 867);
 
 	caerDeviceDataStart(dvs128_handle, NULL, NULL, NULL, &usbShutdownHandler, NULL);
 
@@ -64,7 +68,7 @@ int main(void)
 			if (i == POLARITY_EVENT) 
 			{
 				caerPolarityEventPacket polarity = (caerPolarityEventPacket) packetHeader;
-				int8_t arrayToSend[4 * caerEventPacketHeaderGetEventNumber(packetHeader)];
+				int8_t arrayToSend[5 * caerEventPacketHeaderGetEventNumber(packetHeader)];
 				
 				for(int16_t j = 0; j < caerEventPacketHeaderGetEventNumber(packetHeader); j++)
 				{
@@ -74,21 +78,26 @@ int main(void)
 					int8_t x = caerPolarityEventGetX(firstEvent);
 					int8_t y = caerPolarityEventGetY(firstEvent);
 					int32_t ts1 = caerPolarityEventGetTimestamp(firstEvent);
+					
 					if (flag == true)
 					{
 						ts2 = ts1;						
 					    flag = false;
 					}
-					int8_t ts = ts1 - ts2;	
+					unsigned int ts = ts1 - ts2;
+					
+					unsigned char ts_LSB  = ts        & 0xff;
+					unsigned char ts_MSB = (ts >> 8)  & 0xff;  					
+					
+					ts2 = ts1;
+					
 					arrayToSend[j] = pol;
 					arrayToSend[j + caerEventPacketHeaderGetEventNumber(packetHeader)] = x;
 					arrayToSend[j + (2 * caerEventPacketHeaderGetEventNumber(packetHeader))] = y;
-					arrayToSend[j + (3 * caerEventPacketHeaderGetEventNumber(packetHeader))] = ts;
-
-					ts2 = ts1;
+					arrayToSend[j + (3 * caerEventPacketHeaderGetEventNumber(packetHeader))] = ts_LSB;
+					arrayToSend[j + (4 * caerEventPacketHeaderGetEventNumber(packetHeader))] = ts_MSB;					
 				}
 				sendto(sockfd, arrayToSend, sizeof(arrayToSend), 0, (struct sockaddr *) &servaddr, sizeof(servaddr));
-
 			}
 		}
 

@@ -1,7 +1,9 @@
 import os
+import cv2
 import sys
 import struct
 import numpy as np
+from scipy import  signal
 
 
 V2 = "aedat"  # Formato do arquivo (.AEDAT)
@@ -90,4 +92,48 @@ def loadaerdat(datafile='path.aedat', length=0, version=V2, debug=1, camera='DVS
 
     return np.array(timestamps), np.array(xaddr), np.array(yaddr), np.array(pol)
 
+
+def matrix_active(x, y, pol, e_ini=0, e_fin=1000, filtro=None, matrixType=1):
+    '''
+    Gera uma imagem somando todos os eventos dentro do intervalo de tI e tF.
+    '''
+    x, y, pol = x[e_ini:e_fin], y[e_ini:e_fin], pol[e_ini:e_fin] # recebe um intervalo indicando a quantidade de eventos
+    matrix = np.zeros([128, 128]) # Cria uma matriz de zeros 128x128 onde serão inseridos os eventos
+    pol = (pol - 0.5) # Os eventos no array de Polaridade passam a ser -0.5 ou 0.5
+    if(len(x) == len(y)): # Verifica se o tamanho dos arrays são iguais   
+        for i in range(len(x)):
+            matrix[y[i], x[i]] += pol[i] # insere os eventos dentro da matriz de zeros
+    else:
+        print("error x,y missmatch")
+    
+    if matrixType == 1:
+        idx = 0
+        for i in matrix: # Limita os eventos em -0.5 ou 0.5
+            for j, v in enumerate(i):
+                if v > 0.5:
+                    matrix[idx][j] = 0.5
+                if v < -0.5:
+                    matrix[idx][j] = -0.5
+            idx += 1
+        matrix = (matrix * 256) + 128 # Normaliza a matriz para 8bits -> 0 - 255
+
+    if matrixType == 2:
+        idx = 0
+        for i in matrix: # Limita os eventos em -0.5 ou 0.5
+            for j, v in enumerate(i):
+                if v > 0.5:
+                    matrix[idx][j] = 0.5
+                if v <= -0.5:
+                    matrix[idx][j] = 0.5
+            idx += 1
+        matrix = (matrix * 510) # Normaliza a matriz para 8bits -> 0 - 255
+
+    if filtro == 'mediana':
+        matrix = signal.medfilt(matrix)
+    elif filtro == 'media':
+        kernel = np.ones((3,3),np.float32)/9
+        matrix = cv2.filter2D(matrix,-1,kernel)
+    else:
+        pass
+    return matrix
 

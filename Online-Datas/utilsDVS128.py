@@ -3,6 +3,7 @@ import math
 import pygame
 from random import randint
 from time import time
+from keras.models import model_from_json
 
 class DisplayDVS128:
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
@@ -49,7 +50,7 @@ class BoundingBox(object):
         l = 5
         while not cond:            
             p = pos[(-l <= pos[:,0]) & (pos[:,0] <= l) & (-l <= pos[:,1]) & (pos[:,1] <= l)]
-            if len(p) < (((2*l+1)**2)*0.2):
+            if len(p) < (((2*l+1)**2)*0.4):
                 cond = True
                 return p
             else:
@@ -57,7 +58,7 @@ class BoundingBox(object):
                                 
     def particlesFromEvents(self):
         xy = np.array(list(zip(self.x, self.y)))
-        i, j = len(xy),  int(len(xy)*0.01)
+        i, j = len(xy),  int(len(xy)*0.02)
         while len(xy) > 0 and i > 0:     
             auxXY = xy - xy[0]
             auxXY = self.checkNeighborhood(auxXY) + xy[0]
@@ -102,4 +103,36 @@ class BoundingBox(object):
             d = math.sqrt(squareDiff/len(particle))
             pygame.draw.circle(self.screen, (0, 255, 0), (127 - medianX * self.M, medianY * self.M), self.M * 10, 3)
 
+
+
+def OpenModel(model_JSON_file, model_WEIGHTS_file):
+	'''
+	imgC = UploadModel.OpenModel('/home/user/GitHub/Classification_DVS128/model.json', '/home/user/GitHub/Classification_DVS128/model.h5')
+	'''	
+	# load model from JSON file
+	with open(model_JSON_file, "r") as json_file:
+		loadedModel_JSON = json_file.read()
+		loadedModel = model_from_json(loadedModel_JSON)
+
+	# load weights into the new model
+	loadedModel.load_weights(model_WEIGHTS_file)
+	loadedModel._make_predict_function()
+	
+	return loadedModel
+
+
+def predictObject(img, model, flag='N'):
+
+	# flag = input("Would you like to change the default object set? ")  
+	if flag == "Sim" or flag == "sim" or flag == "S" or flag == "s":
+		objectSet = input("New object set: ").split(", ")
+	else:
+		objectSet = [[0, 'Caneca'],
+					 [1, 'Nada'],
+					 [2, 'Calculadora']]
+					 
+	preds = model.predict(img)
+	return objectSet[np.argmax(preds)][0], objectSet
+
+	
 
