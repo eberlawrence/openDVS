@@ -6,6 +6,7 @@ import utilsDVS128
 from openAEDAT import matrix_active
 import tensorflow as tf
 from itertools import groupby
+import serial
 
 
 if tf.__version__ == '2.0.0':
@@ -22,6 +23,7 @@ clock = pygame.time.Clock()
 
 model = utilsDVS128.OpenModel('/home/user/GitHub/Classification_DVS128/model.json', '/home/user/GitHub/Classification_DVS128/model.h5')
 
+ard = serial.Serial('/dev/ttyUSB0', 9600)
 
 def main():
     t = time()
@@ -38,7 +40,7 @@ def main():
                 stop = True
                 
         vet = []
-        msg, cliente = udp.recvfrom(10000)
+        msg, cliente = udp.recvfrom(50000)
 
         for a in msg:
             vet.append(a)
@@ -72,7 +74,8 @@ def main():
             pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
             if len(count) == 10:
             	count = np.bincount(count)
-            	print(objectSet[np.argmax(count)][1])       	
+            	print(objectSet[np.argmax(count)][1])
+            	ard.write(bytes([np.argmax(count)]))
             	count = []
        
     pygame.quit()
