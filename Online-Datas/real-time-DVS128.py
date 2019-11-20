@@ -23,13 +23,13 @@ clock = pygame.time.Clock()
 
 model = utilsDVS128.OpenModel('/home/user/GitHub/Classification_DVS128/model.json', '/home/user/GitHub/Classification_DVS128/model.h5')
 
-ard = serial.Serial('/dev/ttyUSB0', 9600)
+#ard = serial.Serial('/dev/ttyUSB0', 9600)
 
 def main():
     t = time()
     stop = False
     pygame.init()
-    displayEvents = utilsDVS128.DisplayDVS128(128, 128, 4)
+    displayEvents = utilsDVS128.DisplayDVS128(128, 128)
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     udp.bind((HOST, PORT))
     pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
@@ -54,7 +54,7 @@ def main():
         ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
             
 		
-        if np.sum(ts) >= 50000: # 6 fps            
+        if np.sum(ts) >= 10000: # 6 fps            
             displayEvents.gameDisplay.fill(displayEvents.background)
             displayEvents.plotEvents(pol, x, y, ts)
             img = matrix_active(np.array(x), np.array(y), np.array(pol))
@@ -65,8 +65,8 @@ def main():
             #print(resp)
             #print(percent)
             #print("\n")
-            #bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
-            #bB.particlesFromEvents()
+            bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
+            bB.particlesFromEvents()
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()
@@ -75,7 +75,7 @@ def main():
             if len(count) == 10:
             	count = np.bincount(count)
             	print(objectSet[np.argmax(count)][1])
-            	ard.write(bytes([np.argmax(count)]))
+            	#ard.write(bytes([np.argmax(count)]))
             	count = []
        
     pygame.quit()

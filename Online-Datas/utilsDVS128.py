@@ -47,10 +47,10 @@ class BoundingBox(object):
     
     def checkNeighborhood(self, pos):
         cond = False
-        l = 5
+        l = 7
         while not cond:            
             p = pos[(-l <= pos[:,0]) & (pos[:,0] <= l) & (-l <= pos[:,1]) & (pos[:,1] <= l)]
-            if len(p) < (((2*l+1)**2)*0.4):
+            if len(p) < (((2*l+1)**2)*0.6):
                 cond = True
                 return p
             else:
@@ -58,21 +58,21 @@ class BoundingBox(object):
                                 
     def particlesFromEvents(self):
         xy = np.array(list(zip(self.x, self.y)))
-        i, j = len(xy),  int(len(xy)*0.02)
+        i, j = len(xy),  int(len(xy)*0.04)
         while len(xy) > 0 and i > 0:     
             auxXY = xy - xy[0]
             auxXY = self.checkNeighborhood(auxXY) + xy[0]
             i -= j
             xy = np.array(list(set(list(map(tuple, xy))) - set(list(map(tuple, auxXY)))))
             if len(auxXY) > 4:
-                self.partic.append(auxXY)
-                        
-        for p in self.partic:            
-            Pxmin = int((127 - np.amin(np.array(p[:,0]))) * self.M) 
-            Pymin = int(np.amin(np.array(p[:,1])) * self.M)
-            Pxmax = int((127 - np.amax(np.array(p[:,0]))) * self.M - Pxmin)
-            Pymax = int(np.amax(np.array(p[:,1])) * self.M - Pymin)
-            pygame.draw.rect(self.screen, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 4)                
+                self.partic.append(auxXY)                        
+#        for p in self.partic:            
+ #           Pxmin = int((127 - np.amin(np.array(p[:,0]))) * self.M) 
+  #          Pymin = int(np.amin(np.array(p[:,1])) * self.M)
+   #         Pxmax = int((127 - np.amax(np.array(p[:,0]))) * self.M - Pxmin)
+    #        Pymax = int(np.amax(np.array(p[:,1])) * self.M - Pymin)
+     #       pygame.draw.rect(self.screen, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 4)   
+         
 
     def particlesFromFrames(self):      
         matrix = np.zeros([128, 128])
