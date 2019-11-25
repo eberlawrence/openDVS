@@ -54,7 +54,7 @@ def main():
         ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
             
 		
-        if np.sum(ts) >= 10000: # 6 fps            
+        if np.sum(ts) >= 50000: # 6 fps            
             displayEvents.gameDisplay.fill(displayEvents.background)
             displayEvents.plotEvents(pol, x, y, ts)
             img = matrix_active(np.array(x), np.array(y), np.array(pol))
@@ -65,8 +65,8 @@ def main():
             #print(resp)
             #print(percent)
             #print("\n")
-            bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
-            bB.particlesFromEvents()
+            #bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
+            #bB.particlesFromEvents()
             t2 = time() - t               
             displayEvents.printFPS(1/t2)            
             pygame.display.update()
