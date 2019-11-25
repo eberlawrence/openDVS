@@ -8,7 +8,7 @@ from keras.models import model_from_json
 class DisplayDVS128:
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
 
-    def __init__(self, width, height, m=7):
+    def __init__(self, width, height, m=4):
         self.m = m
         self.width = width * self.m
         self.height = height * self.m
@@ -37,7 +37,7 @@ class DisplayDVS128:
 		
 class BoundingBox(object):
     
-    def __init__(self, screen, x, y, M=7):
+    def __init__(self, screen, x, y, M=4):
         self.x = x
         self.y = y
         self.screen = screen
