@@ -12,16 +12,17 @@ import openAEDAT
 
 t, x, y, p = openAEDAT.loadaerdat('Mouse.aedat')
 
-final = []
-for a in range(128):
-    for b in range(128):
-        final.append(list(np.where((x == a) & (y == b))[0]))
 
+def roiToSpikes(x, y, i=0, s=128):
+    final = []
+    for a in range(i,s):
+        for b in range(i,s):
+            final.append(list(t[(x == a) & (y == b)]))
+    return np.array(final)
 
-f = np.array(final)
+f = roiToSpikes(x, y)
 
-
-st = [neo.SpikeTrain(i[4000:5000] - t[4000], units='microsecond', t_stop=t[5000]-t[4000]) for i in f]
+st = [neo.SpikeTrain(i, units='microsecond', t_stop=t[-1]) for i in f]
 
 #victor purpura distance
 vpd_dist = elep.spike_train_dissimilarity.victor_purpura_dist(st,sort=False,q=20*pq.Hz)
@@ -29,15 +30,17 @@ vpd_dist = elep.spike_train_dissimilarity.victor_purpura_dist(st,sort=False,q=20
 vrs_dist = elep.spike_train_dissimilarity.van_rossum_dist(st,tau=0.2*pq.second,sort=False)
 
 #rescale the spike vector to time
-t = [st[i].rescale(pq.us) for i in range(len(f))]
+ts = [st[i].rescale(pq.us) for i in range(len(f))]
 #plot the rastergram
 plt.figure()
 
 for i in range(len(f)):
-    plt.plot(t[i],i*np.ones_like(t[i]),'k.',markersize=2)
+    plt.plot(st[i],i*np.ones_like(st[i]),'k.',markersize=2)
 
 
 plt.axis('tight')
+plt.show()
+
 
 #plot vpd distance
 plt.figure()
