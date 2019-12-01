@@ -10,9 +10,9 @@ import time
 
 import openAEDAT
 
-t, x, y, p = openAEDAT.loadaerdat('Mouse.aedat')
+t, x, y, p = openAEDAT.loadaerdat('Nada3.aedat')
 
-
+t, x, y, p = t[:int(len(t)*0.2)], x[:int(len(x)*0.2)], y[:int(len(y)*0.2)], p[:int(len(p)*0.2)]
 def roiToSpikes(x, y, i=0, s=128):
     final = []
     for a in range(i,s):
