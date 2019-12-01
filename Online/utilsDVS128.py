@@ -1,15 +1,44 @@
-import numpy as np
+'''
+Biomedical Lab (BioLab)- Federal University of Uberlandia (UFU)
+By Eber Lawrence Souza
+
+Script:
+    Useful functions for working with a DVS128.
+
+    The script consists of:
+
+    -> Classes:
+        - DisplayDVS128
+            *Methods:
+                - printFPS()
+                - plotEventsF()
+                - plotEvents()
+
+        - BoundingBox
+            *Methods:
+                - checkNeighborhood()
+                - particlesFromEvents()
+                - particlesFromFrames()
+
+    -> Functions:
+        - openModel()
+        - predictObject()
+        - eventsToFrame()
+
+'''
+
+
 import cv2
 import math
 import pygame
-from random import randint
-from time import time
+import numpy as np
 from keras.models import model_from_json
-from time import time
-import matplotlib.pyplot as plt
-
 
 class DisplayDVS128:
+    '''
+
+    '''
+
     pygame.display.set_caption('Neuromorphic Camera - DVS128')
 
     def __init__(self, width, height, m=4):
@@ -46,7 +75,7 @@ class DisplayDVS128:
                 i += 1
 
 
-class BoundingBox(object):
+class BoundingBox:
 
     def __init__(self, screen, x, y, M=4):
         self.x = x
@@ -107,8 +136,8 @@ class BoundingBox(object):
             c += 5
         if len(p) > 2:
             particle = np.array(p)
-            Px = int(np.sum(particle[:, 0])/len(particle))
-            Py = int(np.sum(particle[:, 1])/len(particle))
+            Px = int(np.sum(particle[:, 0]) / len(particle))
+            Py = int(np.sum(particle[:, 1]) / len(particle))
             medianX = int(np.median(particle[:, 0]))
             medianY = int(np.median(particle[:, 1]))
             squareDiff = 0
@@ -116,8 +145,10 @@ class BoundingBox(object):
                 squareDiff += ((i - medianX)**2)
 
             d = math.sqrt(squareDiff/len(particle))
-            pygame.draw.circle(self.screen, (0, 255, 0), (127 - medianX * self.M, medianY * self.M), self.M * 10, 3)
-
+            pygame.draw.circle(self.screen,
+                               (0, 255, 0),
+                               (127 - medianX * self.M, medianY * self.M),
+                               self.M * 10, 3)
 
 
 
@@ -154,10 +185,6 @@ def predictObject(img, model, flag='N'):
 	return objectSet[np.argmax(preds)][0], objectSet
 
 
-def eventsToFrameAux():
-
-    pass
-
 def eventsToFrame(pol, x, y):
     matrix = np.zeros((128, 128)) # Cria uma matriz de zeros 128x128 onde serão inseridos os eventos
     pol = (np.array(pol) - 0.5) # Os eventos no array de Polaridade passam a ser -0.5 ou 0.5
@@ -166,11 +193,3 @@ def eventsToFrame(pol, x, y):
             matrix[y[i], x[i]] = pol[i] # insere os eventos dentro da matriz de zeros
     matrix = (matrix)*255 + 127.5 # Normaliza a matriz para 8bits -> 0 - 255
     return matrix.T
-
-
-# def eventsToFrame2(pol, x, y):
-#     matrix = np.zeros([128, 128]) # Cria uma matriz de zeros 128x128 onde serão inseridos os eventos
-#     xy = list(set(zip(x,y)))
-#     for i in range(len(xy)):
-#         matrix[xy[i][1], xy[i][0]] = 255 # insere os eventos dentro da matriz de zeros
-#     return np.array(matrix.T)
