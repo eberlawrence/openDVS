@@ -1,3 +1,18 @@
+'''
+Biomedical Engineering Lab (BioLab)- Federal University of Uberlandia (UFU)
+Eber Lawrence Souza - email: eberlawrence@hotmail.com
+
+This script it receive and visualize the event flow of DVS128 camera
+using UDP socket (c to python) and pygame.
+To connect through the UDP socket, run the c file dvs128.c in the folder ''/openDVS/Online'
+
+Moreover, it can classify in real time some objects and send the result to an arduino code.
+
+
+TO DO:
+
+'''
+
 import socket
 import pygame
 from time import time

@@ -1,6 +1,6 @@
 '''
-Biomedical Lab (BioLab)- Federal University of Uberlandia (UFU)
-By Eber Lawrence Souza
+Biomedical Engineering Lab (BioLab)- Federal University of Uberlandia (UFU)
+Eber Lawrence Souza - email: eberlawrence@hotmail.com
 
 Script:
     Useful functions for working with a DVS128.
@@ -207,7 +207,6 @@ class BoundingBox:
                                (0, 255, 0),
                                (127 - medianX * self.m, medianY * self.m),
                                self.m * 10, 3)
-
 
 
 
