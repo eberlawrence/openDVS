@@ -20,7 +20,8 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('/home/user/GitHub/Classification_DVS128/model.json', '/home/user/GitHub/Classification_DVS128/model.h5')
+model = utilsDVS128.openModel('model/model.json',
+							  'model/model.h5')
 
 #ard = serial.Serial('/dev/ttyUSB0', 9600)
 
@@ -56,15 +57,12 @@ def main():
 
 		if np.sum(ts) >= 33000: # 6 fps
 			displayEvents.plotEventsF(pol, x, y)
-			img = displayEvents.surf
+			img = displayEvents.frame
 			img = img.reshape(1, 128, 128, 1)
 			resp, objectSet = utilsDVS128.predictObject(img, model)
 			count.append(resp)
-			#print(resp)
-			#print(percent)
-			#print("\n")
-			#bB = utilsDVS128.BoundingBox(displayEvents.gameDisplay, x, y)
-			#bB.particlesFromEvents()
+			bB = utilsDVS128.BoundingBox(displayEvents)
+			bB.particlesFromEvents(x, y)
 			t2 = time() - t
 			displayEvents.printFPS(1/t2)
 			pygame.display.update()
