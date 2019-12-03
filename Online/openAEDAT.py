@@ -4,6 +4,7 @@ import sys
 import struct
 import numpy as np
 from scipy import  signal
+from utilsDVS128 import eventsToFrame
 from sklearn.model_selection import train_test_split
 
 
@@ -110,7 +111,7 @@ def main(objClass=None, tI=50000, split=False, size=0.20):
 				y2 = y[aux : aux + len(t2)]
 				p2 = p[aux : aux + len(t2)]
 				aux += len(t2)
-				images.append(matrix_active(x2, y2, p2))
+				images.append(eventsToFrame(p2, x2, y2))
 				labels.append([j])
 				i += tI
 			totalImages.extend(images)

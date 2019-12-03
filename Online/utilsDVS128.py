@@ -49,7 +49,7 @@ class DisplayDVS128:
 
     '''
 
-    def __init__(self, width, height, m=4):
+    def __init__(self, width, height, m=6):
         '''
         Constructor
         '''
@@ -84,6 +84,7 @@ class DisplayDVS128:
         Y addr event (i.e. 0 to 128), respectively
         '''
         self.frame = eventsToFrame(pol, x, y) # it calls the eventsToFrame function and get the event frame
+        #self.frame = cv2.medianBlur(self.frame.astype('float32'), 3) # it calls the eventsToFrame function and get the event frame
         framePrinted = cv2.resize(np.dstack([self.frame, self.frame, self.frame]).astype('float32'),
                                            (128 * self.m, 128 * self.m),
                                            interpolation=cv2.INTER_AREA) # change the frame size according to the screen multiplier (m)
@@ -91,7 +92,7 @@ class DisplayDVS128:
 
     def plotEvents(self, pol, x, y):
         '''
-        Method to plot an event flow on the seceen, like the method above, but rather than create a frame,
+        Method to plot an event flow on the seceen, like the method above, but rather to create a frame,
         this one just fill the screen with each event obtained.
 
         Parameters:
@@ -117,7 +118,7 @@ class BoundingBox:
     screen -> class DisplayDVS128, it is used to get the surface and the current frame
     m -> multiplier of the screen size, for better visualization.
     '''
-    def __init__(self, screen, m=4):
+    def __init__(self, screen, m=6):
         '''
         Constructor
         '''
@@ -125,6 +126,7 @@ class BoundingBox:
         self.frame = screen.frame # getting the current frame
         self.m = m # screen multiplier
         self.partic = [] # array to be filled with particle dimentions
+        self.rect = pygame.draw.rect(self.surf, (255, 0, 0), [0,0,0,0])
 
     def checkNeighborhood(self, pos):
         '''
@@ -149,6 +151,24 @@ class BoundingBox:
                 return p
 
 
+    def createPartNew(self):
+        l = 128
+        flag = False
+        m = 2 * ((self.frame - 127.5) / 255)
+        while flag == False and l >= 10:
+            pygame.display.update()
+            min = int((len(m)/2) - (l + 1))
+            max = int((len(m)/2) + (l + 1))
+            aux = m[min : max, min : max]
+            flag = True if np.sum(np.abs(aux)) >= len(aux.reshape(-1)) * 0.15 else False
+            if flag == True:
+                self.rect = pygame.draw.rect(self.surf,
+                                             (255, 0, 0),
+                                             [(min * self.m), (min * self.m), (max - min) * self.m, (max - min) * self.m],
+                                             4) # drawing the bounding box for every particles
+            l -= 4
+
+
     def particlesFromEvents(self, x, y):
         '''
         Method to create all particles in a array of events.
@@ -166,12 +186,11 @@ class BoundingBox:
             if len(auxXY) > 50:
                 self.partic.append(auxXY) # placing the particles in an array
         for p in self.partic:
-            Pxmin = int((127 - np.amin(np.array(p[:,0]))) * self.m)
+            Pxmin = int((np.amin(np.array(p[:,0]))) * self.m)
             Pymin = int(np.amin(np.array(p[:,1])) * self.m)
-            Pxmax = int((127 - np.amax(np.array(p[:,0]))) * self.m - Pxmin)
+            Pxmax = int((np.amax(np.array(p[:,0]))) * self.m - Pxmin)
             Pymax = int(np.amax(np.array(p[:,1])) * self.m - Pymin)
             pygame.draw.rect(self.surf, (255, 0, 0), [Pxmin, Pymin, Pxmax, Pymax], 4) # drawing the bounding box for every particles
-
 
     def particlesFromFrames(self, x, y):
         '''
@@ -239,7 +258,7 @@ def predictObject(img, model, flag='No'):
 					 [1, 'Nothing'],
 					 [2, 'Calculator'],
 					 [3, 'Key'],
-					 [4, 'Scissors']]
+					 [4, 'Scissor']]
 
 	preds = model.predict(img)
 	return objectSet[np.argmax(preds)][0], objectSet

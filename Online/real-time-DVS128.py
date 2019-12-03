@@ -77,12 +77,13 @@ def main():
 			resp, objectSet = utilsDVS128.predictObject(img, model)
 			count.append(resp)
 			bB = utilsDVS128.BoundingBox(displayEvents)
-			bB.particlesFromEvents(x, y)
+			bB.createPartNew()
 			t2 = time() - t
 			displayEvents.printFPS(1/t2)
 			pygame.display.update()
 			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
 			if len(count) == 10:
+
 				count = np.bincount(count)
 				print(objectSet[np.argmax(count)][1])
 			#	#ard.write(bytes([np.argmax(count)]))
