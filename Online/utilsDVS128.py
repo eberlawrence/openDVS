@@ -30,7 +30,7 @@ TO DO:
 - Finish comments.
 '''
 
-import cv2
+import cv2 as cv
 import math
 import pygame
 import numpy as np
@@ -84,10 +84,10 @@ class DisplayDVS128:
         Y addr event (i.e. 0 to 128), respectively
         '''
         self.frame = eventsToFrame(pol, x, y) # it calls the eventsToFrame function and get the event frame
-        #self.frame = cv2.medianBlur(self.frame.astype('float32'), 3) # it calls the eventsToFrame function and get the event frame
-        framePrinted = cv2.resize(np.dstack([self.frame, self.frame, self.frame]).astype('float32'),
+        #self.frame = cv.medianBlur(self.frame.astype('float32'), 3) # it calls the eventsToFrame function and get the event frame
+        framePrinted = cv.resize(np.dstack([self.frame, self.frame, self.frame]).astype('float32'),
                                            (128 * self.m, 128 * self.m),
-                                           interpolation=cv2.INTER_AREA) # change the frame size according to the screen multiplier (m)
+                                           interpolation=cv.INTER_AREA) # change the frame size according to the screen multiplier (m)
         pygame.surfarray.blit_array(self.gameDisplay, framePrinted) # print the frame on the pygame screen
 
     def plotEvents(self, pol, x, y):
@@ -150,7 +150,6 @@ class BoundingBox:
                 stop = True
                 return p
 
-
     def createPartNew(self):
         l = 128
         flag = False
@@ -167,7 +166,6 @@ class BoundingBox:
                                              [(min * self.m), (min * self.m), (max - min) * self.m, (max - min) * self.m],
                                              4) # drawing the bounding box for every particles
             l -= 4
-
 
     def particlesFromEvents(self, x, y):
         '''
@@ -226,6 +224,44 @@ class BoundingBox:
                                (0, 255, 0),
                                (127 - medianX * self.m, medianY * self.m),
                                self.m * 10, 3)
+
+
+
+
+class Orientation:
+
+    def __init__(self, screen, m=6):
+        self.surf = screen.gameDisplay # getting pygame surface
+        self.frame = screen.frame # getting the current frame
+        self.m = m # screen multiplier
+
+    def getPointCloud(self, frame):
+        frame[frame == 0] = frame.max()
+        frame[frame == 127.5] = 0
+        frame = frame.astype('uint8')
+        _, bw = cv.threshold(frame, 50, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
+        pointCloud, _ = cv.findContours(bw, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
+        return pointCloud
+
+    def getOrientation(self):
+        pC = self.getPointCloud(self.frame)
+        vet = []
+        for i, c in enumerate(pC):
+            vet.append([len(c), i])
+        pts = pC[max(vet)[1]]
+        data_pts = pts.reshape(len(pts),2).astype('float64')
+        mean, eigenvectors, eigenvalues = cv.PCACompute2(data_pts, np.array([]))
+        cntr = (int(mean[0,0]), int(mean[0,1]))
+        p1 = (cntr[0] + 0.1 * eigenvectors[0,0] * eigenvalues[0,0], cntr[1] + 0.1 * eigenvectors[0,1] * eigenvalues[0,0])
+        p2 = (cntr[0] - 0.1 * eigenvectors[1,0] * eigenvalues[1,0], cntr[1] - 0.1 * eigenvectors[1,1] * eigenvalues[1,0])
+        cp1 = (p1[0] - cntr[0], p1[1] - cntr[1])
+        cp2 = (p2[0] - cntr[0], p2[1] - cntr[1])
+        pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
+        pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
+
+        return cntr, cp1, cp2
+
+
 
 
 

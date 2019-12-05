@@ -70,7 +70,7 @@ def main():
 		ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
 
-		if np.sum(ts) >= 33000: # 6 fps
+		if np.sum(ts) >= 80000: # 6 fps
 			displayEvents.plotEventsF(pol, x, y)
 			img = displayEvents.frame
 			img = img.reshape(1, 128, 128, 1)
@@ -78,6 +78,9 @@ def main():
 			count.append(resp)
 			bB = utilsDVS128.BoundingBox(displayEvents)
 			bB.createPartNew()
+			ori = utilsDVS128.Orientation(displayEvents)
+			ori.getOrientation()
+			#print(ct, p1, p2)
 			t2 = time() - t
 			displayEvents.printFPS(1/t2)
 			pygame.display.update()
