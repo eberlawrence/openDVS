@@ -290,11 +290,9 @@ def predictObject(img, model, flag='No'):
 	if flag == "Yes" or flag == "yes" or flag == "Y" or flag == "y":
 		objectSet = input("New object set: ").split(", ")
 	else:
-		objectSet = [[0, 'Mug'],
+		objectSet = [[0, 'Tripod'],
 					 [1, 'Nothing'],
-					 [2, 'Calculator'],
-					 [3, 'Key'],
-					 [4, 'Scissor']]
+					 [2, 'Power']]
 
 	preds = model.predict(img)
 	return objectSet[np.argmax(preds)][0], objectSet

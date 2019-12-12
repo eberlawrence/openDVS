@@ -35,8 +35,8 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model.json',
-							  'model/model.h5')
+model = utilsDVS128.openModel('model/model2.json',
+							  'model/model2.h5')
 
 #ard = serial.Serial('/dev/ttyUSB0', 9600)
 
@@ -56,7 +56,7 @@ def main():
 				stop = True
 
 		vet = []
-		msg, cliente = udp.recvfrom(50000)
+		msg, cliente = udp.recvfrom(30000)
 
 		for a in msg:
 			vet.append(a)
@@ -70,7 +70,7 @@ def main():
 		ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
 
-		if np.sum(ts) >= 80000: # 6 fps
+		if np.sum(ts) >= 33000: # 6 fps
 			displayEvents.plotEventsF(pol, x, y)
 			img = displayEvents.frame
 			img = img.reshape(1, 128, 128, 1)
