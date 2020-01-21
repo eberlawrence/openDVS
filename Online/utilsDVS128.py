@@ -22,7 +22,7 @@ Script:
 
     -> Functions:
         - openModel()
-        - predictObject()
+        - predictShape()
         - eventsToFrame()
 
 TO DO:
@@ -49,7 +49,7 @@ class DisplayDVS128:
 
     '''
 
-    def __init__(self, width, height, m=6):
+    def __init__(self, width, height, m=3):
         '''
         Constructor
         '''
@@ -118,7 +118,7 @@ class BoundingBox:
     screen -> class DisplayDVS128, it is used to get the surface and the current frame
     m -> multiplier of the screen size, for better visualization.
     '''
-    def __init__(self, screen, m=6):
+    def __init__(self, screen, m=3):
         '''
         Constructor
         '''
@@ -230,10 +230,11 @@ class BoundingBox:
 
 class Orientation:
 
-    def __init__(self, screen, m=6):
+    def __init__(self, screen, m=3):
         self.surf = screen.gameDisplay # getting pygame surface
         self.frame = screen.frame # getting the current frame
         self.m = m # screen multiplier
+        self.ang = 0
 
     def getPointCloud(self, frame):
         frame[frame == 0] = frame.max()
@@ -258,8 +259,24 @@ class Orientation:
         cp2 = (p2[0] - cntr[0], p2[1] - cntr[1])
         pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
         pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
+        pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
+        pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
 
-        return cntr, cp1, cp2
+
+        if p1[0] > cntr[0] and p1[1] > cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1]))))
+
+        elif p1[0] > cntr[0] and p1[1] < cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0])))) + 90
+
+        elif p1[0] < cntr[0] and p1[1] < cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1])))) + 180
+
+        elif p1[0] < cntr[0] and p1[1] > cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0])))) + 270
+
+
+
 
 
 
@@ -284,7 +301,7 @@ def openModel(model_JSON_file, model_WEIGHTS_file):
 	return loadedModel
 
 
-def predictObject(img, model, flag='No'):
+def predictShape(img, model, flag='No'):
 
 	# flag = input("Would you like to change the default object set? ")
 	if flag == "Yes" or flag == "yes" or flag == "Y" or flag == "y":

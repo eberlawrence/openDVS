@@ -42,13 +42,14 @@ ard = serial.Serial('/dev/ttyUSB0', 9600)
 
 def main():
 
-	stop = False
+	start, stop = False, False
 	pygame.init()
 	displayEvents = utilsDVS128.DisplayDVS128(128, 128)
 	udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	udp.bind((HOST, PORT))
 	pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
-	count = []
+	countShape, countAngle = [], []
+	var = []
 	while not stop:
 		t = time()
 		for e in pygame.event.get():
@@ -57,7 +58,6 @@ def main():
 
 		vet = []
 		msg, cliente = udp.recvfrom(30000)
-
 		for a in msg:
 			vet.append(a)
 
@@ -69,28 +69,40 @@ def main():
 		ts_MSB.extend(vet[4 * size : ])
 		ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
+		if np.sum(ts) >= 20000: # acumulate events during that time
 
-		if np.sum(ts) >= 10000: # 6 fps
 			displayEvents.plotEventsF(pol, x, y)
+
 			img = displayEvents.frame
 			img = img.reshape(1, 128, 128, 1)
+
 			resp, objectSet = utilsDVS128.predictShape(img, model)
-			count.append(resp)
-			#bB = utilsDVS128.BoundingBox(displayEvents)
-			#bB.createPartNew()
 			ori = utilsDVS128.Orientation(displayEvents)
 			ori.getOrientation()
-			#print(ct, p1, p2)
+			if start:
+				countShape.append(resp)
+				countAngle.append(ori.ang)
+
+				if len(countShape) == 100:
+					countShape = np.bincount(countShape) # array with the number of times that each number repeats.
+					countAngle = np.median(countAngle)
+					#print(objectSet[np.argmax(countShape)][1])
+					#print(countAngle)
+					ard.write(bytes([np.argmax(countShape)]))
+					ard.write(bytes([np.argmax(countAngle)]))
+					countShape, countAngle = [], []
+					start = False
+
+			elif not start:
+				var = str(ard.readline())
+				if var[2] == '1':
+					start = True
+
 			t2 = time() - t
 			displayEvents.printFPS(1/t2)
 			pygame.display.update()
-			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
-			if len(count) == 10:
 
-				count = np.bincount(count)
-				print(objectSet[np.argmax(count)][1])
-				ard.write(bytes([np.argmax(count)]))
-				count = []
+			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], [] # reset the lists
 
 	pygame.quit()
 	udp.close()

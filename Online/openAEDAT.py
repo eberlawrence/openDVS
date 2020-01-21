@@ -8,7 +8,7 @@ from utilsDVS128 import eventsToFrame
 from sklearn.model_selection import train_test_split
 
 
-def loadaerdat(datafile='path.aedat', length=0, version="aedat", debug=1, camera='DVS128'):
+def loadAEDAT(datafile='path.aedat', length=0, version="aedat", debug=1, camera='DVS128'):
     # constants
     aeLen = 8  # 1 AE event takes 8 bytes
     readMode = '>II'  # struct.unpack(), 2x ulong, 4B+4B
@@ -94,7 +94,7 @@ def loadaerdat(datafile='path.aedat', length=0, version="aedat", debug=1, camera
     return t - t[0], x, y, p
 
 
-def main(objClass=None, tI=50000, split=False, size=0.20):
+def createDataset(objClass=None, tI=50000, split=False, size=0.20):
 	if objClass == None:
 		t, x, y, p = loadaerdat("/home/user/GitHub/Classification_DVS128/aedatFiles/" + input("Nome do arquivo:") + ".aedat")
 	else:
