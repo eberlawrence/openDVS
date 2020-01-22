@@ -69,7 +69,7 @@ def main():
 		ts_MSB.extend(vet[4 * size : ])
 		ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
-
+		print(np.sum(ts))
 		if np.sum(ts) >= 10000: # 6 fps
 			displayEvents.plotEventsF(pol, x, y)
 			img = displayEvents.frame

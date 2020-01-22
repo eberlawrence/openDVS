@@ -1,17 +1,52 @@
+
+#define start 10
+int flag = 0;
+
 void setup()
 {
-  Serial.begin(9600); 
-}
-void loop()
-{
-  if(Serial.available() > 0)
-  {
-    int leitura = Serial.read();
-    Serial.println(leitura); 
-  }
-  Serial.print(1);
+  Serial.begin(9600);
+
+  pinMode(start, INPUT_PULLUP);
 }
 
+
+void loop()
+{
+  if(digitalRead(start) == LOW)
+  {
+    Serial.println(1);
+    delay(1000);
+  }
+   if(Serial.available() > 0)
+  {
+    int angle = Serial.read();
+    Serial.println(angle);
+  } 
+  
+//  if(digitalRead(start) == LOW)
+//  {
+//    flag = 1;
+//    Serial.println(flag);
+//    delay(1000);
+//    if(Serial.available() > 0)
+//    {
+//      int angle = Serial.read();
+//      Serial.println(angle);
+//    }
+//    
+//  }
+//  else
+//  {
+//    flag = 0;
+//    Serial.println(flag);
+//  }
+  
+  
+
+
+    
+  //Serial.println(1);
+}
 
 
 

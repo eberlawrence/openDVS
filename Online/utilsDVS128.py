@@ -226,8 +226,6 @@ class BoundingBox:
                                self.m * 10, 3)
 
 
-
-
 class Orientation:
 
     def __init__(self, screen, m=3):

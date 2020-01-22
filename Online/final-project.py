@@ -50,59 +50,62 @@ def main():
 	pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
 	countShape, countAngle = [], []
 	var = []
-	while not stop:
-		t = time()
-		for e in pygame.event.get():
-			if e.type == pygame.QUIT:
-				stop = True
 
-		vet = []
-		msg, cliente = udp.recvfrom(30000)
-		for a in msg:
-			vet.append(a)
+	while True:
+		print(ard.in_waiting)
+		if str(ard.readline())[2] == '1':
 
-		size = int(len(vet)/5)
-		pol.extend(vet[ : size])
-		x.extend(vet[size : 2 * size])
-		y.extend(vet[2 * size : 3 * size])
-		ts_LSB.extend(vet[3 * size : 4 * size])
-		ts_MSB.extend(vet[4 * size : ])
-		ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
+			while not stop:
+				t = time()
+				for e in pygame.event.get():
+					if e.type == pygame.QUIT:
+						stop = True
 
-		if np.sum(ts) >= 20000: # acumulate events during that time
+				vet = []
+				msg, cliente = udp.recvfrom(30000)
 
-			displayEvents.plotEventsF(pol, x, y)
+				for a in msg:
+					vet.append(a)
 
-			img = displayEvents.frame
-			img = img.reshape(1, 128, 128, 1)
 
-			resp, objectSet = utilsDVS128.predictShape(img, model)
-			ori = utilsDVS128.Orientation(displayEvents)
-			ori.getOrientation()
-			if start:
-				countShape.append(resp)
-				countAngle.append(ori.ang)
+				size = int(len(vet)/5)
+				pol.extend(vet[ : size])
+				x.extend(vet[size : 2 * size])
+				y.extend(vet[2 * size : 3 * size])
+				ts_LSB.extend(vet[3 * size : 4 * size])
+				ts_MSB.extend(vet[4 * size : ])
+				ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
-				if len(countShape) == 100:
-					countShape = np.bincount(countShape) # array with the number of times that each number repeats.
-					countAngle = np.median(countAngle)
-					#print(objectSet[np.argmax(countShape)][1])
-					#print(countAngle)
-					ard.write(bytes([np.argmax(countShape)]))
-					ard.write(bytes([np.argmax(countAngle)]))
-					countShape, countAngle = [], []
-					start = False
 
-			elif not start:
-				var = str(ard.readline())
-				if var[2] == '1':
-					start = True
+				if np.sum(ts) >= 10000: # acumulate events during that time
+					displayEvents.plotEventsF(pol, x, y)
 
-			t2 = time() - t
-			displayEvents.printFPS(1/t2)
-			pygame.display.update()
+					img = displayEvents.frame
+					img = img.reshape(1, 128, 128, 1)
 
-			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], [] # reset the lists
+					resp, objectSet = utilsDVS128.predictShape(img, model)
+					ori = utilsDVS128.Orientation(displayEvents)
+					ori.getOrientation()
+
+					countShape.append(resp)
+					countAngle.append(ori.ang)
+
+					if len(countShape) == 100:
+						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
+						countAngle = int((24/360) * np.median(countAngle))
+						print(objectSet[np.argmax(countShape)][1])
+						print(countAngle)
+						ard.write(bytes([np.argmax(countShape)]))
+						ard.write(bytes([countAngle]))
+						countShape, countAngle = [], []
+						stop = True
+
+					t2 = time() - t
+					displayEvents.printFPS(1/t2)
+					pygame.display.update()
+
+					pol, x, y, ts_LSB, ts_MSB = [], [], [], [], [] # reset the lists
+			stop = False
 
 	pygame.quit()
 	udp.close()
