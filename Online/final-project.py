@@ -15,7 +15,7 @@ TO DO:
 
 import socket
 import pygame
-from time import time
+from time import time, sleep
 import numpy as np
 import utilsDVS128
 import tensorflow as tf
@@ -38,7 +38,7 @@ clock = pygame.time.Clock()
 model = utilsDVS128.openModel('model/model2.json',
 							  'model/model2.h5')
 
-ard = serial.Serial('/dev/ttyUSB0', 9600)
+ard = serial.Serial('/dev/ttyUSB0', 115200)
 
 def main():
 
@@ -52,7 +52,7 @@ def main():
 	var = []
 
 	while True:
-		print(ard.in_waiting)
+		# print(ard.in_waiting)
 		if str(ard.readline())[2] == '1':
 
 			while not stop:
@@ -92,7 +92,7 @@ def main():
 
 					if len(countShape) == 100:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
-						countAngle = int((24/360) * np.median(countAngle))
+						countAngle = int((48/360) * np.median(countAngle))
 						print(objectSet[np.argmax(countShape)][1])
 						print(countAngle)
 						ard.write(bytes([np.argmax(countShape)]))
