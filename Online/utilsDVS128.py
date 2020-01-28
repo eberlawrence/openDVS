@@ -261,17 +261,17 @@ class Orientation:
         pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
 
 
-        if p1[0] > cntr[0] and p1[1] > cntr[1]:
-            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1]))))
+        if   p1[0] < cntr[0] and p1[1] < cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0]))))
 
         elif p1[0] > cntr[0] and p1[1] < cntr[1]:
-            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0])))) + 90
+            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1])))) + 90
 
-        elif p1[0] < cntr[0] and p1[1] < cntr[1]:
-            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1])))) + 180
+        elif p1[0] > cntr[0] and p1[1] > cntr[1]:
+            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0])))) + 180
 
         elif p1[0] < cntr[0] and p1[1] > cntr[1]:
-            self.ang = math.degrees(math.atan(abs((p1[1] - cntr[1]) / (p1[0] - cntr[0])))) + 270
+            self.ang = math.degrees(math.atan(abs((p1[0] - cntr[0]) / (p1[1] - cntr[1])))) + 270
 
 
 

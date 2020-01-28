@@ -1,3 +1,19 @@
+/*
+  Corrigir rotação, perdendo passo.
+  
+  Pensar em como ajustar a angulação da mão. Apenas pra 180 graus. 90 graus para cada lado.
+  
+  Fazer a a parte da garra.
+  
+  Colocar dois botões para simular EMG.
+  
+  Refazer o treinamento da rede.
+  
+  Terminar o hardware.
+  
+  Tesar o sistema.
+*/
+
 
 #define encoder        2
 #define cA             7
@@ -8,8 +24,8 @@
 int graspType;
 bool flag = false;
 int data[5];
-short motorSpeed = 50; 
-int angleObject = 48;
+short motorSpeed = 200; 
+int angleObject;
 volatile byte angleHand = 0;
  
 void setup()                         
@@ -21,7 +37,7 @@ void setup()
   pinMode(start, INPUT_PULLUP);
   Serial.begin(115200);
 
-  attachInterrupt(0, fixAngle, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), fixAngle, RISING);
 }
 
 
@@ -52,55 +68,55 @@ void fixAngle()
   if (angleObject > angleHand)
   {
     angleHand++;
-    delay(10);
+    delay(20);
   }
   if (angleObject < angleHand)
   {
     angleHand--;
-    delay(10);
+    delay(20);
   }
 }
 
 
 void loop()
-{  
-    if(digitalRead(start) == LOW and flag == false)
+{   
+  if(digitalRead(start) == LOW and flag == false)
+  {
+    Serial.println(1);
+    flag = true;
+    delay(500);
+  }
+  
+  if(Serial.available())    
+  {
+    delay(500);
+    for (int i = 0; i < Serial.available() + 1; i++)
     {
-      Serial.println(1);
-      flag = true;
-      delay(500);
+      data[i] = Serial.read();
+      // Serial.println(data[i]);
     }
-    
-    if(Serial.available())    
-    {
-      delay(500);
-      for (int i = 0; i < Serial.available() + 1; i++)
-      {
-        data[i] = Serial.read();
-        // Serial.println(data[i]);
-      }
 
-      graspType = data[0];
-      angleObject = data[1];
-      while(angleObject != angleHand)
+    graspType = data[0];
+    angleObject = data[1];
+    while(angleObject != angleHand)
+    {
+      if (angleObject > angleHand)
       {
-        if (angleObject > angleHand)
-        {
-          Forward(motorSpeed);
-          //delay(100);
-        }
-        else if (angleObject < angleHand)
-        {
-          Backward(motorSpeed);
-          //delay(100);
-        }
+        Forward(motorSpeed);
+        //delay(100);
       }
-      if (angleObject == angleHand)
+      else if (angleObject < angleHand)
       {
-        Stop();
+        Backward(motorSpeed);
+        //delay(100);
       }
-      flag = false;
     }
+    if (angleObject == angleHand)
+    {
+      Stop();
+    }
+    flag = false;
+  }
 }
 
 
