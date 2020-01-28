@@ -15,11 +15,10 @@ TO DO:
 
 import socket
 import pygame
-from time import time, sleep
+from time import time
 import numpy as np
 import utilsDVS128
 import tensorflow as tf
-from itertools import groupby
 import serial
 
 
@@ -35,14 +34,13 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model2.json',
-							  'model/model2.h5')
+model = utilsDVS128.openModel('model/model2.json', 'model/model2.h5')
 
 ard = serial.Serial('/dev/ttyUSB0', 115200)
 
 def main():
 
-	start, stop = False, False
+	stop = False
 	pygame.init()
 	displayEvents = utilsDVS128.DisplayDVS128(128, 128)
 	udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -52,9 +50,7 @@ def main():
 	var = []
 
 	while True:
-		# print(ard.in_waiting)
 		if str(ard.readline())[2] == '1':
-
 			while not stop:
 				t = time()
 				for e in pygame.event.get():
@@ -63,19 +59,16 @@ def main():
 
 				vet = []
 				msg, cliente = udp.recvfrom(30000)
-
 				for a in msg:
 					vet.append(a)
 
-
-				size = int(len(vet)/5)
+				size = int(len(vet) / 5)
 				pol.extend(vet[ : size])
 				x.extend(vet[size : 2 * size])
 				y.extend(vet[2 * size : 3 * size])
 				ts_LSB.extend(vet[3 * size : 4 * size])
 				ts_MSB.extend(vet[4 * size : ])
 				ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
-
 
 				if np.sum(ts) >= 10000: # acumulate events during that time
 					displayEvents.plotEventsF(pol, x, y)
@@ -92,16 +85,16 @@ def main():
 
 					if len(countShape) == 100:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
-						countAngle = int((48/360) * np.median(countAngle))
+						countAngle = round((2 / 15) * np.median(countAngle))
 						print(objectSet[np.argmax(countShape)][1])
 						print(countAngle)
 						ard.write(bytes([np.argmax(countShape)]))
-						ard.write(bytes([countAngle]))
+						ard.write(bytes([int(countAngle + 12)]))
 						countShape, countAngle = [], []
 						stop = True
 
 					t2 = time() - t
-					displayEvents.printFPS(1/t2)
+					displayEvents.printFPS(1 / t2)
 					pygame.display.update()
 
 					pol, x, y, ts_LSB, ts_MSB = [], [], [], [], [] # reset the lists

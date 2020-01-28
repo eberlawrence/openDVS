@@ -1,11 +1,11 @@
 /*
-  Corrigir rotação, perdendo passo.
+  Corrigir rotação, perdendo passo. ok
   
-  Pensar em como ajustar a angulação da mão. Apenas pra 180 graus. 90 graus para cada lado.
+  Pensar em como ajustar a angulação da mão. Apenas pra 180 graus. 90 graus para cada lado. ok
   
-  Fazer a a parte da garra.
+  Fazer a parte da garra. ok
   
-  Colocar dois botões para simular EMG.
+  Colocar dois botões para simular EMG. ok
   
   Refazer o treinamento da rede.
   
@@ -16,28 +16,38 @@
 
 
 #define encoder        2
+#define closeHand      3
+#define changeGrasp    4
+#define PWM            5
 #define cA             7
 #define cB             8
-#define PWM            5
 #define start          10
 
+
 int graspType;
+int graspTypeAux = 0;
 bool flag = false;
 int data[5];
 short motorSpeed = 200; 
 int angleObject;
-volatile byte angleHand = 0;
+volatile int angleHand = 0;
  
 void setup()                         
 {
+  pinMode(start, INPUT_PULLUP);
   pinMode(encoder, INPUT);
+  pinMode(closeHand, INPUT);
   pinMode(cA, OUTPUT);
   pinMode(cB, OUTPUT);
   pinMode(PWM, OUTPUT);
-  pinMode(start, INPUT_PULLUP);
+  pinMode(changeGrasp, OUTPUT);
+  
   Serial.begin(115200);
 
+  digitalWrite(changeGrasp, HIGH);
+   
   attachInterrupt(digitalPinToInterrupt(2), fixAngle, RISING);
+  attachInterrupt(digitalPinToInterrupt(3), openHand, FALLING);  
 }
 
 
@@ -48,12 +58,14 @@ void Forward(uint8_t mSpeed)
   analogWrite(PWM, mSpeed);
 }
 
+
 void Backward(uint8_t mSpeed)
 {
   digitalWrite(cA, HIGH);
   digitalWrite(cB, LOW); 
   analogWrite(PWM, mSpeed);
 }
+
 
 void Stop()
 {
@@ -77,9 +89,36 @@ void fixAngle()
   }
 }
 
+void openHand()
+{
+  if (digitalRead(closeHand) == HIGH)
+  {
+    digitalWrite(changeGrasp, LOW);
+  }
+  else
+  {
+    digitalWrite(changeGrasp, HIGH);
+  }
+            
+}
+
+void rotateMotor()
+{
+  while(angleObject != angleHand)
+  {
+    if (angleObject > angleHand)
+    {
+      Forward(motorSpeed);
+    }
+    else if (angleObject < angleHand)
+    {
+      Backward(motorSpeed);
+    }
+  }
+}
 
 void loop()
-{   
+{
   if(digitalRead(start) == LOW and flag == false)
   {
     Serial.println(1);
@@ -93,43 +132,28 @@ void loop()
     for (int i = 0; i < Serial.available() + 1; i++)
     {
       data[i] = Serial.read();
-      // Serial.println(data[i]);
     }
-
     graspType = data[0];
-    angleObject = data[1];
-    while(angleObject != angleHand)
+    if (graspType != 1) // if a shape was detected.
     {
-      if (angleObject > angleHand)
+      angleObject = data[1] - 12;
+
+      rotateMotor();
+      
+      if (angleObject == angleHand)
       {
-        Forward(motorSpeed);
-        //delay(100);
+        Stop();
+        if (graspType != graspTypeAux)
+        {
+          graspTypeAux = graspType;
+          digitalWrite(changeGrasp, LOW);
+          delay(100);
+          digitalWrite(changeGrasp, HIGH);
+          delay(100);
+          digitalWrite(changeGrasp, LOW);
+        }
       }
-      else if (angleObject < angleHand)
-      {
-        Backward(motorSpeed);
-        //delay(100);
-      }
-    }
-    if (angleObject == angleHand)
-    {
-      Stop();
     }
     flag = false;
   }
 }
-
-
-
-
-
-
-
-//    Serial.print("Angle object: ");
-//    Serial.print(angleObject);
-//    Serial.print("\n\n");
-//    Serial.print("Angle hand: ");
-//    Serial.print(angleHand);
-//    Serial.print("\n\n\n");
-//    float a = digitalRead(encoder);
-//    Serial.println(a);
