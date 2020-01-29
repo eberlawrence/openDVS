@@ -149,8 +149,6 @@ void loop()
           digitalWrite(changeGrasp, LOW);
           delay(100);
           digitalWrite(changeGrasp, HIGH);
-          delay(100);
-          digitalWrite(changeGrasp, LOW);
         }
       }
     }

@@ -37,6 +37,8 @@ import numpy as np
 from keras.models import model_from_json
 
 
+from filterUtils import filterUtils
+
 class DisplayDVS128:
     '''
     Class created to display the event flow on a pygame screen.
@@ -85,6 +87,12 @@ class DisplayDVS128:
         '''
         self.frame = eventsToFrame(pol, x, y) # it calls the eventsToFrame function and get the event frame
         #self.frame = cv.medianBlur(self.frame.astype('float32'), 3) # it calls the eventsToFrame function and get the event frame
+
+
+        #self.frame = filterUtils.popCountDownSample(self.frame, 7)
+
+
+
         framePrinted = cv.resize(np.dstack([self.frame, self.frame, self.frame]).astype('float32'),
                                            (128 * self.m, 128 * self.m),
                                            interpolation=cv.INTER_AREA) # change the frame size according to the screen multiplier (m)
