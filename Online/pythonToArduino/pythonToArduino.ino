@@ -7,7 +7,7 @@
   
   Colocar dois botões para simular EMG. ok
   
-  Refazer o treinamento da rede.
+  Refazer o treinamento da rede. 
   
   Terminar o hardware.
   
