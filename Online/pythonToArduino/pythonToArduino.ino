@@ -15,22 +15,22 @@
 */
 
 
-#define encoder        2
-#define closeHand      3
-#define changeGrasp    4
-#define PWM            5
-#define cA             7
-#define cB             8
-#define start          10
+#define encoder        2    // Receive the encoder values. Interrupt used.
+#define closeHand      3    // Receive the button status used for closing the hand. Interrupt used.
+#define changeGrasp    4    // Send a HIGH level to change the grasp type and open the hand.
+#define PWM            5    // Send a PWM for the H-Bridge.
+#define cA             7    // Channel A of the H-Bridge.
+#define cB             8    // Channel B of the H-Bridge.
+#define start          10   // Button to start the acquisition.
 
 
-int graspType;
-int graspTypeAux = 0;
-bool flag = false;
-int data[5];
-short motorSpeed = 200; 
-int angleObject;
-volatile int angleHand = 0;
+int graspType;                  // Store the grasp type as "int". 
+int graspTypeAux = 0;           // Store the last grasp type selected.
+bool flag = false;              // Flag to avoid the repetition of the first condition.
+int data[2];                    // Store received data obteined from Python through serial port. 
+short motorSpeed = 200;         // Set the engine speed of rotation
+int objectAngle;                // Store the object angle.
+volatile int WristAngle = 0;    // Adjust the wrist angle according to the object angle.
  
 void setup()                         
 {
@@ -44,13 +44,18 @@ void setup()
   
   Serial.begin(115200);
 
-  digitalWrite(changeGrasp, HIGH);
+  digitalWrite(changeGrasp, HIGH);    // Starts HIGH to keep the hand open.
    
-  attachInterrupt(digitalPinToInterrupt(2), fixAngle, RISING);
-  attachInterrupt(digitalPinToInterrupt(3), openHand, FALLING);  
+  attachInterrupt(digitalPinToInterrupt(2), fixAngle, RISING);    // Interrupt for the encoder.
+  attachInterrupt(digitalPinToInterrupt(3), openHand, FALLING);   // Interrupt for the hand closing.
 }
 
 
+
+/* FUNCTIONS */
+
+
+// Rotate the wrist forward.
 void Forward(uint8_t mSpeed)
 {
   digitalWrite(cA, LOW); 
@@ -59,6 +64,7 @@ void Forward(uint8_t mSpeed)
 }
 
 
+// Rotate the wrist backward.
 void Backward(uint8_t mSpeed)
 {
   digitalWrite(cA, HIGH);
@@ -67,6 +73,7 @@ void Backward(uint8_t mSpeed)
 }
 
 
+// Stop the rotation.
 void Stop()
 {
   digitalWrite(cA, LOW);
@@ -75,20 +82,23 @@ void Stop()
 }
 
 
+// Used on the first interrupt. Fix the angle wrist according to the object angle, incrementing or decrementing it.
 void fixAngle()
 {
-  if (angleObject > angleHand)
+  if (objectAngle > WristAngle)
   {
-    angleHand++;
+    WristAngle++;
     delay(20);
   }
-  if (angleObject < angleHand)
+  if (objectAngle < WristAngle)
   {
-    angleHand--;
+    WristAngle--;
     delay(20);
   }
 }
 
+
+// Used on the second interrupt. It's possible close the hand any time.
 void openHand()
 {
   if (digitalRead(closeHand) == HIGH)
@@ -102,15 +112,17 @@ void openHand()
             
 }
 
+
+// Rotate the engine if there is a mismatch between the angles.
 void rotateMotor()
 {
-  while(angleObject != angleHand)
+  while(objectAngle != WristAngle)
   {
-    if (angleObject > angleHand)
+    if (objectAngle > WristAngle)
     {
       Forward(motorSpeed);
     }
-    else if (angleObject < angleHand)
+    else if (objectAngle < WristAngle)
     {
       Backward(motorSpeed);
     }
@@ -119,31 +131,31 @@ void rotateMotor()
 
 void loop()
 {
-  if(digitalRead(start) == LOW and flag == false)
+  if(digitalRead(start) == LOW and flag == false) // Initial condition. Press the button:
   {
-    Serial.println(1);
-    flag = true;
+    Serial.println(1); // Write "1", then the acquisition in Python starts.
+    flag = true; 
     delay(500);
   }
   
-  if(Serial.available())    
+  if(Serial.available())    // Wait for data.
   {
     delay(500);
     for (int i = 0; i < Serial.available() + 1; i++)
     {
-      data[i] = Serial.read();
+      data[i] = Serial.read();    // Store received data, that is both grasp type and object angle.
     }
     graspType = data[0];
-    if (graspType != 1) // if a shape was detected.
+    if (graspType != 1)     // if a shape was detected.
     {
-      angleObject = data[1] - 12;
+      objectAngle = data[1] - 12;   // Subtract the offset inserted in python script.
 
-      rotateMotor();
+      rotateMotor();    // Start to rotate the motor if the angles are different.
       
-      if (angleObject == angleHand)
+      if (objectAngle == WristAngle)
       {
-        Stop();
-        if (graspType != graspTypeAux)
+        Stop();   // if the angles are the same the rotation stops.
+        if (graspType != graspTypeAux)    // Change the grasp, if the grasp type received and the last grasp type are different.
         {
           graspTypeAux = graspType;
           digitalWrite(changeGrasp, LOW);
@@ -152,6 +164,6 @@ void loop()
         }
       }
     }
-    flag = false;
+    flag = false; // Reset the system.
   }
 }

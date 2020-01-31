@@ -1,18 +1,51 @@
+'''
+Biomedical Engineering Lab (BioLab)- Federal University of Uberlandia (UFU)
+Eber Lawrence Souza - email: eberlawrence@hotmail.com
+'''
+
+
 import os
-import cv2
 import sys
 import struct
 import numpy as np
-from scipy import  signal
 from utilsDVS128 import eventsToFrame
 from sklearn.model_selection import train_test_split
 
 
-def loadAEDAT(datafile='path.aedat', length=0, version="aedat", debug=1, camera='DVS128'):
-    # constants
+def loadAEDAT(datafile='', length=0, debug=1):
+
+    camera = ''
     aeLen = 8  # 1 AE event takes 8 bytes
-    readMode = '>II'  # struct.unpack(), 2x ulong, 4B+4B
+    readMode = '>II'  # struct.unpack(), 2x ulong, 4B + 4B
     td = 0.000001  # timestep is 1us
+
+    k, p = 0, 0  # line number,  pointer (position on bytes)
+
+    # Check the Python version.
+    if sys.version[0] == '3':
+        value = 35 # if value >= 3 read the header as binary.
+    else:
+        value = '#' # if value < 3 read the header as string.
+
+    aerdatafh = open(datafile, 'rb')
+    statinfo = os.stat(datafile)
+    if length == 0:
+        length = statinfo.st_size # Define 'length' = file length
+        print("file size", length)
+
+    # Read the header
+    lt = aerdatafh.readline()
+    while lt and lt[0] == value:
+        p += len(lt)
+        k += 1
+        if k == 10:
+            camera = str(lt).split('.')[-1][0 : 6]
+            print("Camera used: ", camera)
+        lt = aerdatafh.readline()
+        if debug >= 2:
+            print(str(lt))
+        continue
+
     if(camera == 'DVS128'):
         xmask = 0x00fe  # Bin -> 0000 0000 1111 1110 || Dec -> 254
         xshift = 1
@@ -22,31 +55,6 @@ def loadAEDAT(datafile='path.aedat', length=0, version="aedat", debug=1, camera=
         pshift = 0
     else:
         raise ValueError("Unsupported camera: %s" % (camera))
-
-    aerdatafh = open(datafile, 'rb')
-    k = 0  # line number
-    p = 0  # pointer, position on bytes
-    statinfo = os.stat(datafile)
-    if length == 0:
-        length = statinfo.st_size # Define 'length' = Tamanho do arquivo
-
-    print("file size", length)
-
-    # Verifica a versão do Python.
-    if sys.version[0] == '3':
-        value = 35 # Se for >= 3 le o cabeçalho em binário.
-    else:
-        value = '#' # Se for < 3 le o cabeçalho como string.
-
-    # header
-    lt = aerdatafh.readline()
-    while lt and lt[0] == value:
-        p += len(lt)
-        k += 1
-        lt = aerdatafh.readline()
-        if debug >= 2:
-            print(str(lt))
-        continue
 
     # variables to parse
     timestamps = []
@@ -94,8 +102,8 @@ def loadAEDAT(datafile='path.aedat', length=0, version="aedat", debug=1, camera=
     return t - t[0], x, y, p
 
 
-def createDataset(objClass=None, tI=50000, split=False, size=0.20):
-	if objClass == None:
+def createDataset(objClass='', tI=50000, split=False, size=0.20):
+	if objClass == '':
 		t, x, y, p = loadaerdat("/home/user/GitHub/Classification_DVS128/aedatFiles/" + input("Nome do arquivo:") + ".aedat")
 	else:
 		objClass = objClass.split(", ")
