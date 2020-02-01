@@ -1,9 +1,11 @@
 '''
 Biomedical Engineering Lab (BioLab)- Federal University of Uberlandia (UFU)
 Eber Lawrence Souza - email: eberlawrence@hotmail.com
+'''
 
+'''
 Script:
-    Useful functions for working with a DVS128.
+    Useful classes and functions for working with a DVS128.
 
     The script consists of:
 
@@ -30,14 +32,14 @@ TO DO:
 - Finish comments.
 '''
 
-import cv2 as cv
+
 import math
 import pygame
+import cv2 as cv
 import numpy as np
+import openAEDAT as oA
 from keras.models import model_from_json
 
-
-from filterUtils import filterUtils
 
 class DisplayDVS128:
     '''
@@ -87,11 +89,6 @@ class DisplayDVS128:
         '''
         self.frame = eventsToFrame(pol, x, y) # it calls the eventsToFrame function and get the event frame
         #self.frame = cv.medianBlur(self.frame.astype('float32'), 3) # it calls the eventsToFrame function and get the event frame
-
-
-        #self.frame = filterUtils.popCountDownSample(self.frame, 7)
-
-
 
         framePrinted = cv.resize(np.dstack([self.frame, self.frame, self.frame]).astype('float32'),
                                            (128 * self.m, 128 * self.m),
@@ -280,8 +277,44 @@ class Orientation:
             self.ang = ang
 
 
+def createDataset(path="/home/user/GitHub/Classification_DVS128/aedatFiles/", numClass=0, tI=50000):
+    '''
+    Class 0 files:Caneca, Cubo, Caixa
+    Class 1 files:Estilete, Lapiseira, Tesoura
+    Class 2 files:Mouse, Celular, Grampeador
+    '''
+    objClass = []
+    if numClass == 0:
+        numClass = int(input("Write the number of classes:"))
+        for c in range(numClass):
+            objClass.append(input("Class " + str(c + 1) + " files: ").split(", "))
 
+    totalImages = []
+    labels = []
+    for j, fileName in enumerate(objClass): # for each class
+        for v in fileName: # for each file in a class
+        	t, x, y, p = oA.loadAERDAT(path + str(v) + ".aedat") # load the file with that name
+        	i, aux = 0, 0
+        	images = []
+        	while (i + tI) < t[-1]:
+        		t2 = t[(i < t) & (t <= i + tI)]
+        		x2 = x[aux : aux + len(t2)]
+        		y2 = y[aux : aux + len(t2)]
+        		p2 = p[aux : aux + len(t2)]
+        		aux += len(t2)
+        		images.append(eventsToFrame(p2, x2, y2))
+        		labels.append([j])
+        		i += tI
+        	totalImages.extend(images)
 
+    totalImages, labels = np.array(totalImages), np.array(labels)
+
+    randomize = np.arange(len(labels))
+    np.random.shuffle(randomize)
+    totalImages = totalImages[randomize]
+    labels = labels[randomize]
+
+    return totalImages, labels
 
 
 def openModel(model_JSON_file, model_WEIGHTS_file):

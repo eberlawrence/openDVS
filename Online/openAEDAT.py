@@ -8,11 +8,9 @@ import os
 import sys
 import struct
 import numpy as np
-from utilsDVS128 import eventsToFrame
-from sklearn.model_selection import train_test_split
 
 
-def loadAEDAT(datafile='', length=0, debug=1):
+def loadAERDAT(datafile='', length=0, debug=1):
 
     camera = ''
     aeLen = 8  # 1 AE event takes 8 bytes
@@ -100,39 +98,3 @@ def loadAEDAT(datafile='', length=0, debug=1):
             print("failed to print statistics")
     t, x, y, p = np.array(timestamps), np.array(xaddr), np.array(yaddr), np.array(pol)
     return t - t[0], x, y, p
-
-
-def createDataset(objClass='', tI=50000, split=False, size=0.20):
-	if objClass == '':
-		t, x, y, p = loadaerdat("/home/user/GitHub/Classification_DVS128/aedatFiles/" + input("Nome do arquivo:") + ".aedat")
-	else:
-		objClass = objClass.split(", ")
-		totalImages = []
-		labels = []
-		for j, v in enumerate(objClass):
-			t, x, y, p = loadaerdat("/home/user/GitHub/Classification_DVS128/aedatFiles/" + str(v) + ".aedat")
-			i, aux = 0, 0
-			images = []
-			while (i + tI) < t[-1]:
-				t2 = t[(i < t) & (t <= i + tI)]
-				x2 = x[aux : aux + len(t2)]
-				y2 = y[aux : aux + len(t2)]
-				p2 = p[aux : aux + len(t2)]
-				aux += len(t2)
-				images.append(eventsToFrame(p2, x2, y2))
-				labels.append([j])
-				i += tI
-			totalImages.extend(images)
-
-		totalImages, labels = np.array(totalImages), np.array(labels)
-
-		randomize = np.arange(len(labels))
-		np.random.shuffle(randomize)
-		totalImages = totalImages[randomize]
-		labels = labels[randomize]
-
-		if split:
-			totalImages_train, totalImages_test, labels_train, labels_test = train_test_split(totalImages, labels, test_size=size, random_state=42)
-			return totalImages_train, totalImages_test, labels_train, labels_test
-		else:
-			return totalImages, labels
