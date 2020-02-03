@@ -1,0 +1,22 @@
+
+Next steps:
+
+Make a new dataset for two classes: 
+	-> POWER GRIP 
+		- Box
+		- calculator
+		- Cup
+		- Bottle
+		- Cell phone
+
+	-> TRIPOD GRIP
+		- Pencil
+		- Pen
+		- Key
+		- *Small objects*	
+		
+Improve the hardware:
+	- Adjust the wires
+	- Reduce jumpers
+	- Change the camera position (bionic hand is in its vision field)
+	

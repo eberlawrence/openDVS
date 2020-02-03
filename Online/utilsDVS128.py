@@ -277,17 +277,48 @@ class Orientation:
             self.ang = ang
 
 
-def createDataset(path="/home/user/GitHub/Classification_DVS128/aedatFiles/", numClass=0, tI=50000):
+def createDataset(path='/home/user/GitHub/Classification_DVS128/aedatFiles/',
+                  objClass=[['Caixa', 'Cubo'], ['Estilete', 'Lapiseira'], ['Grampeador', 'Tesoura']],
+                  setUp=True,
+                  tI=50000):
     '''
-    Class 0 files:Caneca, Cubo, Caixa
-    Class 1 files:Estilete, Lapiseira, Tesoura
-    Class 2 files:Mouse, Celular, Grampeador
+    Function to create a dataset of frames from .aedat files
+
+    Parameters:
+                path       --> The file path.
+                numClasses --> The number of classes to be divided.
+                tI         --> The interval used for each frame (in milisseconds).
+
+    return:
+            totalImages --> all images obteined.
+            labels      --> label corresponding to each frame.
+
+
+    It is possible to join various files in a same class.
+
+    If setUp=True, you will need to write manually the number of classes and the files for each class.
+    You must write as bellow:
+    Class 1 files:file1, file2, ..., fileN
+    Class 2 files:file1, file2, ..., fileN
+    ...              ...               ...
+    Class N files:file1, file2, ..., fileN
+
+    if setUp = False, you will need to add the file names to objClass.
+    You must write as bellow:
+    ---------------------------------------------------------------------------------------------------------
+    |                     class 1                      class 2            ...            class N            |
+    | objClass=[['file1', 'file2', 'file3'], ['file1', 'file2', 'file3'], ..., ['fileN', 'fileN', 'fileN']] |
+    ---------------------------------------------------------------------------------------------------------
     '''
-    objClass = []
-    if numClass == 0:
-        numClass = int(input("Write the number of classes:"))
-        for c in range(numClass):
-            objClass.append(input("Class " + str(c + 1) + " files: ").split(", "))
+
+    if path == '':
+        path = input('Write the file path: ')
+
+    if setUp == True:
+        objClass = []
+        numClasses = int(input("Write the number of classes:"))
+        for c in range(numClasses):
+            objClass.append(input("Class " + str(c + 1) + " files:").split(", "))
 
     totalImages = []
     labels = []
@@ -309,6 +340,7 @@ def createDataset(path="/home/user/GitHub/Classification_DVS128/aedatFiles/", nu
 
     totalImages, labels = np.array(totalImages), np.array(labels)
 
+    # make the array randomized
     randomize = np.arange(len(labels))
     np.random.shuffle(randomize)
     totalImages = totalImages[randomize]
