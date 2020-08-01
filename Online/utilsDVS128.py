@@ -32,13 +32,20 @@ TO DO:
 - Finish comments.
 '''
 
-
 import math
+import sys
 import pygame
 import cv2 as cv
 import numpy as np
 import openAEDAT as oA
 from keras.models import model_from_json
+import matplotlib.pyplot as plt
+
+sys.path.append('/home/user/GitHub/HandStuff/Detection')
+
+from segmentationUtils import segmentationUtils
+
+
 
 
 class DisplayDVS128:
@@ -53,7 +60,7 @@ class DisplayDVS128:
 
     '''
 
-    def __init__(self, width, height, m=3):
+    def __init__(self, width, height, m=6):
         '''
         Constructor
         '''
@@ -66,7 +73,7 @@ class DisplayDVS128:
         pygame.display.set_caption('Neuromorphic Camera - DVS128') # Screen title
         self.gameDisplay = pygame.display.set_mode((self.width, self.height))
         self.gameDisplay.fill(self.background)
-        self.frame = None # attribute to receive a frame of an events flow
+        self.frame = np.array([]) # attribute to receive a frame of an events flow
 
     def printFPS(self, fps):
         '''
@@ -123,7 +130,7 @@ class BoundingBox:
     screen -> class DisplayDVS128, it is used to get the surface and the current frame
     m -> multiplier of the screen size, for better visualization.
     '''
-    def __init__(self, screen, m=3):
+    def __init__(self, screen, m=6):
         '''
         Constructor
         '''
@@ -230,57 +237,153 @@ class BoundingBox:
                                (127 - medianX * self.m, medianY * self.m),
                                self.m * 10, 3)
 
+    def boundingBoxEduGod(self, flag):
+        var = []
+        watershedImage, mask, detection = segmentationUtils.watershed(self.frame,
+                                                                      '--neuromorphic',
+                                                                      minimumSizeBox=0.5,
+                                                                      smallBBFilter=True,
+                                                                      centroidDistanceFilter = True,
+                                                                      mergeOverlapingDetectionsFilter = True)
+        for j in range(len(detection)):
+            if (detection[j][7] == 'closerToCenter'):
+                var = detection[j]
+        if flag == True and len(var) != 0:
+            self.rect = pygame.draw.rect(self.surf,
+                                         (255, 0, 0),
+                                         [var[0] * self.m,var[1] * self.m, var[2]* self.m, var[3]* self.m],
+                                         4) # drawing the bounding box for every particles
+
+        return var
+
 
 class Orientation:
 
-    def __init__(self, screen, m=3):
+    def __init__(self, screen, roi, m=6):
         self.surf = screen.gameDisplay # getting pygame surface
         self.frame = screen.frame # getting the current frame
+        self.roi = roi
         self.m = m # screen multiplier
         self.ang = 0
 
     def getPointCloud(self, frame):
-        frame[frame == 0] = frame.max()
-        frame[frame == 127.5] = 0
+        frame[frame == 0], frame[frame == 127.5] = frame.max(), 0
         frame = frame.astype('uint8')
-        _, bw = cv.threshold(frame, 50, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
-        pointCloud, _ = cv.findContours(bw, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
+        pointCloud, _ = cv.findContours(frame, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
         return pointCloud
 
     def getOrientation(self):
         pC = self.getPointCloud(self.frame)
         vet = []
+
         for i, c in enumerate(pC):
-            vet.append([len(c), i])
-        pts = pC[max(vet)[1]]
-        data_pts = pts.reshape(len(pts),2).astype('float64')
-        mean, eigenvectors, eigenvalues = cv.PCACompute2(data_pts, np.array([]))
-        cntr = (int(mean[0,0]), int(mean[0,1]))
-        p1 = (cntr[0] + 0.1 * eigenvectors[0,0] * eigenvalues[0,0], cntr[1] + 0.1 * eigenvectors[0,1] * eigenvalues[0,0])
-        p2 = (cntr[0] - 0.1 * eigenvectors[1,0] * eigenvalues[1,0], cntr[1] - 0.1 * eigenvectors[1,1] * eigenvalues[1,0])
-        cp1 = (p1[0] - cntr[0], p1[1] - cntr[1])
-        cp2 = (p2[0] - cntr[0], p2[1] - cntr[1])
-        pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
-        pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
-        pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
-        pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
+            area = cv.contourArea(c)
+            if area > 50:
+                data = c.reshape(len(c),2).astype('float64')
+                mean, eivec, eival = cv.PCACompute2(data, np.array([]))
+                print("Inicio 1\n\n", mean, "\n\n", eivec, "\n\n", eival, "\n\n\n\n\n")
+                cntr = (int(mean[0, 0]), int(mean[0, 1]))
+                p1 = (cntr[0] + 0.1 * eivec[0,0] * eival[0,0], cntr[1] + 0.1 * eivec[0,1] * eival[0,0])
+                p2 = (cntr[0] - 0.1 * eivec[1,0] * eival[1,0], cntr[1] - 0.1 * eivec[1,1] * eival[1,0])
+                pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
+                pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
+                pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
+                pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
 
 
-        cOpo = p1[1] - cntr[1]
-        cAdj = p1[0] - cntr[0]
-        ang = math.degrees(math.atan(abs(cOpo / cAdj)))
+        # if len(vet) != 0:
+        #     pts = pC[max(vet)[1]]
+        #     data_pts = pts.reshape(len(pts),2).astype('float64')
+        #     mean, eigenvectors, eigenvalues = cv.PCACompute2(data_pts, np.array([]))
+        #     cntr = (int(mean[0,0]), int(mean[0,1]))
+        #     if len(mean) == 1 and len(eigenvectors) >= 2 and len(eigenvalues) >= 2:
+        #     #print(len(mean), '\n', len(eigenvectors), '\n', len(eigenvalues), '\n\n\n')
+        #         p1 = (cntr[0] + 0.1 * eigenvectors[0,0] * eigenvalues[0,0], cntr[1] + 0.1 * eigenvectors[0,1] * eigenvalues[0,0])
+        #         p2 = (cntr[0] - 0.1 * eigenvectors[1,0] * eigenvalues[1,0], cntr[1] - 0.1 * eigenvectors[1,1] * eigenvalues[1,0])
+        #         cp1 = (p1[0] - cntr[0], p1[1] - cntr[1])
+        #         cp2 = (p2[0] - cntr[0], p2[1] - cntr[1])
+        #
+        #         pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
+        #         pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
+        #         pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
+        #         pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
+        #
+        #
+        #         cOpo = p1[1] - cntr[1]
+        #         cAdj = p1[0] - cntr[0]
+        #         ang = math.degrees(math.atan(abs(cOpo / cAdj)))
+        #
+        #         if   p1[0] < cntr[0] and p1[1] < cntr[1] or p1[0] > cntr[0] and p1[1] > cntr[1]:
+        #             self.ang = -ang
+        #
+        #         elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
+        #             self.ang = ang
 
-        if   p1[0] < cntr[0] and p1[1] < cntr[1] or p1[0] > cntr[0] and p1[1] > cntr[1]:
-            self.ang = -ang
 
-        elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
-            self.ang = ang
+def getOrientationROI(surf, roi, refXY, m):
+    ang = 0
+    roi[roi == 0], roi[roi == 127.5] = roi.max(), 0
+    roi = roi.astype('uint8').T
+    roi = cv.medianBlur(roi, 3)
+    a, b = np.ogrid[(*map(slice, roi.shape),)]
+    pointCloud = np.argwhere(roi > 0)
+    if len(pointCloud > 0) and len(refXY) > 0:
+        refX, refY = refXY[0][0], refXY[0][1]
+        data = pointCloud.reshape(len(pointCloud), 2).astype('float64')
+        mean, eivec, eival = cv.PCACompute2(data, np.array([]))
+
+        cntr = (int(mean[0, 0]), int(mean[0, 1]))
+        # print(refX, '\n', refY, '\n', cntr, '\n', eivec, '\n', eival, '\n\n\n')
+        if len(eivec) == 2 or len(eival) == 2:
+            p1 = (cntr[0] + 0.1 * eivec[0, 0] * eival[0, 0], cntr[1] + 0.1 * eivec[0, 1] * eival[0, 0])
+            p2 = (cntr[0] - 0.1 * eivec[1, 0] * eival[1, 0], cntr[1] - 0.1 * eivec[1, 1] * eival[1, 0])
+
+            pygame.draw.line(surf, (0, 0, 255), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p1[1] + refX) * m, (p1[0] + refY) * m), 7)
+            pygame.draw.line(surf, (0, 255, 0), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p2[1] + refX) * m, (p2[0] + refY) * m), 7)
+            pygame.draw.circle(surf, (255, 0, 0), (int((p1[1] + refX) * m), int((p1[0] + refY) * m)), 5)
+            pygame.draw.circle(surf, (0, 255, 255), (int((p2[1] + refX) * m), int((p2[0] + refY) * m)), 5)
+            pygame.draw.circle(surf, (255, 255, 0), (int((cntr[1] + refX) * m), int((cntr[0] + refY) * m)), 5)
+
+            cOpo = p1[1] - cntr[1]
+            cAdj = p1[0] - cntr[0]
+            ang = math.degrees(math.atan(abs(cOpo / cAdj)))
+
+            if   p1[0] < cntr[0] and p1[1] < cntr[1] or p1[0] > cntr[0] and p1[1] > cntr[1]:
+                ang = -ang
+
+            elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
+                ang = ang
+
+    return ang
+
+# roi = img[0][62]
+# watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(roi,'--neuromorphic',minimumSizeBox=0.5,smallBBFilter=True,centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True,flagCloserToCenter=True)
+# teste = segmentationUtils.getROI(detection, roi)
+#
+# roi[roi == 0], roi[roi == 127.5] = roi.max(), 0
+# roi = roi.astype('uint8').T
+# roi = cv.medianBlur(roi, 3)
+# a, b = np.ogrid[(*map(slice, roi.shape),)]
+# pointCloud = np.argwhere(roi > 0)
+#
+# refX, refY, refX2, refY2 = detection[0][0], detection[0][1], detection[0][2], detection[0][3]
+# data = pointCloud.reshape(len(pointCloud), 2).astype('float64')
+# mean, eivec, eival = cv.PCACompute2(data, np.array([]))
+# p1 = (cntr[0] + 0.1 * eivec[0, 0] * eival[0, 0], cntr[1] + 0.1 * eivec[0, 1] * eival[0, 0])
+# p2 = (cntr[0] - 0.1 * eivec[1, 0] * eival[1, 0], cntr[1] - 0.1 * eivec[1, 1] * eival[1, 0])
+#
+
+# plt.imshow(img[0][54].T, cmap='gray')
+# plt.scatter(p1[0] + refX, p1[1] + refY, color='r')
+# plt.scatter(p2[0] + refX, p2[1] + refY, color='g')
+# plt.scatter(cntr[0] + refX, cntr[1] + refY, color='y')
+# plt.show()
 
 
-def createDataset(path='/home/user/GitHub/Classification_DVS128/aedatFiles/',
-                  objClass=[['Caixa', 'Cubo'], ['Estilete', 'Lapiseira'], ['Grampeador', 'Tesoura']],
+def createDataset(path='/home/user/GitHub/aedatFiles/dataset_cbeb_2020/',
+                  objClass=[['spoon/spoon_1', 'spoon/spoon_2', 'spoon/spoon_3', 'spoon/spoon_4', 'spoon/spoon_5'], ['pencil/pencil_1', 'pencil/pencil_2', 'pencil/pencil_3', 'pencil/pencil_4', 'pencil/pencil_5'], ['apple/apple_1', 'apple/apple_2', 'apple/apple_3', 'apple/apple_4', 'apple/apple_5']],
                   setUp=True,
-                  tI=50000):
+                  tI=30000):
     '''
     Function to create a dataset of frames from .aedat files
 
@@ -319,34 +422,69 @@ def createDataset(path='/home/user/GitHub/Classification_DVS128/aedatFiles/',
         numClasses = int(input("Write the number of classes:"))
         for c in range(numClasses):
             objClass.append(input("Class " + str(c + 1) + " files:").split(", "))
+    else:
+        numClasses = len(objClass)
 
-    totalImages = []
-    labels = []
+    print(numClasses)
+
+
+    numSamples = []
+    totalImages, labels = [], []
+    finalDataset, finalLabels = [], []
+    trainDataset, trainLabels = [], []
+    testDataset, testLabels = [], []
     for j, fileName in enumerate(objClass): # for each class
         for v in fileName: # for each file in a class
-        	t, x, y, p = oA.loadAERDAT(path + str(v) + ".aedat") # load the file with that name
-        	i, aux = 0, 0
-        	images = []
-        	while (i + tI) < t[-1]:
-        		t2 = t[(i < t) & (t <= i + tI)]
-        		x2 = x[aux : aux + len(t2)]
-        		y2 = y[aux : aux + len(t2)]
-        		p2 = p[aux : aux + len(t2)]
-        		aux += len(t2)
-        		images.append(eventsToFrame(p2, x2, y2))
-        		labels.append([j])
-        		i += tI
-        	totalImages.extend(images)
+            t, x, y, p = oA.loadAERDAT(path + str(v) + ".aedat") # load the file with that name
+            i, aux = 0, 0
+            images = []
+            while (i + tI) < t[-1]:
+                t2 = t[(i < t) & (t <= i + tI)]
+                x2 = x[aux : aux + len(t2)]
+                y2 = y[aux : aux + len(t2)]
+                p2 = p[aux : aux + len(t2)]
+                aux += len(t2)
+                images.append(eventsToFrame(p2, x2, y2))
+                #labels.append([j])
+                i += tI
+            totalImages.extend(images)
+            labels.extend(np.zeros(len(images)) + j)
+    totalImages, labels = np.array(totalImages), np.array(labels).astype('int')
+    for i in range(numClasses):
+        print("Number of samples in class " + str(i) + ": ", len(labels[labels == i]))
 
-    totalImages, labels = np.array(totalImages), np.array(labels)
+    resp = input("Would you like to reduce the dataset? (y/N) ")
+    if resp == 'yes' or resp == 'y' or resp == 'Y':
+        maxSamples = int(input("How many samples per class: "))
+        trainTestSplit = input("Would you like to split the dataset? (y/N) ")
+        per = float(input("Test samples percentage: "))
+        for i in range(numClasses):
+            if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
+                trainDataset.extend(totalImages[labels == i][:int(maxSamples * per)])
+                trainLabels.extend(labels[labels == i][:int(maxSamples * per)])
+                testDataset.extend(totalImages[labels == i][int(maxSamples * per):maxSamples])
+                testLabels.extend(labels[labels == i][int(maxSamples * per):maxSamples])
+            else:
+                finalDataset.extend(totalImages[labels == i][:maxSamples])
+                finalLabels.extend(labels[labels == i][:maxSamples])
+    else:
+        finalDataset, finalLabels = totalImages, labels
 
-    # make the array randomized
-    randomize = np.arange(len(labels))
-    np.random.shuffle(randomize)
-    totalImages = totalImages[randomize]
-    labels = labels[randomize]
+    if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
+        trainDataset, trainLabels, testDataset, testLabels = np.array(trainDataset), np.array(trainLabels), np.array(testDataset), np.array(testLabels)
+        rand1, rand2 = np.arange(len(trainLabels)), np.arange(len(testLabels))
+        np.random.shuffle(rand1)
+        np.random.shuffle(rand2)
+        trainDataset, trainLabels, testDataset, testLabels = trainDataset[rand1], trainLabels[rand1],  testDataset[rand2], testLabels[rand2]
+        return (trainDataset, testDataset), (trainLabels, testLabels)
 
-    return totalImages, labels
+    else:
+        finalDataset, finalLabels = np.array(finalDataset), np.array(finalLabels)
+        randomize = np.arange(len(finalLabels))
+        np.random.shuffle(randomize)
+        finalDataset = finalDataset[randomize]
+        finalLabels = finalLabels[randomize]
+        return finalDataset, finalLabels
 
 
 def openModel(model_JSON_file, model_WEIGHTS_file):
@@ -390,3 +528,17 @@ def eventsToFrame(pol, x, y):
             matrix[y[i], x[i]] = pol[i] # insere os eventos dentro da matriz de zeros
     matrix = (matrix)*255 + 127.5 # Normaliza a matriz para 8bits -> 0 - 255
     return matrix.T
+
+#this function get the original image and extract the ROI
+def getROI(detection,image):
+    crop_img = image
+    if(len(detection) != 0):
+        dim = (128,128)
+        crop_img = image[(detection[0]+1):detection[0]+detection[2],(detection[1]+1):detection[1]+detection[3]]
+        crop_img = cv.resize(crop_img, dim, interpolation = cv.INTER_AREA)
+    crop_img = crop_img.reshape(1, 128, 128, 1)
+    return crop_img
+
+def plotBoundingBox(surf, d, m):
+    if len(d) > 0:
+        pygame.draw.rect(surf, (255, 0, 0), [d[0][0] * m, d[0][1] * m, d[0][2] * m, d[0][3] * m], 4)

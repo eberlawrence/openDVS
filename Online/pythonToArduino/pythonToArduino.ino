@@ -164,6 +164,7 @@ void loop()
         }
       }
     }
+    
     flag = false; // Reset the system.
   }
 }

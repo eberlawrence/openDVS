@@ -85,9 +85,10 @@ def main():
 
 					if len(countShape) == 100:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
+						countAngle2 = round(np.median(countAngle),1)
 						countAngle = round((2 / 15) * np.median(countAngle))
 						print(objectSet[np.argmax(countShape)][1])
-						print(countAngle)
+						print(str(countAngle2) + " Degrees")
 						ard.write(bytes([np.argmax(countShape)]))
 						ard.write(bytes([int(countAngle + 12)]))
 						countShape, countAngle = [], []
