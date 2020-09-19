@@ -259,65 +259,44 @@ class BoundingBox:
 
 class Orientation:
 
-    def __init__(self, screen, roi, m=6):
+    def __init__(self, screen, m=3):
         self.surf = screen.gameDisplay # getting pygame surface
         self.frame = screen.frame # getting the current frame
         self.roi = roi
         self.m = m # screen multiplier
         self.ang = 0
 
-    def getPointCloud(self, frame):
+    def get_cloud_point(self, frame):
         frame[frame == 0], frame[frame == 127.5] = frame.max(), 0
         frame = frame.astype('uint8')
-        pointCloud, _ = cv.findContours(frame, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
-        return pointCloud
+        cloud_point, _ = cv.findContours(frame, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
+        return cloud_point
 
-    def getOrientation(self):
-        pC = self.getPointCloud(self.frame)
+    def get_orientation(self):
+        pC = self.get_cloud_point(self.frame)
         vet = []
 
         for i, c in enumerate(pC):
-            area = cv.contourArea(c)
-            if area > 50:
-                data = c.reshape(len(c),2).astype('float64')
-                mean, eivec, eival = cv.PCACompute2(data, np.array([]))
-                print("Inicio 1\n\n", mean, "\n\n", eivec, "\n\n", eival, "\n\n\n\n\n")
-                cntr = (int(mean[0, 0]), int(mean[0, 1]))
-                p1 = (cntr[0] + 0.1 * eivec[0,0] * eival[0,0], cntr[1] + 0.1 * eivec[0,1] * eival[0,0])
-                p2 = (cntr[0] - 0.1 * eivec[1,0] * eival[1,0], cntr[1] - 0.1 * eivec[1,1] * eival[1,0])
-                pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
-                pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
-                pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
-                pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
+            vet.append([len(c), i])
+        pts = pC[max(vet)[1]]
+        data_pts = pts.reshape(len(pts),2).astype('float64')
+        mean, eivec, eival = cv.PCACompute2(data_pts, np.array([]))
+        cntr = (int(mean[0,0]), int(mean[0,1]))
+        p1 = (cntr[0] + 0.1 * eivec[0,0] * eival[0,0], cntr[1] + 0.1 * eivec[0,1] * eival[0,0])
+        p2 = (cntr[0] - 0.1 * eivec[1,0] * eival[1,0], cntr[1] - 0.1 * eivec[1,1] * eival[1,0])
+        pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
+        pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
+        pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
+        pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
+        cOpo = p1[1] - cntr[1]
+        cAdj = p1[0] - cntr[0]
+        ang = math.degrees(math.atan(abs(cOpo / cAdj)))
 
+        if   p1[0] < cntr[0] and p1[1] < cntr[1] or p1[0] > cntr[0] and p1[1] > cntr[1]:
+            self.ang = -ang
 
-        # if len(vet) != 0:
-        #     pts = pC[max(vet)[1]]
-        #     data_pts = pts.reshape(len(pts),2).astype('float64')
-        #     mean, eigenvectors, eigenvalues = cv.PCACompute2(data_pts, np.array([]))
-        #     cntr = (int(mean[0,0]), int(mean[0,1]))
-        #     if len(mean) == 1 and len(eigenvectors) >= 2 and len(eigenvalues) >= 2:
-        #     #print(len(mean), '\n', len(eigenvectors), '\n', len(eigenvalues), '\n\n\n')
-        #         p1 = (cntr[0] + 0.1 * eigenvectors[0,0] * eigenvalues[0,0], cntr[1] + 0.1 * eigenvectors[0,1] * eigenvalues[0,0])
-        #         p2 = (cntr[0] - 0.1 * eigenvectors[1,0] * eigenvalues[1,0], cntr[1] - 0.1 * eigenvectors[1,1] * eigenvalues[1,0])
-        #         cp1 = (p1[0] - cntr[0], p1[1] - cntr[1])
-        #         cp2 = (p2[0] - cntr[0], p2[1] - cntr[1])
-        #
-        #         pygame.draw.line(self.surf, (0, 0, 255), (cntr[1] * self.m, cntr[0] * self.m), (p1[1] * self.m, p1[0] * self.m), 7)
-        #         pygame.draw.line(self.surf, (0, 255, 0), (cntr[1] * self.m, cntr[0] * self.m), (p2[1] * self.m, p2[0] * self.m), 7)
-        #         pygame.draw.circle(self.surf, (255, 0, 0), (int(p1[1] * self.m), int(p1[0] * self.m)), 5)
-        #         pygame.draw.circle(self.surf, (255, 255, 0), (int(cntr[1] * self.m), int(cntr[0] * self.m)), 5)
-        #
-        #
-        #         cOpo = p1[1] - cntr[1]
-        #         cAdj = p1[0] - cntr[0]
-        #         ang = math.degrees(math.atan(abs(cOpo / cAdj)))
-        #
-        #         if   p1[0] < cntr[0] and p1[1] < cntr[1] or p1[0] > cntr[0] and p1[1] > cntr[1]:
-        #             self.ang = -ang
-        #
-        #         elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
-        #             self.ang = ang
+        elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
+            self.ang = ang
 
 
 def getOrientationROI(surf, roi, refXY, m):
@@ -338,12 +317,6 @@ def getOrientationROI(surf, roi, refXY, m):
             p1 = (cntr[0] + 0.1 * eivec[0, 0] * eival[0, 0], cntr[1] + 0.1 * eivec[0, 1] * eival[0, 0])
             p2 = (cntr[0] - 0.1 * eivec[1, 0] * eival[1, 0], cntr[1] - 0.1 * eivec[1, 1] * eival[1, 0])
 
-            pygame.draw.line(surf, (0, 0, 255), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p1[1] + refX) * m, (p1[0] + refY) * m), 7)
-            pygame.draw.line(surf, (0, 255, 0), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p2[1] + refX) * m, (p2[0] + refY) * m), 7)
-            pygame.draw.circle(surf, (255, 0, 0), (int((p1[1] + refX) * m), int((p1[0] + refY) * m)), 5)
-            pygame.draw.circle(surf, (0, 255, 255), (int((p2[1] + refX) * m), int((p2[0] + refY) * m)), 5)
-            pygame.draw.circle(surf, (255, 255, 0), (int((cntr[1] + refX) * m), int((cntr[0] + refY) * m)), 5)
-
             cOpo = p1[1] - cntr[1]
             cAdj = p1[0] - cntr[0]
             ang = math.degrees(math.atan(abs(cOpo / cAdj)))
@@ -353,6 +326,15 @@ def getOrientationROI(surf, roi, refXY, m):
 
             elif p1[0] < cntr[0] and p1[1] > cntr[1] or p1[0] > cntr[0] and p1[1] < cntr[1]:
                 ang = ang
+
+            pygame.draw.line(surf, (0, 0, 255), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p1[1] + refX) * m, (p1[0] + refY) * m), 7)
+            pygame.draw.line(surf, (0, 255, 0), ((cntr[1] + refX) * m, (cntr[0] + refY) * m), ((p2[1] + refX) * m, (p2[0] + refY) * m), 7)
+            pygame.draw.circle(surf, (255, 0, 0), (int((p1[1] + refX) * m), int((p1[0] + refY) * m)), 5)
+            pygame.draw.circle(surf, (0, 255, 255), (int((p2[1] + refX) * m), int((p2[0] + refY) * m)), 5)
+            pygame.draw.circle(surf, (255, 255, 0), (int((cntr[1] + refX) * m), int((cntr[0] + refY) * m)), 5)
+            # pygame.draw.circle(surf, (0, 0, 255), (int((p1[1] + refX) * m + (math.sin(ang)/math.tan(ang)) * 30), int((p1[0] + refY) * m + math.tan(ang)*math.cos(ang)*30)), 10)
+            # pygame.draw.polygon(surf, (0, 0, 0), ((int((p1[1] + refX) * m) + (math.sin(ang)/math.tan(ang)) * 20, int((p1[0] + refY) * m) + math.tan(ang)*math(ang)*20), (100, 200), (150, 150)))
+
 
     return ang
 
@@ -508,16 +490,21 @@ def openModel(model_JSON_file, model_WEIGHTS_file):
 
 def predictShape(img, model, flag='No'):
 
-	# flag = input("Would you like to change the default object set? ")
-	if flag == "Yes" or flag == "yes" or flag == "Y" or flag == "y":
-		objectSet = input("New object set: ").split(", ")
-	else:
-		objectSet = [[0, 'Tripod'],
-					 [1, 'Nothing'],
-					 [2, 'Power']]
+    #print(img.shape)
+    # flag = input("Would you like to change the default object set? ")
+    if flag == "Yes" or flag == "yes" or flag == "Y" or flag == "y":
+        objectSet = input("New object set: ").split(", ")
+    else:
+        objectSet = [[0, 'Tripod'],
+                    [1, 'Nothing'],
+                    [2, 'Power']]
 
-	preds = model.predict(img)
-	return objectSet[np.argmax(preds)][0], objectSet
+    preds = model.predict(img)
+    aux = np.argmax(preds)
+    selected_obj = objectSet[aux][0]
+
+    #print(preds)
+    return selected_obj, objectSet
 
 
 def eventsToFrame(pol, x, y):

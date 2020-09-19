@@ -33,12 +33,12 @@ elif tf.__version__ == '1.14.0':
 	config.gpu_options.allow_growth = True
 	session = tf.Session(config=config)
 
-frameTime = 25000
+frameTime = 50000
 HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model4.json', 'model/model4.h5')
+model = utilsDVS128.openModel('model/model6.json', 'model/model6.h5')
 
 def main():
 
@@ -88,7 +88,7 @@ def main():
 			# ori = utilsDVS128.Orientation(displayEvents, imgROI)
 			ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
 
-			interpROI = interpROI.reshape(1, 128, 128, 1)
+			interpROI = interpROI.reshape(1, 64, 64, 1)
 			resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 
 			countShape.append(resp)

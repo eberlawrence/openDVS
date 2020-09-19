@@ -16,38 +16,48 @@
 
 
 #define encoder        2    // Receive the encoder values. Interrupt used.
-#define closeHand      3    // Receive the button status used for closing the hand. Interrupt used.
 #define changeGrasp    4    // Send a HIGH level to change the grasp type and open the hand.
+
 #define PWM            5    // Send a PWM for the H-Bridge.
 #define cA             7    // Channel A of the H-Bridge.
 #define cB             8    // Channel B of the H-Bridge.
-#define start          10   // Button to start the acquisition.
+
+#define bt_close       3    // Receive the button status used for closing the hand. Interrupt used.
+#define bt_start       10   // Button to start the acquisition.
+
+#define grasp_tripod   11
+#define grasp_power    12
 
 
 int graspType;                  // Store the grasp type as "int". 
 int graspTypeAux = 0;           // Store the last grasp type selected.
 bool flag = false;              // Flag to avoid the repetition of the first condition.
 int data[2];                    // Store received data obteined from Python through serial port. 
-short motorSpeed = 200;         // Set the engine speed of rotation
+short motorSpeed = 40;         // Set the engine speed of rotation
 int objectAngle;                // Store the object angle.
 volatile int WristAngle = 0;    // Adjust the wrist angle according to the object angle.
  
 void setup()                         
 {
-  pinMode(start, INPUT_PULLUP);
   pinMode(encoder, INPUT);
-  pinMode(closeHand, INPUT);
+  pinMode(changeGrasp, OUTPUT);
+  
+  pinMode(PWM, OUTPUT);
   pinMode(cA, OUTPUT);
   pinMode(cB, OUTPUT);
-  pinMode(PWM, OUTPUT);
-  pinMode(changeGrasp, OUTPUT);
+  
+  pinMode(bt_close, INPUT_PULLUP);
+  pinMode(bt_start, INPUT_PULLUP);
+
+  pinMode(grasp_tripod, OUTPUT);
+  pinMode(grasp_power, OUTPUT);
   
   Serial.begin(115200);
 
   digitalWrite(changeGrasp, HIGH);    // Starts HIGH to keep the hand open.
    
-  attachInterrupt(digitalPinToInterrupt(2), fixAngle, RISING);    // Interrupt for the encoder.
-  attachInterrupt(digitalPinToInterrupt(3), openHand, FALLING);   // Interrupt for the hand closing.
+  attachInterrupt(digitalPinToInterrupt(2), fixAngle, CHANGE);    // Interrupt for the encoder.
+  attachInterrupt(digitalPinToInterrupt(3), openHand, CHANGE);   // Interrupt for the hand closing.
 }
 
 
@@ -88,20 +98,18 @@ void fixAngle()
   if (objectAngle > WristAngle)
   {
     WristAngle++;
-    delay(20);
   }
   if (objectAngle < WristAngle)
   {
     WristAngle--;
-    delay(20);
   }
 }
 
 
 // Used on the second interrupt. It's possible close the hand any time.
 void openHand()
-{
-  if (digitalRead(closeHand) == HIGH)
+{ 
+  if (digitalRead(bt_close) == HIGH)
   {
     digitalWrite(changeGrasp, LOW);
   }
@@ -129,15 +137,16 @@ void rotateMotor()
   }
 }
 
+
 void loop()
 {
-  if(digitalRead(start) == LOW and flag == false) // Initial condition. Press the button:
+  
+  if(digitalRead(bt_start) == LOW and flag == false) // Initial condition. Press the button:
   {
     Serial.println(1); // Write "1", then the acquisition in Python starts.
-    flag = true; 
+    flag = true;
     delay(500);
   }
-  
   if(Serial.available())    // Wait for data.
   {
     delay(500);
@@ -148,8 +157,15 @@ void loop()
     graspType = data[0];
     if (graspType != 1)     // if a shape was detected.
     {
-      objectAngle = data[1] - 12;   // Subtract the offset inserted in python script.
-
+      if (graspType == 0){
+        digitalWrite(grasp_tripod, HIGH);
+        digitalWrite(grasp_power, LOW);
+      }
+      if (graspType == 2){
+        digitalWrite(grasp_power, HIGH);
+        digitalWrite(grasp_tripod, LOW);
+      }
+      objectAngle = data[1] - 45;   // Subtract the offset inserted in python script.
       rotateMotor();    // Start to rotate the motor if the angles are different.
       
       if (objectAngle == WristAngle)

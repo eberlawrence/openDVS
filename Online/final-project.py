@@ -20,6 +20,10 @@ import numpy as np
 import utilsDVS128
 import tensorflow as tf
 import serial
+import sys
+sys.path.append('/home/user/GitHub/HandStuff/Detection')
+
+from segmentationUtils import segmentationUtils
 
 
 if tf.__version__ == '2.0.0':
@@ -34,7 +38,7 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model2.json', 'model/model2.h5')
+model = utilsDVS128.openModel('model/model7.json', 'model/model7.h5')
 
 ard = serial.Serial('/dev/ttyUSB0', 115200)
 
@@ -70,27 +74,27 @@ def main():
 				ts_MSB.extend(vet[4 * size : ])
 				ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
-				if np.sum(ts) >= 10000: # acumulate events during that time
+				if np.sum(ts) >= 30000: # acumulate events during that time
 					displayEvents.plotEventsF(pol, x, y)
-
 					img = displayEvents.frame
-					img = img.reshape(1, 128, 128, 1)
-
-					resp, objectSet = utilsDVS128.predictShape(img, model)
-					ori = utilsDVS128.Orientation(displayEvents)
-					ori.getOrientation()
+					watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
+					utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
+					imgROI, interpROI = segmentationUtils.getROI(detection, img)
+					ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
+					interpROI = interpROI.reshape(1, 64, 64, 1)
+					resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 
 					countShape.append(resp)
-					countAngle.append(ori.ang)
+					countAngle.append(ang)
 
 					if len(countShape) == 100:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
-						countAngle2 = round(np.median(countAngle),1)
-						countAngle = round((2 / 15) * np.median(countAngle))
-						print(objectSet[np.argmax(countShape)][1])
-						print(str(countAngle2) + " Degrees")
+						countAngleAux = round(np.median(countAngle),1)
+						countAngle = round((1 / 2) * np.median(countAngle))
+						print(objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
+						print(str(countAngleAux) + " Degrees: " + str([int(countAngle + 45)]))
 						ard.write(bytes([np.argmax(countShape)]))
-						ard.write(bytes([int(countAngle + 12)]))
+						ard.write(bytes([int(countAngle + 45)]))
 						countShape, countAngle = [], []
 						stop = True
 
