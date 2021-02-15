@@ -15,6 +15,7 @@ TO DO:
 
 import socket
 import pygame
+import time as tm
 from time import time
 import numpy as np
 import utilsDVS128
@@ -38,9 +39,9 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model7.json', 'model/model7.h5')
+model = utilsDVS128.openModel('model/final_model.json', 'model/final_model.h5')
 
-ard = serial.Serial('/dev/ttyUSB0', 115200)
+ard = serial.Serial('/dev/ttyUSB1', 115200)
 
 def main():
 
@@ -54,7 +55,9 @@ def main():
 	var = []
 
 	while True:
-		if str(ard.readline())[2] == '1':
+		start_command = str(ard.readline())[2:7];
+		if start_command == 'start':
+			tm.sleep(0.5)
 			while not stop:
 				t = time()
 				for e in pygame.event.get():
@@ -74,20 +77,22 @@ def main():
 				ts_MSB.extend(vet[4 * size : ])
 				ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
-				if np.sum(ts) >= 30000: # acumulate events during that time
+				if np.sum(ts) >= 50000: # acumulate events during that time
 					displayEvents.plotEventsF(pol, x, y)
 					img = displayEvents.frame
 					watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
 					utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
 					imgROI, interpROI = segmentationUtils.getROI(detection, img)
 					ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
-					interpROI = interpROI.reshape(1, 64, 64, 1)
+					interpROI = interpROI.reshape(1, 128, 128, 1)
 					resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 
 					countShape.append(resp)
 					countAngle.append(ang)
+					print("Count: ", len(countShape))
+					print("resp: ", resp)
 
-					if len(countShape) == 100:
+					if len(countShape) == 50:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
 						countAngleAux = round(np.median(countAngle),1)
 						countAngle = round((1 / 2) * np.median(countAngle))

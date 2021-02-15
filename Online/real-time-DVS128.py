@@ -33,12 +33,12 @@ elif tf.__version__ == '1.14.0':
 	config.gpu_options.allow_growth = True
 	session = tf.Session(config=config)
 
-frameTime = 50000
+frameTime = 30000
 HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model6.json', 'model/model6.h5')
+model = utilsDVS128.openModel('model/modelRGB.json', 'model/modelRGB.h5')
 
 def main():
 
@@ -72,36 +72,7 @@ def main():
 
 		if sum(ts) >= frameTime:
 			displayEvents.plotEventsF(pol, x, y)
-			img = displayEvents.frame
-			watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img,
-																											  '--neuromorphic',
-																											  minimumSizeBox=0.5,
-																											  smallBBFilter=True,
-																											  centroidDistanceFilter = True,
-																											  mergeOverlapingDetectionsFilter = True,
-																											  flagCloserToCenter=True)
-
-
-			utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
-			imgROI, interpROI = segmentationUtils.getROI(detection, img)
-
-			# ori = utilsDVS128.Orientation(displayEvents, imgROI)
-			ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
-
-			interpROI = interpROI.reshape(1, 64, 64, 1)
-			resp, objectSet = utilsDVS128.predictShape(interpROI, model)
-
-			countShape.append(resp)
-			countAngle.append(ang)
-
-			if len(countShape) == 50:
-				countShape = np.bincount(countShape) # array with the number of times that each number repeats.
-				countAngle2 = round(np.median(countAngle),1)
-				countAngle = round((2 / 15) * np.median(countAngle))
-				print(objectSet[np.argmax(countShape)][1])
-				print(str(countAngle2) + " Degrees\n\n")
-				countShape, countAngle = [], []
-
+			# displayEvents.plotEvents(pol, x, y)
 			t2 = time() - t
 			displayEvents.printFPS(1/t2)
 			pygame.display.update()
