@@ -41,7 +41,7 @@ clock = pygame.time.Clock()
 
 model = utilsDVS128.openModel('model/final_model.json', 'model/final_model.h5')
 
-ard = serial.Serial('/dev/ttyUSB1', 115200)
+ard = serial.Serial('/dev/ttyUSB0', 115200)
 
 def main():
 

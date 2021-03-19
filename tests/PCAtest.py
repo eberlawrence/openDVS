@@ -25,6 +25,7 @@ def drawAxis(img, p_, q_, colour, scale):
     p[1] = q[1] + 9 * sin(angle - pi / 4)
     cv.line(img, (int(p[0]), int(p[1])), (int(q[0]), int(q[1])), colour, 10, cv.LINE_AA)
 
+
 def getOrientation(pts, img):
     sz = len(pts)
     data_pts = np.empty((sz, 2), dtype=np.float64)
@@ -39,51 +40,78 @@ def getOrientation(pts, img):
     cv.circle(img, cntr, 1, (255, 0, 255), 10)
     p1 = (cntr[0] + 0.02 * eigenvectors[0,0] * eigenvalues[0,0], cntr[1] + 0.02 * eigenvectors[0,1] * eigenvalues[0,0])
     p2 = (cntr[0] - 0.02 * eigenvectors[1,0] * eigenvalues[1,0], cntr[1] - 0.02 * eigenvectors[1,1] * eigenvalues[1,0])
-    drawAxis(img, cntr, p1, (0, 255, 0), .26)
-    drawAxis(img, cntr, p2, (255, 255, 0), .5)
+    drawAxis(img, cntr, p1, (22, 183, 224), .44)
+    drawAxis(img, cntr, p2, (40, 166, 18), 1.1)
     angle = atan2(eigenvectors[0,1], eigenvectors[0,0]) # orientation in radians
     return angle
 
 
+# x->37-72 y->26-97
+plt.imshow(np.dstack([np.zeros(2286144).reshape(1512,1512),np.zeros(2286144).reshape(1512,1512),np.zeros(2286144).reshape(1512,1512)]))
 
-#
-# src = img[0][113].astype('uint8')
-#
-# src[src == 255] = 0
-# src[src == 127] = 255
-#
-# matplotlib.image.imsave("testeee.jpeg", np.dstack([src,src,src]))
-#
+original = img[0][73].astype('uint8')
+
+original[original == 0] = 255
+original[original == 127] = 0
+
+original = np.dstack([original,original,original])
+original = cv.resize(original, (1512,1512), interpolation = cv.INTER_NEAREST)
+matplotlib.image.imsave("testeee.jpeg", original)
 
 
 
+src = cv.imread("testeee.jpeg")
+# matplotlib.image.imsave("clock3_before.jpeg", src)
 
-src = cv.imread("clock3.jpeg")
-matplotlib.image.imsave("clock3_before.jpeg", src)
-
-# Convert image to grayscale
 gray = cv.medianBlur(src, 17)
 
-# src = cv.resize(src, (1512,1512), interpolation = cv.INTER_AREA)
 gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
 
 _, bw = cv.threshold(gray, 50, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
-matplotlib.image.imsave("clock3_middle.jpeg", np.dstack([bw, bw, bw]))
+# matplotlib.image.imsave("clock3_middle.jpeg", np.dstack([bw, bw, bw]))
 
 lista = []
 contours, _ = cv.findContours(bw, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)
 for i, c in enumerate(contours):
-    if i != 693:
+    if  i != 156:
         area = cv.contourArea(c)
-        if area < 10000 or 100000000 < area:
+        if area < 10000 or 150000 < area:
             continue
         lista.append(i)
-        cv.drawContours(src, contours, i, (255, 0, 0), 3)
-        getOrientation(c, src)
+        # cv.drawContours(original, contours, i, (255, 0, 0), 3)
+        getOrientation(c, original)
 
 
-plt.imshow(src)
+# original = cv.resize(original, (1512,1512), interpolation = cv.INTER_NEAREST)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

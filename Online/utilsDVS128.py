@@ -924,10 +924,10 @@ def getOrientationROI(surf, roi, refXY, m):
 # plt.show()
 
 
-def createDataset(path='/home/user/GitHub/aedatFiles/dataset_cbeb_2020/',
+def createDataset(path='/home/user/GitHub/aedatFiles/new_dataset/',
                   objClass=[['spoon/spoon_1', 'spoon/spoon_2', 'spoon/spoon_3', 'spoon/spoon_4', 'spoon/spoon_5'], ['pencil/pencil_1', 'pencil/pencil_2', 'pencil/pencil_3', 'pencil/pencil_4', 'pencil/pencil_5'], ['apple/apple_1', 'apple/apple_2', 'apple/apple_3', 'apple/apple_4', 'apple/apple_5']],
                   setUp=True,
-                  tI=30000):
+                  tI=25000):
     '''
     Function to create a dataset of frames from .aedat files
     Parameters:
@@ -994,35 +994,36 @@ def createDataset(path='/home/user/GitHub/aedatFiles/dataset_cbeb_2020/',
     resp = input("Would you like to reduce the dataset? (y/N) ")
     if resp == 'yes' or resp == 'y' or resp == 'Y':
         maxSamples = int(input("How many samples per class: "))
-        trainTestSplit = input("Would you like to split the dataset? (y/N) ")
-        per = float(input("Test samples percentage: "))
+        # trainTestSplit = input("Would you like to split the dataset? (y/N) ")
+        # per = float(input("Test samples percentage: "))
         for i in range(numClasses):
-            if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
-                trainDataset.extend(totalImages[labels == i][:int(maxSamples * per)])
-                trainLabels.extend(labels[labels == i][:int(maxSamples * per)])
-                testDataset.extend(totalImages[labels == i][int(maxSamples * per):maxSamples])
-                testLabels.extend(labels[labels == i][int(maxSamples * per):maxSamples])
-            else:
-                finalDataset.extend(totalImages[labels == i][:maxSamples])
-                finalLabels.extend(labels[labels == i][:maxSamples])
+            # if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
+                # trainDataset.extend(totalImages[labels == i][:int(maxSamples * per)])
+                # trainLabels.extend(labels[labels == i][:int(maxSamples * per)])
+                # testDataset.extend(totalImages[labels == i][int(maxSamples * per):maxSamples])
+                # testLabels.extend(labels[labels == i][int(maxSamples * per):maxSamples])
+            # else:
+            finalDataset.extend(totalImages[labels == i][:maxSamples])
+            finalLabels.extend(labels[labels == i][:maxSamples])
     else:
         finalDataset, finalLabels = totalImages, labels
 
-    if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
-        trainDataset, trainLabels, testDataset, testLabels = np.array(trainDataset), np.array(trainLabels), np.array(testDataset), np.array(testLabels)
-        rand1, rand2 = np.arange(len(trainLabels)), np.arange(len(testLabels))
-        np.random.shuffle(rand1)
-        np.random.shuffle(rand2)
-        trainDataset, trainLabels, testDataset, testLabels = trainDataset[rand1], trainLabels[rand1],  testDataset[rand2], testLabels[rand2]
-        return (trainDataset, testDataset), (trainLabels, testLabels)
-
-    else:
-        finalDataset, finalLabels = np.array(finalDataset), np.array(finalLabels)
-        randomize = np.arange(len(finalLabels))
-        np.random.shuffle(randomize)
-        finalDataset = finalDataset[randomize]
-        finalLabels = finalLabels[randomize]
-        return finalDataset, finalLabels
+    return finalDataset, finalLabels
+    # if trainTestSplit == 'yes' or trainTestSplit == 'y' or trainTestSplit == 'Y':
+    #     trainDataset, trainLabels, testDataset, testLabels = np.array(trainDataset), np.array(trainLabels), np.array(testDataset), np.array(testLabels)
+    #     rand1, rand2 = np.arange(len(trainLabels)), np.arange(len(testLabels))
+    #     np.random.shuffle(rand1)
+    #     np.random.shuffle(rand2)
+    #     trainDataset, trainLabels, testDataset, testLabels = trainDataset[rand1], trainLabels[rand1],  testDataset[rand2], testLabels[rand2]
+    #     return (trainDataset, testDataset), (trainLabels, testLabels)
+    #
+    # else:
+    #     finalDataset, finalLabels = np.array(finalDataset), np.array(finalLabels)
+    #     randomize = np.arange(len(finalLabels))
+    #     np.random.shuffle(randomize)
+    #     finalDataset = finalDataset[randomize]
+    #     finalLabels = finalLabels[randomize]
+    #     return finalDataset, finalLabels
 
 
 def openModel(model_JSON_file, model_WEIGHTS_file):

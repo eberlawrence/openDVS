@@ -33,7 +33,7 @@ elif tf.__version__ == '1.14.0':
 	config.gpu_options.allow_growth = True
 	session = tf.Session(config=config)
 
-frameTime = 30000
+frameTime = 25000
 HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
@@ -74,7 +74,7 @@ def main():
 			displayEvents.plotEventsF(pol, x, y)
 			# displayEvents.plotEvents(pol, x, y)
 			t2 = time() - t
-			displayEvents.printFPS(1/t2)
+			# displayEvents.printFPS(10/t2)
 			pygame.display.update()
 			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
 
