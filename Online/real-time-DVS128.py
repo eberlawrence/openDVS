@@ -33,12 +33,12 @@ elif tf.__version__ == '1.14.0':
 	config.gpu_options.allow_growth = True
 	session = tf.Session(config=config)
 
-frameTime = 25000
+frameTime = 40000
 HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/modelRGB.json', 'model/modelRGB.h5')
+model = utilsDVS128.openModel('model/final_model.json', 'model/final_model.h5')
 
 def main():
 
@@ -72,10 +72,20 @@ def main():
 
 		if sum(ts) >= frameTime:
 			displayEvents.plotEventsF(pol, x, y)
+			img = displayEvents.frame
+			watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
+			utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
+			imgROI, interpROI = segmentationUtils.getROI(detection, img)
+			ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
+			interpROI = interpROI.reshape(1, 128, 128, 1)
+			interpROI[interpROI == 0] = 255
+			interpROI[interpROI == 127] = 0
+			resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 			# displayEvents.plotEvents(pol, x, y)
 			t2 = time() - t
 			# displayEvents.printFPS(10/t2)
 			pygame.display.update()
+			print("resp: ", resp)
 			pol, x, y, ts_LSB, ts_MSB = [], [], [], [], []
 
 	pygame.quit()
