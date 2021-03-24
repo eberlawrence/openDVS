@@ -38,7 +38,7 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/final_model.json', 'model/final_model.h5')
+model = utilsDVS128.openModel('model/lenet_model.json', 'model/lenet_model.h5')
 
 def main():
 

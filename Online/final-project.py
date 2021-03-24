@@ -22,6 +22,7 @@ import utilsDVS128
 import tensorflow as tf
 import serial
 import sys
+import matplotlib.pyplot as plt
 sys.path.append('/home/user/GitHub/HandStuff/Detection')
 
 from segmentationUtils import segmentationUtils
@@ -39,9 +40,9 @@ HOST = ''
 PORT = 8000
 clock = pygame.time.Clock()
 
-model = utilsDVS128.openModel('model/model.json', 'model/model.h5')
+model = utilsDVS128.openModel('model/new_model.json', 'model/new_model.h5')
 
-# ard = serial.Serial('/dev/ttyUSB0', 115200)
+ard = serial.Serial('/dev/ttyUSB0', 115200)
 
 def main():
 
@@ -55,8 +56,8 @@ def main():
 	var = []
 
 	while True:
-		# start_command = str(ard.readline())[2:7]
-		start_command = 'start'
+		start_command = str(ard.readline())[2:7]
+		# start_command = 'start'
 		if start_command == 'start':
 			tm.sleep(0.5)
 			while not stop:
@@ -78,7 +79,7 @@ def main():
 				ts_MSB.extend(vet[4 * size : ])
 				ts = list(map(lambda LSB, MSB: LSB + (MSB << 8), ts_LSB, ts_MSB))
 
-				if np.sum(ts) >= 25000: # acumulate events during that time
+				if np.sum(ts) >= 40000: # acumulate events during that time
 					displayEvents.plotEventsF(pol, x, y)
 					img = displayEvents.frame
 					watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
@@ -86,7 +87,9 @@ def main():
 					imgROI, interpROI = segmentationUtils.getROI(detection, img)
 					ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
 					interpROI[interpROI == 0] = 255
-					interpROI[interpROI == 127] = 0
+					interpROI[interpROI < 200] = 0
+					# plt.imshow(interpROI)
+					# plt.show()
 					interpROI = interpROI.reshape(1, 128, 128, 1)
 					resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 
@@ -101,8 +104,8 @@ def main():
 						countAngle = round((1 / 2) * np.median(countAngle))
 						print(objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
 						print(str(countAngleAux) + " Degrees: " + str([int(countAngle + 45)]))
-						# ard.write(bytes([np.argmax(countShape)]))
-						# ard.write(bytes([int(countAngle + 45)]))
+						ard.write(bytes([np.argmax(countShape)]))
+						ard.write(bytes([int(countAngle + 45)]))
 						countShape, countAngle = [], []
 						stop = True
 
