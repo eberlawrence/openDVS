@@ -1,9 +1,9 @@
-	Preensão_Esperada	Preensão_Classificada	Angulação_Esperada	Angulação_Obtida	Tempo_Gasto	Objeto_Escorregou
-0	Power	P	2	0	31	s
-1	Tripod	T	-20	-21	12	n
-2	Tripod	T	-17	-23	9	s
-3	Power	T	-46	-43	42	s
-4	Tripod	P	-13	-12	12	n
-5	Power	P	10	10	23	n
-6	Tripod	T	71	70	12	s
-7	Power	T	-18	-19	32	n
+		Preensão_Esperada	Preensão_Classificada	Angulação_Esperada	Angulação_Obtida	Tempo_Gasto	Objeto_Escorregou
+BLOCO1	0	Tripod	T	-38	-37	10	n
+BLOCO1	1	Power	P	81	83	13	n
+BLOCO1	2	Tripod	P	-79	-86	41	s
+BLOCO1	3	Power	T	29	10	24	s
+BLOCO2	0	Power	P	-38	-20	21	s
+BLOCO2	1	Tripod	T	58	52	24	n
+BLOCO2	2	Tripod	P	-65	-54	12	n
+BLOCO2	3	Power	P	15	17	32	s
