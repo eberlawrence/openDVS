@@ -1,0 +1,51 @@
+,,Objeto_Almejado,Preensão_Esperada,Preensão_Classificada,Angulação_Esperada,Angulação_Obtida,Tempo_Gasto,Objeto_Escorregou
+BLOCO1,0,Faca,Tripod,T,-72,-70.0,11.87,N
+BLOCO1,1,Pote,Power,P,86,71.9,11.63,N
+BLOCO1,2,Isqueiro,Tripod,T,42,38.8,13.84,N
+BLOCO1,3,Chave Allen,Tripod,T,-87,-71.6,20.34,N
+BLOCO1,4,Caixa,Power,P,-42,-41.3,13.97,N
+BLOCO1,5,Bateria,Tripod,T,66,62.2,12.45,N
+BLOCO1,6,Lata,Power,P,-36,-40.3,11.65,N
+BLOCO1,7,Garrafa,Power,P,-73,-80.2,12.66,N
+BLOCO1,8,Pincel,Tripod,T,-70,-63.5,14.21,S
+BLOCO1,9,Bola,Power,P,11,0.0,9.03,S
+BLOCO2,0,Chave Allen,Tripod,T,-31,-19.9,11.69,N
+BLOCO2,1,Caixa,Power,P,-87,-83.6,11.86,N
+BLOCO2,2,Faca,Tripod,T,-35,-29.5,10.94,N
+BLOCO2,3,Bola,Power,P,-53,55.2,18.14,N
+BLOCO2,4,Copo,Power,P,38,33.6,10.21,N
+BLOCO2,5,Barbeador,Tripod,T,67,-46.6,10.61,N
+BLOCO2,6,Pote,Power,P,8,4.1,14.94,N
+BLOCO2,7,Lapiseira,Tripod,T,-46,-31.0,7.55,N
+BLOCO2,8,HD externo,Power,P,8,9.2,8.42,N
+BLOCO2,9,Bateria,Tripod,T,26,21.2,10.01,N
+BLOCO3,0,Caixa,Power,P,-35,-36.3,10.41,N
+BLOCO3,1,Chave Allen,Tripod,T,80,-85.3,11.1,S
+BLOCO3,2,Isqueiro,Tripod,T,-19,-10.4,11.42,S
+BLOCO3,3,Estojo de óculos,Power,P,9,9.3,9.28,N
+BLOCO3,4,Copo,Power,P,-26,-25.3,9.23,N
+BLOCO3,5,Bateria,Tripod,T,-10,-3.2,9.39,N
+BLOCO3,6,HD externo,Power,P,-88,-75.0,16.46,N
+BLOCO3,7,Barbeador,Tripod,T,4,-75.0,11.66,S
+BLOCO3,8,Lata,Power,P,18,16.6,12.51,N
+BLOCO3,9,Pincel,Tripod,T,30,10.7,8.58,N
+BLOCO4,0,HD externo,Power,P,79,69.8,9.05,n
+BLOCO4,1,Faca,Tripod,T,-9,-2.2,8.74,N
+BLOCO4,2,Barbeador,Tripod,T,-32,-24.5,8.9,N
+BLOCO4,3,Estojo de óculos,Power,P,82,76.9,10.91,N
+BLOCO4,4,Pote,Power,P,-85,-78.2,10.66,N
+BLOCO4,5,Chave Allen,Tripod,T,89,-76.8,8.96,S
+BLOCO4,6,Câmera,Power,P,80,82.1,10.1,N
+BLOCO4,7,Pendrive,Tripod,T,-2,-0.5,15.06,N
+BLOCO4,8,Bola,Power,P,73,-5.8,11.37,N
+BLOCO4,9,Chave,Tripod,T,64,60.1,12.51,N
+BLOCO5,0,Bateria,Tripod,T,-86,-85.1,14.02,N
+BLOCO5,1,Caixa,Power,P,-5,-4.2,11.91,N
+BLOCO5,2,Calculadora,Power,P,0,0.3,9.89,N
+BLOCO5,3,Garrafa,Power,T,27,12.7,11.02,N
+BLOCO5,4,Pendrive,Tripod,T,71,70.7,11.02,N
+BLOCO5,5,Pincel,Tripod,T,32,26.6,9.99,N
+BLOCO5,6,HD externo,Power,P,10,19.6,8.29,N
+BLOCO5,7,Câmera,Power,P,-84,82.0,14.32,N
+BLOCO5,8,Barbeador,Tripod,T,18,15.0,8.8,N
+BLOCO5,9,Isqueiro,Tripod,T,47,47.4,9.89,N

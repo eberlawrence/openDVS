@@ -1,12 +1,12 @@
 #include <TimerOne.h>
 #include <Timer.h>
 
-#define analog_signal_port    A0
+#define analog_signal_port    A0   // Analogical port for reading EMG signal.
 
 #define encoder               2    // Receive the encoder values. Interrupt used.
 
-#define close_hand            3    // Receive the button status used for closing the hand.
-#define open_hand             4    // Send a HIGH level to change the grasp type and open the hand.
+#define close_hand            3    // Command to control the channel A of the prosthesis (close hand).
+#define open_hand             4    // Command to control the channel B of the prosthesis (open hand and change grasp).
 
 #define PWM                   5    // Send a PWM for the H-Bridge.
 #define cA                    7    // Channel A of the H-Bridge.
@@ -17,12 +17,14 @@
 
 #define fs                    1000 // sampling rate of 1000 Hz
 #define ts                    1000/fs // period of 1 ms
-#define fw                    20 // downsampling to 20 Hz
+#define fw                    50 // downsampling to 20 Hz
 #define timer_period          10000 // 5 ms
 #define calibration_time      5000 //  time for calibrating the EMG signal -> 5 seconds
 
 #define multiplier            5 //
-#define signal_threshold      200 // 
+#define signal_threshold      90 // 
+#define temporal_threshold    500
+
 
 Timer T1;
 
@@ -159,10 +161,12 @@ void control_signal_callback()
     retified_signal = abs(raw_signal);
     int emg_signal = moving_average(retified_signal);
     emg_signal *= multiplier;
-    Serial.println(emg_signal);
+    Serial.print(emg_signal);
+    Serial.print(",");
+    Serial.println(signal_threshold);
     if (change_move == true) {
       digitalWrite(open_hand, LOW);
-      if (time_move == 100) {
+      if (time_move == 150) {
         digitalWrite(open_hand, HIGH);
         digitalWrite(close_hand, LOW);
         change_move = false;
@@ -184,7 +188,7 @@ void control_signal_callback()
         }
         else {
           current_time += 10;
-          if (current_time > 300) {
+          if (current_time > temporal_threshold) {
             digitalWrite(close_hand, HIGH);
             digitalWrite(open_hand, LOW);
             first_close = true;
@@ -193,7 +197,7 @@ void control_signal_callback()
       }
       else if (emg_signal < signal_threshold and count == 1) {
         count = 0;
-        if (current_time <= 300) {
+        if (current_time <= temporal_threshold) {
           waiting_start_flag = false;
           objectAngle = 0;
           rotateMotor(objectAngle);

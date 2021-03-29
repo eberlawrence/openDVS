@@ -1,0 +1,21 @@
+,,Objeto_Almejado,Preensão_Esperada,Preensão_Classificada,Angulação_Esperada,Angulação_Obtida,Tempo_Gasto,Objeto_Escorregou
+BLOCO1,0,Celular,Power,P,-84,-73.8,12.65,N
+BLOCO1,1,Chave de fenda,Tripod,T,39,35.8,9.69,N
+BLOCO1,2,Escova de dentes,Tripod,P,80,72.7,10.95,N
+BLOCO1,3,Carteira,Power,P,-89,-84.2,11.09,N
+BLOCO2,0,Escova de dentes,Tripod,P,89,-80.6,16.36,N
+BLOCO2,1,Celular,Power,P,43,39.6,10.95,N
+BLOCO2,2,Chave de fenda,Tripod,T,-30,-16.2,9.29,S
+BLOCO2,3,Lâmpada,Power,P,38,32.4,8.1,N
+BLOCO3,0,Lâmpada,Power,P,71,75.7,10.71,N
+BLOCO3,1,Celular,Power,P,-55,-49.9,10.32,N
+BLOCO3,2,Chave de fenda,Tripod,T,-84,-84.3,10.78,N
+BLOCO3,3,Chave fixa,Tripod,T,-32,-27.2,8.2,N
+BLOCO4,0,Chave fixa,Tripod,T,1,0,19.08,N
+BLOCO4,1,Chave de fenda,Tripod,T,-73,-75.3,15.91,S
+BLOCO4,2,Lâmpada,Power,P,-36,-30.5,10.9,N
+BLOCO4,3,Caneca,Power,P,-57,7.2,13.33,N
+BLOCO5,0,Lâmpada,Power,P,-58,-54.4,8.18,N
+BLOCO5,1,Colher,Tripod,T,-73,-77.1,9.07,N
+BLOCO5,2,Chave fixa,Tripod,T,30,26.6,9.27,S
+BLOCO5,3,Caneca,Power,P,-42,-5.9,8.88,S

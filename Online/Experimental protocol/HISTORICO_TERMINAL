@@ -1,0 +1,4503 @@
+Pressione ENTER para iniciar.
+
+
+
+Insira os dados do voluntário solicitados.
+
+
+
+Nome: EBER
+
+Idade: 25
+
+Sexo: M
+       Nome Idade Sexo
+0  Adrielle    24    F
+1    APagar    45    M
+2      Eber    25    m
+3      EBER    25    M
+
+
+Iniciar a PRIMEIRA ETAPA do procedimento.
+
+
+
+Lista de objetos 1 - Bloco 1 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 10:
+
+
+
+Objeto almejado:  Faca
+
+Ângulo do objeto:  -72
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -70
+
+Tempo gasto: 11.87
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 10:
+
+
+
+Objeto almejado:  Pote
+
+Ângulo do objeto:  86
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 71.9
+
+Tempo gasto: 11.63
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 10:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  42
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 13.84
+
+Tempo gasto: 38.8
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 10:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  -87
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -71.6
+
+Tempo gasto: 20.34
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 10:
+
+
+
+Objeto almejado:  Caixa
+
+Ângulo do objeto:  -42
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -41.3
+
+Tempo gasto: 13.97
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 10:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  66
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 62.2
+
+Tempo gasto: 12.45
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 7 de 10:
+
+
+
+Objeto almejado:  Lata
+
+Ângulo do objeto:  -36
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -40.3
+
+Tempo gasto: 11.65
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 8 de 10:
+
+
+
+Objeto almejado:  Garrafa
+
+Ângulo do objeto:  -73
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -80.2
+
+Tempo gasto: 12.66
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 9 de 10:
+
+
+
+Objeto almejado:  Pincel
+
+Ângulo do objeto:  -70
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -63.5
+
+Tempo gasto: 14.21
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 10 de 10:
+
+
+
+Objeto almejado:  Bola
+
+Ângulo do objeto:  11
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 0
+
+Tempo gasto: 9.03
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       11.87                 N
+       1             Power                     P  ...       11.63                 N
+       2            Tripod                     T  ...        38.8                 N
+       3            Tripod                     T  ...       20.34                 N
+       4             Power                     P  ...       13.97                 N
+       5            Tripod                     T  ...       12.45                 N
+       6             Power                     P  ...       11.65                 N
+       7             Power                     P  ...       12.66                 N
+       8            Tripod                     T  ...       14.21                 S
+       9             Power                     P  ...        9.03                 S
+BLOCO2 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+
+[50 rows x 6 columns]
+
+
+Bloco 1 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 2 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 10:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  -31
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -19.9
+
+Tempo gasto: 11.69
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 10:
+
+
+
+Objeto almejado:  Caixa
+
+Ângulo do objeto:  -87
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -83.6
+
+Tempo gasto: 11.86
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 10:
+
+
+
+Objeto almejado:  Faca
+
+Ângulo do objeto:  -35
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -29.5
+
+Tempo gasto: 10.94
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 10:
+
+
+
+Objeto almejado:  Bola
+
+Ângulo do objeto:  -53
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 55.2
+
+Tempo gasto: 18.14
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 10:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  38
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 33.6
+
+Tempo gasto: 10.21
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 10:
+
+
+
+Objeto almejado:  Barbeador
+
+Ângulo do objeto:  67
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -46.6
+
+Tempo gasto: 10.61
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 7 de 10:
+
+
+
+Objeto almejado:  Pote
+
+Ângulo do objeto:  8
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 4.1
+
+Tempo gasto: 14.94
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 8 de 10:
+
+
+
+Objeto almejado:  Lapiseira
+
+Ângulo do objeto:  -46
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -31
+
+Tempo gasto: 7.55
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 9 de 10:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  8
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 9.2
+
+Tempo gasto: 8.42
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 10 de 10:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  26
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 21.2
+
+Tempo gasto: 10.01
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       11.87                 N
+       1             Power                     P  ...       11.63                 N
+       2            Tripod                     T  ...        38.8                 N
+       3            Tripod                     T  ...       20.34                 N
+       4             Power                     P  ...       13.97                 N
+       5            Tripod                     T  ...       12.45                 N
+       6             Power                     P  ...       11.65                 N
+       7             Power                     P  ...       12.66                 N
+       8            Tripod                     T  ...       14.21                 S
+       9             Power                     P  ...        9.03                 S
+BLOCO2 0            Tripod                     T  ...       11.69                 N
+       1             Power                     P  ...       11.86                 N
+       2            Tripod                     T  ...       10.94                 N
+       3             Power                     P  ...       18.14                 N
+       4             Power                     P  ...       10.21                 N
+       5            Tripod                     T  ...       10.61                 N
+       6             Power                     P  ...       14.94                 N
+       7            Tripod                     T  ...        7.55                 N
+       8             Power                     P  ...        8.42                 N
+       9            Tripod                     T  ...       10.01                 N
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+
+[50 rows x 6 columns]
+
+
+Bloco 2 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 3 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 10:
+
+
+
+Objeto almejado:  Caixa
+
+Ângulo do objeto:  -35
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -36.3
+
+Tempo gasto: 10.41
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 10:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  80
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -85.3
+
+Tempo gasto: 11.1
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 10:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  -19
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -10.4
+
+Tempo gasto: 11.42
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 10:
+
+
+
+Objeto almejado:  Estojo de óculos
+
+Ângulo do objeto:  9
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 9.3
+
+Tempo gasto: 9.28
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 10:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  -26
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -25.3
+
+Tempo gasto: 9.23
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 10:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  -10
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -3.2
+
+Tempo gasto: 9.39
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 7 de 10:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  -88
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -75
+
+Tempo gasto: 16.46
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 8 de 10:
+
+
+
+Objeto almejado:  Barbeador
+
+Ângulo do objeto:  4
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 0
+
+Tempo gasto: 11.66
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 9 de 10:
+
+
+
+Objeto almejado:  Lata
+
+Ângulo do objeto:  18
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 16.6
+
+Tempo gasto: 12.51
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 10 de 10:
+
+
+
+Objeto almejado:  Pincel
+
+Ângulo do objeto:  30
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 10.7
+
+Tempo gasto: 8.58
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       11.87                 N
+       1             Power                     P  ...       11.63                 N
+       2            Tripod                     T  ...        38.8                 N
+       3            Tripod                     T  ...       20.34                 N
+       4             Power                     P  ...       13.97                 N
+       5            Tripod                     T  ...       12.45                 N
+       6             Power                     P  ...       11.65                 N
+       7             Power                     P  ...       12.66                 N
+       8            Tripod                     T  ...       14.21                 S
+       9             Power                     P  ...        9.03                 S
+BLOCO2 0            Tripod                     T  ...       11.69                 N
+       1             Power                     P  ...       11.86                 N
+       2            Tripod                     T  ...       10.94                 N
+       3             Power                     P  ...       18.14                 N
+       4             Power                     P  ...       10.21                 N
+       5            Tripod                     T  ...       10.61                 N
+       6             Power                     P  ...       14.94                 N
+       7            Tripod                     T  ...        7.55                 N
+       8             Power                     P  ...        8.42                 N
+       9            Tripod                     T  ...       10.01                 N
+BLOCO3 0             Power                     P  ...       10.41                 N
+       1            Tripod                     T  ...        11.1                 S
+       2            Tripod                     T  ...       11.42                 S
+       3             Power                     P  ...        9.28                 N
+       4             Power                     P  ...        9.23                 N
+       5            Tripod                     T  ...        9.39                 N
+       6             Power                     P  ...       16.46                 N
+       7            Tripod                     T  ...       11.66                 S
+       8             Power                     P  ...       12.51                 N
+       9            Tripod                     T  ...        8.58                 N
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+
+[50 rows x 6 columns]
+
+
+Bloco 3 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 4 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 10:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  79
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: p
+
+Ângulo obtido: 69.8
+
+Tempo gasto: 9.05
+
+Escorregamento do objeto: n
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 10:
+
+
+
+Objeto almejado:  Faca
+
+Ângulo do objeto:  -9
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: t
+
+Ângulo obtido: -2.2
+
+Tempo gasto: 8.74
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 10:
+
+
+
+Objeto almejado:  Barbeador
+
+Ângulo do objeto:  -32
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -24.5
+
+Tempo gasto: 8.9
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 10:
+
+
+
+Objeto almejado:  Estojo de óculos
+
+Ângulo do objeto:  82
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 76.9
+
+Tempo gasto: 10.91
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 10:
+
+
+
+Objeto almejado:  Pote
+
+Ângulo do objeto:  -85
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -78.2
+
+Tempo gasto: 10.66
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 10:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  89
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -76.8
+
+Tempo gasto: 8.96
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 7 de 10:
+
+
+
+Objeto almejado:  Câmera
+
+Ângulo do objeto:  80
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 82.1
+
+Tempo gasto: 10.1
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 8 de 10:
+
+
+
+Objeto almejado:  Pendrive
+
+Ângulo do objeto:  -2
+
+
+Pressione ENTER para continuar.
+T
+
+Preensão classificada: -0.5
+
+Ângulo obtido: T
+
+Tempo gasto: 15.06
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 9 de 10:
+
+
+
+Objeto almejado:  Bola
+
+Ângulo do objeto:  73
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -5.8
+
+Tempo gasto: 11.37
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 10 de 10:
+
+
+
+Objeto almejado:  Chave
+
+Ângulo do objeto:  64
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada:
+
+Ângulo obtido: T
+
+Tempo gasto: 60.1
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       11.87                 N
+       1             Power                     P  ...       11.63                 N
+       2            Tripod                     T  ...        38.8                 N
+       3            Tripod                     T  ...       20.34                 N
+       4             Power                     P  ...       13.97                 N
+       5            Tripod                     T  ...       12.45                 N
+       6             Power                     P  ...       11.65                 N
+       7             Power                     P  ...       12.66                 N
+       8            Tripod                     T  ...       14.21                 S
+       9             Power                     P  ...        9.03                 S
+BLOCO2 0            Tripod                     T  ...       11.69                 N
+       1             Power                     P  ...       11.86                 N
+       2            Tripod                     T  ...       10.94                 N
+       3             Power                     P  ...       18.14                 N
+       4             Power                     P  ...       10.21                 N
+       5            Tripod                     T  ...       10.61                 N
+       6             Power                     P  ...       14.94                 N
+       7            Tripod                     T  ...        7.55                 N
+       8             Power                     P  ...        8.42                 N
+       9            Tripod                     T  ...       10.01                 N
+BLOCO3 0             Power                     P  ...       10.41                 N
+       1            Tripod                     T  ...        11.1                 S
+       2            Tripod                     T  ...       11.42                 S
+       3             Power                     P  ...        9.28                 N
+       4             Power                     P  ...        9.23                 N
+       5            Tripod                     T  ...        9.39                 N
+       6             Power                     P  ...       16.46                 N
+       7            Tripod                     T  ...       11.66                 S
+       8             Power                     P  ...       12.51                 N
+       9            Tripod                     T  ...        8.58                 N
+BLOCO4 0             Power                     p  ...        9.05                 n
+       1            Tripod                     t  ...        8.74                 N
+       2            Tripod                     T  ...         8.9                 N
+       3             Power                     P  ...       10.91                 N
+       4             Power                     P  ...       10.66                 N
+       5            Tripod                     T  ...        8.96                 S
+       6             Power                     P  ...        10.1                 N
+       7            Tripod                  -0.5  ...       15.06                 N
+       8             Power                     P  ...       11.37                 N
+       9            Tripod                        ...        60.1                 N
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+       6               NaN                   NaN  ...         NaN               NaN
+       7               NaN                   NaN  ...         NaN               NaN
+       8               NaN                   NaN  ...         NaN               NaN
+       9               NaN                   NaN  ...         NaN               NaN
+
+[50 rows x 6 columns]
+
+
+Bloco 4 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 5 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 10:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  -86
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -85.1
+
+Tempo gasto: 14.02
+
+Escorregamento do objeto:
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 10:
+
+
+
+Objeto almejado:  Caixa
+
+Ângulo do objeto:  -5
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -4.2
+
+Tempo gasto: 11.91
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 10:
+
+
+
+Objeto almejado:  Calculadora
+
+Ângulo do objeto:  0
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 0.3
+
+Tempo gasto: 9.89
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 10:
+
+
+
+Objeto almejado:  Garrafa
+
+Ângulo do objeto:  27
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 12.7
+
+Tempo gasto: 11.02
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 10:
+
+
+
+Objeto almejado:  Pendrive
+
+Ângulo do objeto:  71
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 70.7
+
+Tempo gasto: 11.02
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 10:
+
+
+
+Objeto almejado:  Pincel
+
+Ângulo do objeto:  32
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 26.6
+
+Tempo gasto: 9.99
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 7 de 10:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  10
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 19.6
+
+Tempo gasto: 8.29
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 8 de 10:
+
+
+
+Objeto almejado:  Câmera
+
+Ângulo do objeto:  -84
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 82
+
+Tempo gasto:
+
+Escorregamento do objeto: 14.32
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 9 de 10:
+
+
+
+Objeto almejado:  Barbeador
+
+Ângulo do objeto:  18
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 15
+
+Tempo gasto: 8.8
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 10 de 10:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  47
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 47.4
+
+Tempo gasto: 9.89
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       11.87                 N
+       1             Power                     P  ...       11.63                 N
+       2            Tripod                     T  ...        38.8                 N
+       3            Tripod                     T  ...       20.34                 N
+       4             Power                     P  ...       13.97                 N
+       5            Tripod                     T  ...       12.45                 N
+       6             Power                     P  ...       11.65                 N
+       7             Power                     P  ...       12.66                 N
+       8            Tripod                     T  ...       14.21                 S
+       9             Power                     P  ...        9.03                 S
+BLOCO2 0            Tripod                     T  ...       11.69                 N
+       1             Power                     P  ...       11.86                 N
+       2            Tripod                     T  ...       10.94                 N
+       3             Power                     P  ...       18.14                 N
+       4             Power                     P  ...       10.21                 N
+       5            Tripod                     T  ...       10.61                 N
+       6             Power                     P  ...       14.94                 N
+       7            Tripod                     T  ...        7.55                 N
+       8             Power                     P  ...        8.42                 N
+       9            Tripod                     T  ...       10.01                 N
+BLOCO3 0             Power                     P  ...       10.41                 N
+       1            Tripod                     T  ...        11.1                 S
+       2            Tripod                     T  ...       11.42                 S
+       3             Power                     P  ...        9.28                 N
+       4             Power                     P  ...        9.23                 N
+       5            Tripod                     T  ...        9.39                 N
+       6             Power                     P  ...       16.46                 N
+       7            Tripod                     T  ...       11.66                 S
+       8             Power                     P  ...       12.51                 N
+       9            Tripod                     T  ...        8.58                 N
+BLOCO4 0             Power                     p  ...        9.05                 n
+       1            Tripod                     t  ...        8.74                 N
+       2            Tripod                     T  ...         8.9                 N
+       3             Power                     P  ...       10.91                 N
+       4             Power                     P  ...       10.66                 N
+       5            Tripod                     T  ...        8.96                 S
+       6             Power                     P  ...        10.1                 N
+       7            Tripod                  -0.5  ...       15.06                 N
+       8             Power                     P  ...       11.37                 N
+       9            Tripod                        ...        60.1                 N
+BLOCO5 0            Tripod                     T  ...       14.02
+       1             Power                     P  ...       11.91                 N
+       2             Power                     P  ...        9.89                 N
+       3             Power                     T  ...       11.02                 N
+       4            Tripod                     T  ...       11.02                 N
+       5            Tripod                     T  ...        9.99                 N
+       6             Power                     P  ...        8.29                 N
+       7             Power                     P  ...                         14.32
+       8            Tripod                     T  ...         8.8                 N
+       9            Tripod                     T  ...        9.89                 N
+
+[50 rows x 6 columns]
+
+
+Bloco 5 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Primeira etapa finalizada com sucesso!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Iniciar a SEGUNDA ETAPA do procedimento.
+
+
+
+Lista de objetos 2 - Bloco 1 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Chave de fenda
+
+Ângulo do objeto:  -7
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -4
+
+Tempo gasto: 13.23
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Colher
+
+Ângulo do objeto:  -19
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -17.2
+
+Tempo gasto: 7.4
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Phone
+
+Ângulo do objeto:  41
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 38.4
+
+Tempo gasto: 8.64
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Lâmpada
+
+Ângulo do objeto:  -30
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -32.1
+
+Tempo gasto: 12.5
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Carteira
+
+Ângulo do objeto:  8
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -9.3
+
+Tempo gasto: 9.81
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  -2
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -4.9
+
+Tempo gasto: 8.98
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       13.23                 N
+       1            Tripod                     T  ...         7.4                 N
+       2             Power                     P  ...        8.64                 N
+       3             Power                     P  ...        12.5                 N
+       4             Power                     P  ...        9.81                 N
+       5            Tripod                     T  ...        8.98                 N
+BLOCO2 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 1 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 2 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Chave de fenda
+
+Ângulo do objeto:  -84
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -85.8
+
+Tempo gasto: 12.53
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Caneca
+
+Ângulo do objeto:  -8
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -3.3
+
+Tempo gasto: 9.83
+
+Escorregamento do objeto:
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Escova de dentes
+
+Ângulo do objeto:  -33
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -24.8
+
+Tempo gasto: 14.71
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Colher
+
+Ângulo do objeto:  51
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 57
+
+Tempo gasto: 10.43
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Lâmpada
+
+Ângulo do objeto:  25
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 26.3
+
+Tempo gasto: 12.33
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  60
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 36.6
+
+Tempo gasto: 10.05
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       13.23                 N
+       1            Tripod                     T  ...         7.4                 N
+       2             Power                     P  ...        8.64                 N
+       3             Power                     P  ...        12.5                 N
+       4             Power                     P  ...        9.81                 N
+       5            Tripod                     T  ...        8.98                 N
+BLOCO2 0            Tripod                     T  ...       12.53                 N
+       1             Power                     T  ...        9.83
+       2            Tripod                     T  ...       14.71                 N
+       3            Tripod                     T  ...       10.43                 N
+       4             Power                     P  ...       12.33                 N
+       5             Power                     P  ...       10.05                 S
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 2 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 3 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  46
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 45.9
+
+Tempo gasto: 13.46
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -83
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -76.6
+
+Tempo gasto: 19.11
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Lâmpada
+
+Ângulo do objeto:  -34
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -24.3
+
+Tempo gasto: 10.61
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Colher
+
+Ângulo do objeto:  -35
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -40.5
+
+Tempo gasto:
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  -1
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 0
+
+Tempo gasto: 10.7
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Phone
+
+Ângulo do objeto:  -12
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -14.1
+
+Tempo gasto: 9.95
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       13.23                 N
+       1            Tripod                     T  ...         7.4                 N
+       2             Power                     P  ...        8.64                 N
+       3             Power                     P  ...        12.5                 N
+       4             Power                     P  ...        9.81                 N
+       5            Tripod                     T  ...        8.98                 N
+BLOCO2 0            Tripod                     T  ...       12.53                 N
+       1             Power                     T  ...        9.83
+       2            Tripod                     T  ...       14.71                 N
+       3            Tripod                     T  ...       10.43                 N
+       4             Power                     P  ...       12.33                 N
+       5             Power                     P  ...       10.05                 S
+BLOCO3 0            Tripod                     T  ...       13.46                 N
+       1            Tripod                     T  ...       19.11                 N
+       2             Power                     T  ...       10.61                 N
+       3            Tripod                     T  ...                             N
+       4             Power                     T  ...        10.7                 N
+       5             Power                     T  ...        9.95                 N
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 3 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 4 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Caneca
+
+Ângulo do objeto:  -38
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -56.7
+
+Tempo gasto: 14.98
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  -31
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -27.2
+
+Tempo gasto: 13.12
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -86
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -76.4
+
+Tempo gasto: 19.53
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Colher
+
+Ângulo do objeto:  -81
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -81
+
+Tempo gasto: 10.98
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Carteira
+
+Ângulo do objeto:  52
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 60.3
+
+Tempo gasto: 15.01
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  -32
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -34.7
+
+Tempo gasto: 9.72
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       13.23                 N
+       1            Tripod                     T  ...         7.4                 N
+       2             Power                     P  ...        8.64                 N
+       3             Power                     P  ...        12.5                 N
+       4             Power                     P  ...        9.81                 N
+       5            Tripod                     T  ...        8.98                 N
+BLOCO2 0            Tripod                     T  ...       12.53                 N
+       1             Power                     T  ...        9.83
+       2            Tripod                     T  ...       14.71                 N
+       3            Tripod                     T  ...       10.43                 N
+       4             Power                     P  ...       12.33                 N
+       5             Power                     P  ...       10.05                 S
+BLOCO3 0            Tripod                     T  ...       13.46                 N
+       1            Tripod                     T  ...       19.11                 N
+       2             Power                     T  ...       10.61                 N
+       3            Tripod                     T  ...                             N
+       4             Power                     T  ...        10.7                 N
+       5             Power                     T  ...        9.95                 N
+BLOCO4 0             Power                     P  ...       14.98                 N
+       1            Tripod                     T  ...       13.12                 N
+       2            Tripod                     T  ...       19.53                 N
+       3            Tripod                     T  ...       10.98                 N
+       4             Power                     P  ...       15.01                 N
+       5             Power                     P  ...        9.72                 N
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 4 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 5 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Lâmpada
+
+Ângulo do objeto:  17
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 25.2
+
+Tempo gasto: 7.74
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Carteira
+
+Ângulo do objeto:  67
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 63.8
+
+Tempo gasto:
+
+Escorregamento do objeto: 13.93
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  68
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 69
+
+Tempo gasto: 21;08
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -10
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -10.5
+
+Tempo gasto: 11.31
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  64
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 0
+
+Tempo gasto: 12.99
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Escova de dentes
+
+Ângulo do objeto:  3
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 9.3
+
+Tempo gasto: 16.38
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       13.23                 N
+       1            Tripod                     T  ...         7.4                 N
+       2             Power                     P  ...        8.64                 N
+       3             Power                     P  ...        12.5                 N
+       4             Power                     P  ...        9.81                 N
+       5            Tripod                     T  ...        8.98                 N
+BLOCO2 0            Tripod                     T  ...       12.53                 N
+       1             Power                     T  ...        9.83
+       2            Tripod                     T  ...       14.71                 N
+       3            Tripod                     T  ...       10.43                 N
+       4             Power                     P  ...       12.33                 N
+       5             Power                     P  ...       10.05                 S
+BLOCO3 0            Tripod                     T  ...       13.46                 N
+       1            Tripod                     T  ...       19.11                 N
+       2             Power                     T  ...       10.61                 N
+       3            Tripod                     T  ...                             N
+       4             Power                     T  ...        10.7                 N
+       5             Power                     T  ...        9.95                 N
+BLOCO4 0             Power                     P  ...       14.98                 N
+       1            Tripod                     T  ...       13.12                 N
+       2            Tripod                     T  ...       19.53                 N
+       3            Tripod                     T  ...       10.98                 N
+       4             Power                     P  ...       15.01                 N
+       5             Power                     P  ...        9.72                 N
+BLOCO5 0             Power                     T  ...        7.74                 N
+       1             Power                     P  ...                         13.93
+       2            Tripod                     T  ...       21;08                 N
+       3            Tripod                     T  ...       11.31                 S
+       4             Power                     T  ...       12.99                 N
+       5            Tripod                     T  ...       16.38                 N
+
+[30 rows x 6 columns]
+
+
+Bloco 5 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Segunda etapa finalizada com sucesso!
+
+
+
+Pressione ENTER para finalizar a coleta.
+
+
+(tf-keras) user@user:~/GitHub/openDVS/Online/Experimental protocol$ python Protocol.py
+
+
+Pressione ENTER para iniciar.
+
+
+
+Insira os dados do voluntário solicitados.
+
+
+
+Nome: EDUARDO
+
+Idade: 24
+
+Sexo: M
+       Nome Idade Sexo
+0  Adrielle    24    F
+1    APagar    45    M
+2      Eber    25    m
+3      EBER    25    M
+4   EDUARDO    24    M
+
+
+Iniciar a PRIMEIRA ETAPA do procedimento.
+
+
+
+Lista de objetos 1 - Bloco 1 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+^CTraceback (most recent call last):
+  File "Protocol.py", line 63, in <module>
+    input("\nPressione ENTER para continuar.\n\n")
+KeyboardInterrupt
+(tf-keras) user@user:~/GitHub/openDVS/Online/Experimental protocol$ python Protocol.py
+
+
+Pressione ENTER para iniciar.
+
+
+
+Insira os dados do voluntário solicitados.
+
+
+
+Nome: EDUARDO
+
+Idade: 24
+
+Sexo: M
+       Nome Idade Sexo
+0  Adrielle    24    F
+1    APagar    45    M
+2      Eber    25    m
+3      EBER    25    M
+4   EDUARDO    24    M
+5   EDUARDO    24    M
+
+
+Iniciar a PRIMEIRA ETAPA do procedimento.
+
+
+
+Lista de objetos 1 - Bloco 1 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  -13
+
+Objeto auxiliar (esquerda):  Lata
+
+Objeto auxiliar (direita):  Pincel
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -10.9
+
+Tempo gasto: 21.97
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  -44
+
+Objeto auxiliar (esquerda):  Bola
+
+Objeto auxiliar (direita):  Isqueiro
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -33.2
+
+Tempo gasto: 71.5
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Calculadora
+
+Ângulo do objeto:  -83
+
+Objeto auxiliar (esquerda):  Pendrive
+
+Objeto auxiliar (direita):  HD externo
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 81.9
+
+Tempo gasto: 11.39
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  60
+
+Objeto auxiliar (esquerda):  Pendrive
+
+Objeto auxiliar (direita):  Bola
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 51.1
+
+Tempo gasto: 12.32
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Pendrive
+
+Ângulo do objeto:  -39
+
+Objeto auxiliar (esquerda):  Faca
+
+Objeto auxiliar (direita):  Câmera
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -32.3
+
+Tempo gasto: 12.26
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  -26
+
+Objeto auxiliar (esquerda):  Chave Allen
+
+Objeto auxiliar (direita):  Bola
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -10.3
+
+Tempo gasto: 12.47
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0             Power                     T  ...       21.97                 N
+       1            Tripod                     P  ...        71.5                 N
+       2            Tripod                     P  ...       11.39                 N
+       3             Power                     P  ...       12.32                 S
+       4            Tripod                     T  ...       12.26                 N
+       5            Tripod                     T  ...       12.47                 N
+BLOCO2 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 1 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 2 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Lapiseira
+
+Ângulo do objeto:  23
+
+Objeto auxiliar (esquerda):  Copo
+
+Objeto auxiliar (direita):  Bola
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 17.9
+
+Tempo gasto: 10.18
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  2
+
+Objeto auxiliar (esquerda):  Bola
+
+Objeto auxiliar (direita):  Bateria
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 0.5
+
+Tempo gasto: 24.3
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Bola
+
+Ângulo do objeto:  24
+
+Objeto auxiliar (esquerda):  Copo
+
+Objeto auxiliar (direita):  HD externo
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 11.5
+
+Tempo gasto: 16.72
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  HD externo
+
+Ângulo do objeto:  -48
+
+Objeto auxiliar (esquerda):  Lapiseira
+
+Objeto auxiliar (direita):  Estojo de óculos
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -31.4
+
+Tempo gasto: 17.7
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Pincel
+
+Ângulo do objeto:  65
+
+Objeto auxiliar (esquerda):  Caixa
+
+Objeto auxiliar (direita):  Calculadora
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 52.7
+
+Tempo gasto: 10.04
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  -32
+
+Objeto auxiliar (esquerda):  Barbeador
+
+Objeto auxiliar (direita):  Lata
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -28.6
+
+Tempo gasto: 12.2
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0             Power                     T  ...       21.97                 N
+       1            Tripod                     P  ...        71.5                 N
+       2            Tripod                     P  ...       11.39                 N
+       3             Power                     P  ...       12.32                 S
+       4            Tripod                     T  ...       12.26                 N
+       5            Tripod                     T  ...       12.47                 N
+BLOCO2 0            Tripod                     T  ...       10.18                 N
+       1            Tripod                     P  ...        24.3                 N
+       2            Tripod                     P  ...       16.72                 N
+       3             Power                     P  ...        17.7                 S
+       4            Tripod                     T  ...       10.04                 N
+       5             Power                     T  ...        12.2                 N
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 2 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 3 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  89
+
+Objeto auxiliar (esquerda):  Calculadora
+
+Objeto auxiliar (direita):  Garrafa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -25.3
+
+Tempo gasto: 13.47
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Estojo de óculos
+
+Ângulo do objeto:  88
+
+Objeto auxiliar (esquerda):  Bola
+
+Objeto auxiliar (direita):  Pincel
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 80.9
+
+Tempo gasto: 18.12
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Lata
+
+Ângulo do objeto:  41
+
+Objeto auxiliar (esquerda):  Estojo de óculos
+
+Objeto auxiliar (direita):  Garrafa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 43.6
+
+Tempo gasto: 10.79
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  41
+
+Objeto auxiliar (esquerda):  Caixa
+
+Objeto auxiliar (direita):  Faca
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 46.6
+
+Tempo gasto: 15.06
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  63
+
+Objeto auxiliar (esquerda):  Pincel
+
+Objeto auxiliar (direita):  Caneta
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 51.4
+
+Tempo gasto: 9.0
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Bola
+
+Ângulo do objeto:  -89
+
+Objeto auxiliar (esquerda):  Bateria
+
+Objeto auxiliar (direita):  Pendrive
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 29.6
+
+Tempo gasto: 9.90
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0             Power                     T  ...       21.97                 N
+       1            Tripod                     P  ...        71.5                 N
+       2            Tripod                     P  ...       11.39                 N
+       3             Power                     P  ...       12.32                 S
+       4            Tripod                     T  ...       12.26                 N
+       5            Tripod                     T  ...       12.47                 N
+BLOCO2 0            Tripod                     T  ...       10.18                 N
+       1            Tripod                     P  ...        24.3                 N
+       2            Tripod                     P  ...       16.72                 N
+       3             Power                     P  ...        17.7                 S
+       4            Tripod                     T  ...       10.04                 N
+       5             Power                     T  ...        12.2                 N
+BLOCO3 0            Tripod                     T  ...       13.47                 N
+       1            Tripod                     P  ...       18.12                 N
+       2             Power                     P  ...       10.79                 N
+       3             Power                     P  ...       15.06                 N
+       4            Tripod                     T  ...         9.0                 N
+       5            Tripod                     P  ...        9.90                 N
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 3 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 4 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Pote
+
+Ângulo do objeto:  -84
+
+Objeto auxiliar (esquerda):  Estojo de óculos
+
+Objeto auxiliar (direita):  Pendrive
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -70.3
+
+Tempo gasto: 9.0
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Isqueiro
+
+Ângulo do objeto:  81
+
+Objeto auxiliar (esquerda):  Bateria
+
+Objeto auxiliar (direita):  Calculadora
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 69.6
+
+Tempo gasto: 16.68
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  85
+
+Objeto auxiliar (esquerda):  Copo
+
+Objeto auxiliar (direita):  Calculadora
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 75.4
+
+Tempo gasto: 12.14
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Calculadora
+
+Ângulo do objeto:  39
+
+Objeto auxiliar (esquerda):  Isqueiro
+
+Objeto auxiliar (direita):  Copo
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 41.7
+
+Tempo gasto:
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  36
+
+Objeto auxiliar (esquerda):  Bola
+
+Objeto auxiliar (direita):  Pote
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 35.1
+
+Tempo gasto: 12.14
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Pendrive
+
+Ângulo do objeto:  68
+
+Objeto auxiliar (esquerda):  Chave
+
+Objeto auxiliar (direita):  Copo
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 67.5
+
+Tempo gasto: 13.66
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0             Power                     T  ...       21.97                 N
+       1            Tripod                     P  ...        71.5                 N
+       2            Tripod                     P  ...       11.39                 N
+       3             Power                     P  ...       12.32                 S
+       4            Tripod                     T  ...       12.26                 N
+       5            Tripod                     T  ...       12.47                 N
+BLOCO2 0            Tripod                     T  ...       10.18                 N
+       1            Tripod                     P  ...        24.3                 N
+       2            Tripod                     P  ...       16.72                 N
+       3             Power                     P  ...        17.7                 S
+       4            Tripod                     T  ...       10.04                 N
+       5             Power                     T  ...        12.2                 N
+BLOCO3 0            Tripod                     T  ...       13.47                 N
+       1            Tripod                     P  ...       18.12                 N
+       2             Power                     P  ...       10.79                 N
+       3             Power                     P  ...       15.06                 N
+       4            Tripod                     T  ...         9.0                 N
+       5            Tripod                     P  ...        9.90                 N
+BLOCO4 0             Power                     P  ...         9.0                 N
+       1            Tripod                     T  ...       16.68                 N
+       2            Tripod                     P  ...       12.14                 S
+       3             Power                     P  ...                             N
+       4             Power                     T  ...       12.14                 S
+       5            Tripod                     T  ...       13.66                 N
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+       4               NaN                   NaN  ...         NaN               NaN
+       5               NaN                   NaN  ...         NaN               NaN
+
+[30 rows x 6 columns]
+
+
+Bloco 4 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 1 - Bloco 5 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 6:
+
+
+
+Objeto almejado:  Bateria
+
+Ângulo do objeto:  -55
+
+Objeto auxiliar (esquerda):  Chave Allen
+
+Objeto auxiliar (direita):  Garrafa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -52.5
+
+Tempo gasto: 9.3
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 6:
+
+
+
+Objeto almejado:  Lata
+
+Ângulo do objeto:  -70
+
+Objeto auxiliar (esquerda):  Garrafa
+
+Objeto auxiliar (direita):  Caneta
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -66.6
+
+Tempo gasto: 14.80
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 6:
+
+
+
+Objeto almejado:  Copo
+
+Ângulo do objeto:  88
+
+Objeto auxiliar (esquerda):  Pendrive
+
+Objeto auxiliar (direita):  Chave Allen
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 80.9
+
+Tempo gasto: 13.69
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 6:
+
+
+
+Objeto almejado:  Calculadora
+
+Ângulo do objeto:  -12
+
+Objeto auxiliar (esquerda):  Faca
+
+Objeto auxiliar (direita):  Chave Allen
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -3.7
+
+Tempo gasto: 16.48
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 5 de 6:
+
+
+
+Objeto almejado:  Chave Allen
+
+Ângulo do objeto:  -21
+
+Objeto auxiliar (esquerda):  Caixa
+
+Objeto auxiliar (direita):  Pendrive
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -9.2
+
+Tempo gasto: 19.48
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 6 de 6:
+
+
+
+Objeto almejado:  Barbeador
+
+Ângulo do objeto:  59
+
+Objeto auxiliar (esquerda):  Caixa
+
+Objeto auxiliar (direita):  Garrafa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 47.5
+
+Tempo gasto: 12.65
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0             Power                     T  ...       21.97                 N
+       1            Tripod                     P  ...        71.5                 N
+       2            Tripod                     P  ...       11.39                 N
+       3             Power                     P  ...       12.32                 S
+       4            Tripod                     T  ...       12.26                 N
+       5            Tripod                     T  ...       12.47                 N
+BLOCO2 0            Tripod                     T  ...       10.18                 N
+       1            Tripod                     P  ...        24.3                 N
+       2            Tripod                     P  ...       16.72                 N
+       3             Power                     P  ...        17.7                 S
+       4            Tripod                     T  ...       10.04                 N
+       5             Power                     T  ...        12.2                 N
+BLOCO3 0            Tripod                     T  ...       13.47                 N
+       1            Tripod                     P  ...       18.12                 N
+       2             Power                     P  ...       10.79                 N
+       3             Power                     P  ...       15.06                 N
+       4            Tripod                     T  ...         9.0                 N
+       5            Tripod                     P  ...        9.90                 N
+BLOCO4 0             Power                     P  ...         9.0                 N
+       1            Tripod                     T  ...       16.68                 N
+       2            Tripod                     P  ...       12.14                 S
+       3             Power                     P  ...                             N
+       4             Power                     T  ...       12.14                 S
+       5            Tripod                     T  ...       13.66                 N
+BLOCO5 0            Tripod                     T  ...         9.3                 S
+       1            Tripod                     P  ...       14.80                 N
+       2             Power                     P  ...       13.69                 N
+       3             Power                     P  ...       16.48                 N
+       4             Power                     T  ...       19.48                 N
+       5             Power                     P  ...       12.65                 N
+
+[30 rows x 6 columns]
+
+
+Bloco 5 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Primeira etapa finalizada com sucesso!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Iniciar a SEGUNDA ETAPA do procedimento.
+
+
+
+Lista de objetos 2 - Bloco 1 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 4:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -44
+
+Objeto auxiliar (esquerda):  Carteira
+
+Objeto auxiliar (direita):  Chave de fenda
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -40.7
+
+Tempo gasto: 12.23
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 4:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  -73
+
+Objeto auxiliar (esquerda):  Chave de fenda
+
+Objeto auxiliar (direita):  Lâmpada
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -40.7
+
+Tempo gasto: 13.4
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 4:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  -58
+
+Objeto auxiliar (esquerda):  Escova de dentes
+
+Objeto auxiliar (direita):  Parafuso
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -43.8
+
+Tempo gasto: 9.86
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 4:
+
+
+
+Objeto almejado:  Carteira
+
+Ângulo do objeto:  9
+
+Objeto auxiliar (esquerda):  Carteira
+
+Objeto auxiliar (direita):  Chave fixa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -2.4
+
+Tempo gasto: 13.75
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       12.23                 N
+       1             Power                     T  ...        13.4                 N
+       2            Tripod                     T  ...        9.86                 S
+       3             Power                     P  ...       13.75                 N
+BLOCO2 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+
+[20 rows x 6 columns]
+
+
+Bloco 1 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 2 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 4:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -75
+
+Objeto auxiliar (esquerda):  Colher
+
+Objeto auxiliar (direita):  Carteira
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -85
+
+Tempo gasto: 12.51
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 4:
+
+
+
+Objeto almejado:  Phone
+
+Ângulo do objeto:  42
+
+Objeto auxiliar (esquerda):  Chave de fenda
+
+Objeto auxiliar (direita):  Phone
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 31
+
+Tempo gasto: 11.54
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 4:
+
+
+
+Objeto almejado:  Parafuso
+
+Ângulo do objeto:  -50
+
+Objeto auxiliar (esquerda):  Colher
+
+Objeto auxiliar (direita):  Phone
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -41.1
+
+Tempo gasto: 12.6
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 4:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  84
+
+Objeto auxiliar (esquerda):  Escova de dentes
+
+Objeto auxiliar (direita):  Lâmpada
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 0
+
+Tempo gasto: 16.86
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       12.23                 N
+       1             Power                     T  ...        13.4                 N
+       2            Tripod                     T  ...        9.86                 S
+       3             Power                     P  ...       13.75                 N
+BLOCO2 0            Tripod                     T  ...       12.51                 N
+       1             Power                     P  ...       11.54                 N
+       2            Tripod                     T  ...        12.6                 N
+       3             Power                     P  ...       16.86                 N
+BLOCO3 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+
+[20 rows x 6 columns]
+
+
+Bloco 2 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 3 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 4:
+
+
+
+Objeto almejado:  Laranja
+
+Ângulo do objeto:  -15
+
+Objeto auxiliar (esquerda):  Laranja
+
+Objeto auxiliar (direita):  Carteira
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 27.8
+
+Tempo gasto: 10.35
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 4:
+
+
+
+Objeto almejado:  Chave de fenda
+
+Ângulo do objeto:  24
+
+Objeto auxiliar (esquerda):  Laranja
+
+Objeto auxiliar (direita):  Chave de fenda
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 23.4
+
+Tempo gasto: 10.81
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 4:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  7
+
+Objeto auxiliar (esquerda):  Caneca
+
+Objeto auxiliar (direita):  Laranja
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 8.6
+
+Tempo gasto: 10.75
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 4:
+
+
+
+Objeto almejado:  Caneca
+
+Ângulo do objeto:  -53
+
+Objeto auxiliar (esquerda):  Laranja
+
+Objeto auxiliar (direita):  Colher
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -29.3
+
+Tempo gasto: 8.42
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       12.23                 N
+       1             Power                     T  ...        13.4                 N
+       2            Tripod                     T  ...        9.86                 S
+       3             Power                     P  ...       13.75                 N
+BLOCO2 0            Tripod                     T  ...       12.51                 N
+       1             Power                     P  ...       11.54                 N
+       2            Tripod                     T  ...        12.6                 N
+       3             Power                     P  ...       16.86                 N
+BLOCO3 0             Power                     T  ...       10.35                 N
+       1            Tripod                     T  ...       10.81                 N
+       2            Tripod                     T  ...       10.75                 N
+       3             Power                     P  ...        8.42                 N
+BLOCO4 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+
+[20 rows x 6 columns]
+
+
+Bloco 3 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 4 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 4:
+
+
+
+Objeto almejado:  Caneca
+
+Ângulo do objeto:  0
+
+Objeto auxiliar (esquerda):  Escova de dentes
+
+Objeto auxiliar (direita):  Carteira
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -10.1
+
+Tempo gasto: 19.88
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 4:
+
+
+
+Objeto almejado:  Lâmpada
+
+Ângulo do objeto:  -46
+
+Objeto auxiliar (esquerda):  Lâmpada
+
+Objeto auxiliar (direita):  Carteira
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -49.8
+
+Tempo gasto: 9.58
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 4:
+
+
+
+Objeto almejado:  Chave de fenda
+
+Ângulo do objeto:  12
+
+Objeto auxiliar (esquerda):  Colher
+
+Objeto auxiliar (direita):  Escova de dentes
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 10.6
+
+Tempo gasto: 9.17
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 4:
+
+
+
+Objeto almejado:  Chave fixa
+
+Ângulo do objeto:  -60
+
+Objeto auxiliar (esquerda):  Chave de fenda
+
+Objeto auxiliar (direita):  Escova de dentes
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: -59.9
+
+Tempo gasto: 12.71
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       12.23                 N
+       1             Power                     T  ...        13.4                 N
+       2            Tripod                     T  ...        9.86                 S
+       3             Power                     P  ...       13.75                 N
+BLOCO2 0            Tripod                     T  ...       12.51                 N
+       1             Power                     P  ...       11.54                 N
+       2            Tripod                     T  ...        12.6                 N
+       3             Power                     P  ...       16.86                 N
+BLOCO3 0             Power                     T  ...       10.35                 N
+       1            Tripod                     T  ...       10.81                 N
+       2            Tripod                     T  ...       10.75                 N
+       3             Power                     P  ...        8.42                 N
+BLOCO4 0             Power                     P  ...       19.88                 N
+       1             Power                     P  ...        9.58                 S
+       2            Tripod                     T  ...        9.17                 S
+       3            Tripod                     T  ...       12.71                 N
+BLOCO5 0               NaN                   NaN  ...         NaN               NaN
+       1               NaN                   NaN  ...         NaN               NaN
+       2               NaN                   NaN  ...         NaN               NaN
+       3               NaN                   NaN  ...         NaN               NaN
+
+[20 rows x 6 columns]
+
+
+Bloco 4 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Lista de objetos 2 - Bloco 5 de 5.
+
+
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 1 de 4:
+
+
+
+Objeto almejado:  Chave de fenda
+
+Ângulo do objeto:  47
+
+Objeto auxiliar (esquerda):  Escova de dentes
+
+Objeto auxiliar (direita):  Chave fixa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 45.4
+
+Tempo gasto: 11.75
+
+Escorregamento do objeto: S
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 2 de 4:
+
+
+
+Objeto almejado:  Phone
+
+Ângulo do objeto:  -64
+
+Objeto auxiliar (esquerda):  Laranja
+
+Objeto auxiliar (direita):  Escova de dentes
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: -62.2
+
+Tempo gasto: 13.48
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 3 de 4:
+
+
+
+Objeto almejado:  Caneca
+
+Ângulo do objeto:  82
+
+Objeto auxiliar (esquerda):  Chave de fenda
+
+Objeto auxiliar (direita):  Lâmpada
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: P
+
+Ângulo obtido: 55.8
+
+Tempo gasto: 14.3
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+
+Objeto 4 de 4:
+
+
+
+Objeto almejado:  Colher
+
+Ângulo do objeto:  -2
+
+Objeto auxiliar (esquerda):  Carteira
+
+Objeto auxiliar (direita):  Chave fixa
+
+
+Pressione ENTER para continuar.
+
+
+Preensão classificada: T
+
+Ângulo obtido: 1.2
+
+Tempo gasto: 11.16
+
+Escorregamento do objeto: N
+
+Pressione ENTER para continuar.
+
+
+         Preensão_Esperada Preensão_Classificada  ... Tempo_Gasto Objeto_Escorregou
+BLOCO1 0            Tripod                     T  ...       12.23                 N
+       1             Power                     T  ...        13.4                 N
+       2            Tripod                     T  ...        9.86                 S
+       3             Power                     P  ...       13.75                 N
+BLOCO2 0            Tripod                     T  ...       12.51                 N
+       1             Power                     P  ...       11.54                 N
+       2            Tripod                     T  ...        12.6                 N
+       3             Power                     P  ...       16.86                 N
+BLOCO3 0             Power                     T  ...       10.35                 N
+       1            Tripod                     T  ...       10.81                 N
+       2            Tripod                     T  ...       10.75                 N
+       3             Power                     P  ...        8.42                 N
+BLOCO4 0             Power                     P  ...       19.88                 N
+       1             Power                     P  ...        9.58                 S
+       2            Tripod                     T  ...        9.17                 S
+       3            Tripod                     T  ...       12.71                 N
+BLOCO5 0            Tripod                     T  ...       11.75                 S
+       1             Power                     P  ...       13.48                 N
+       2             Power                     P  ...        14.3                 N
+       3            Tripod                     T  ...       11.16                 N
+
+[20 rows x 6 columns]
+
+
+Bloco 5 finalizado!
+
+
+
+Pressione ENTER para continuar.
+
+
+
+
+Segunda etapa finalizada com sucesso!
+
+
+
+Pressione ENTER para finalizar a coleta.

@@ -1,5 +1,5 @@
 
-#define time_per_revolution 2000000 // 2 seconds
+#define time_per_revolution 5000000 // 2 seconds
 #define steps_per_revolution 3200   // 3200 steps
 #define angle_per_step 0.1125       // 0.1125 degrees
 

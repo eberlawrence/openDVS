@@ -42,7 +42,7 @@ clock = pygame.time.Clock()
 
 model = utilsDVS128.openModel('model/new_model.json', 'model/new_model.h5')
 
-ard = serial.Serial('/dev/ttyUSB0', 115200)
+ard = serial.Serial('/dev/ttyUSB1', 115200)
 
 def main():
 
@@ -55,6 +55,7 @@ def main():
 	countShape, countAngle = [], []
 	var = []
 
+	result_counter = 1
 	while True:
 		start_command = str(ard.readline())[2:7]
 		# start_command = 'start'
@@ -82,7 +83,7 @@ def main():
 				if np.sum(ts) >= 40000: # acumulate events during that time
 					displayEvents.plotEventsF(pol, x, y)
 					img = displayEvents.frame
-					watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
+					watershedImage, mask, detection, opening, sure_fg, sure_bg, markers = segmentationUtils.watershed(img, '--neuromorphic', minimumSizeBox=0.5, smallBBFilter=True, centroidDistanceFilter = False, mergeOverlapingDetectionsFilter = True, flagCloserToCenter=True)
 					utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
 					imgROI, interpROI = segmentationUtils.getROI(detection, img)
 					ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
@@ -102,12 +103,16 @@ def main():
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
 						countAngleAux = round(np.median(countAngle),1)
 						countAngle = round((1 / 2) * np.median(countAngle))
-						print(objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
-						print(str(countAngleAux) + " Degrees: " + str([int(countAngle + 45)]))
+						print("\n\n")
+						print("Classificação: " + str(result_counter))
+						print("Preensão: " + objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
+						print("Ângulo: " + str(countAngleAux) + " graus: " + str([int(countAngle + 45)]))
+						print("\n\n")
 						ard.write(bytes([np.argmax(countShape)]))
 						ard.write(bytes([int(countAngle + 45)]))
 						countShape, countAngle = [], []
 						stop = True
+						result_counter += 1
 
 					t2 = time() - t
 					displayEvents.printFPS(1 / t2)
