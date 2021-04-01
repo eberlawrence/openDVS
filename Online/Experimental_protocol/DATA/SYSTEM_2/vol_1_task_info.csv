@@ -1,0 +1,31 @@
+,,Objeto almejado,Preensão_Esperada,Preensão_Realizada,Angulação_Esperada,Angulação_Obtida,Tempo_Gasto,Objeto_Escorregou
+BLOCO1,0,Bola,Power,P,25,25,13.9,S
+BLOCO1,1,Bateria,Tripod,T,-3,-10,91,S
+BLOCO1,2,Pendrive,Tripod,T,11,17.5,30.68,N
+BLOCO1,3,Garrafa,Power,P,59,92.5,43.51,N
+BLOCO1,4,Faca,Tripod,T,55,72.5,39.62,N
+BLOCO1,5,Câmera,Power,P,-44,-35,50,N
+BLOCO2,0,Faca,Tripod,T,-79,-90,34.09,S
+BLOCO2,1,Bateria,Tripod,T,45,30,58.39,N
+BLOCO2,2,Pote,Power,P,-61,-80,59.37,N
+BLOCO2,3,Lapiseira,Tripod,T,-40,-70,46.05,S
+BLOCO2,4,HD externo,Power,P,62,35,43.62,N
+BLOCO2,5,Bola,Power,P,9,9,24.81,N
+BLOCO3,0,Caixa,Power,P,-2,-5,17.73,N
+BLOCO3,1,Barbeador,Tripod,T,-68,-90,31.77,N
+BLOCO3,2,Caneta,Tripod,T,39,45,27.07,N
+BLOCO3,3,Estojo de óculos,Power,P,85,77.5,34.01,N
+BLOCO3,4,Pincel,Tripod,T,-30,-22.5,18.39,N
+BLOCO3,5,Bola,Power,P,-85,-85,16.77,N
+BLOCO4,0,Faca,Tripod,T,-35,-22.5,24.43,N
+BLOCO4,1,Isqueiro,Tripod,T,-76,-90,29.55,N
+BLOCO4,2,Caixa,Power,P,-77,-90,28.95,N
+BLOCO4,3,Bola,Power,P,43,43,23.27,N
+BLOCO4,4,Câmera,Power,P,17,17.5,24.47,N
+BLOCO4,5,Pendrive,Tripod,T,-5,7.5,29.3,N
+BLOCO5,0,Pincel,Tripod,T,-77,-90,33.23,N
+BLOCO5,1,Caneta,Tripod,T,48,32.5,66.89,S
+BLOCO5,2,Chave Allen,Tripod,T,-48,-57.5,22.24,N
+BLOCO5,3,Caixa,Power,P,-89,-90,16.89,N
+BLOCO5,4,HD externo,Power,P,-63,-65,32.59,S
+BLOCO5,5,Bola,Power,P,5,5,19.93,N

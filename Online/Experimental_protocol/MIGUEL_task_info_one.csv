@@ -1,0 +1,31 @@
+,,Objeto almejado,Preensão_Esperada,Preensão_Realizada,Angulação_Esperada,Angulação_Obtida,Tempo_Gasto,Objeto_Escorregou
+BLOCO1,0,Estojo de óculos,Power,P,-12,-22,17.45,N
+BLOCO1,1,Copo,Power,P,72,65,23.08,N
+BLOCO1,2,Faca,Tripod,T,44,20,30.3,N
+BLOCO1,3,Isqueiro,Tripod,T,51,10,28.3,N
+BLOCO1,4,Calculadora,Power,P,53,77,57.12,S
+BLOCO1,5,Bateria,Tripod,P,66,92.5,15.55,N
+BLOCO2,0,Caixa,Power,P,-52,-83,15.24,N
+BLOCO2,1,Lapiseira,Tripod,T,83,90,"76,8",N
+BLOCO2,2,Estojo de óculos,Power,P,0,-35,42,N
+BLOCO2,3,Caneta,Tripod,T,-66,-95,24.55,N
+BLOCO2,4,Câmera,Power,P,-18,"-22,5",27.5,N
+BLOCO2,5,Chave Allen,Tripod,T,8,-5,20.41,N
+BLOCO3,0,Barbeador,Tripod,T,23,0,33.45,N
+BLOCO3,1,Lata,Power,P,-78,-80,22.1,N
+BLOCO3,2,Bola,Power,P,13,-85,8.28,N
+BLOCO3,3,Garrafa,Power,P,80,105,14.75,N
+BLOCO3,4,Lapiseira,Tripod,T,-4,-70,8.94,N
+BLOCO3,5,Faca,Tripod,T,-22,-80,27.36,S
+BLOCO4,0,Bateria,Tripod,T,19,-60,13.51,S
+BLOCO4,1,Lapiseira,Tripod,T,-81,-90,21.15,N
+BLOCO4,2,Câmera,Power,P,-29,-55,15.54,N
+BLOCO4,3,Chave Allen,Tripod,T,37,0,11.73,N
+BLOCO4,4,Copo,Power,P,39,2.5,49.5,N
+BLOCO4,5,Garrafa,Power,P,-80,"-92,5",13.92,N
+BLOCO5,0,Bateria,Tripod,T,63,0,24.46,S
+BLOCO5,1,Barbeador,Tripod,T,23,0,9.25,N
+BLOCO5,2,Estojo de óculos,Power,P,-7,-35,11.75,N
+BLOCO5,3,Calculadora,Power,P,-17,-42.5,51.9,S
+BLOCO5,4,Lapiseira,Tripod,T,89,"87,5",45.2,N
+BLOCO5,5,Copo,Power,P,79,90,17.35,N

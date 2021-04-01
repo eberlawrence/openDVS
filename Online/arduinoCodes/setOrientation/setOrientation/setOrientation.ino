@@ -1,7 +1,7 @@
 
-#define time_per_revolution 5000000 // 2 seconds
+#define time_per_revolution 10000000 //  5 seconds
 #define steps_per_revolution 3200   // 3200 steps
-#define angle_per_step 0.1125       // 0.1125 degrees
+#define angle_per_step 0.1125      // 0.1125 degrees
 
 
 int PUL = 3; //define Pulse pin
@@ -50,7 +50,7 @@ void loop() {
       steps = round(abs(angle) / angle_per_step);
 
       if (angle > 0) {
-        for (int i = 0; i < steps; i++)
+        for (int i = 0; i <= steps; i++)
         {
           digitalWrite(DIR, LOW);
           digitalWrite(ENA, HIGH);
@@ -61,7 +61,7 @@ void loop() {
         }
       }
       else if (angle < 0) {
-        for (int i = 0; i < steps; i++)
+        for (int i = 0; i <= steps; i++)
         {
           digitalWrite(DIR, HIGH);
           digitalWrite(ENA, HIGH);

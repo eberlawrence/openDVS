@@ -1,0 +1,21 @@
+,,Objeto almejado,Preensão_Esperada,Preensão_Classificada,Angulação_Esperada,Angulação_Obtida,Tempo_Gasto,Objeto_Escorregou
+BLOCO1,0,Escova de dentes,Tripod,T,-33,"-35,1","15,72",N
+BLOCO1,1,Chave de fenda,Tripod,T,51,"47,9","8,44",N
+BLOCO1,2,Caneca,Power,P,-87,"18,4-180","17,18",N
+BLOCO1,3,Carteira,Power,P,80,"57,4","10,97",N
+BLOCO2,0,Laranja,Power,P,-9,-9,"20,7",N
+BLOCO2,1,Parafuso,Tripod,T,81,"81,4","13,6",N
+BLOCO2,2,Chave fixa,Tripod,T,-65,"-63,7","12,93",N
+BLOCO2,3,Carteira,Power,P,-72,"-76,7","8,77",N
+BLOCO3,0,Chave de fenda,Tripod,T,-50,"-65,4","9,1",S
+BLOCO3,1,Chave fixa,Tripod,T,86,"79,6","15,33",N
+BLOCO3,2,Laranja,Power,P,85,85,"10,7",N
+BLOCO3,3,Caneca,Power,P,36,"-1,8","30,9",N
+BLOCO4,0,Chave fixa,Tripod,T,36,"30,4","11,39",N
+BLOCO4,1,Laranja,Power,P,45,45,"8,89",N
+BLOCO4,2,Parafuso,Tripod,T,-90,"-82,6","13,2",N
+BLOCO4,3,Caneca,Power,P,68,"40,6","10,27",N
+BLOCO5,0,Laranja,Power,P,-61,-61,"7,47",N
+BLOCO5,1,Parafuso,Tripod,T,74,"68,8","13,29",N
+BLOCO5,2,Lâmpada,Power,T,-3,"-8,6","11,82",N
+BLOCO5,3,Colher,Tripod,T,16,"7,3","11,15",N

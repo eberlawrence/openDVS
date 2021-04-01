@@ -7,7 +7,7 @@ BLOCO1,4,Pendrive,Tripod,T,-39,-32.3,12.26,N
 BLOCO1,5,Chave Allen,Tripod,T,-26,-10.3,12.47,N
 BLOCO2,0,Lapiseira,Tripod,T,23,17.9,10.18,N
 BLOCO2,1,Copo,Power,P,2,0.5,24.3,N
-BLOCO2,2,Bola,Power,P,24,11.5,16.72,N
+BLOCO2,2,Bola,Power,P,24,24,16.72,N
 BLOCO2,3,HD externo,Power,P,-48,-31.4,17.7,S
 BLOCO2,4,Pincel,Tripod,T,65,52.7,10.04,N
 BLOCO2,5,Isqueiro,Tripod,T,-32,-28.6,12.2,N
@@ -16,7 +16,7 @@ BLOCO3,1,Estojo de óculos,Power,P,88,80.9,18.12,N
 BLOCO3,2,Lata,Power,P,41,43.6,10.79,N
 BLOCO3,3,Chave Allen,Tripod,P,41,46.6,15.06,N
 BLOCO3,4,Bateria,Tripod,T,63,51.4,9.0,N
-BLOCO3,5,Bola,Power,P,-89,29.6,9.90,N
+BLOCO3,5,Bola,Power,P,-89,-89,9.90,N
 BLOCO4,0,Pote,Power,P,-84,-70.3,9.0,N
 BLOCO4,1,Isqueiro,Tripod,T,81,69.6,16.68,N
 BLOCO4,2,Copo,Power,P,85,75.4,12.14,S

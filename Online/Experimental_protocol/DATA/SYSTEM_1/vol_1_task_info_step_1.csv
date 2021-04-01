@@ -8,11 +8,11 @@ BLOCO1,5,Bateria,Tripod,T,66,62.2,12.45,N
 BLOCO1,6,Lata,Power,P,-36,-40.3,11.65,N
 BLOCO1,7,Garrafa,Power,P,-73,-80.2,12.66,N
 BLOCO1,8,Pincel,Tripod,T,-70,-63.5,14.21,S
-BLOCO1,9,Bola,Power,P,11,0.0,9.03,S
+BLOCO1,9,Bola,Power,P,11,11,9.03,S
 BLOCO2,0,Chave Allen,Tripod,T,-31,-19.9,11.69,N
 BLOCO2,1,Caixa,Power,P,-87,-83.6,11.86,N
 BLOCO2,2,Faca,Tripod,T,-35,-29.5,10.94,N
-BLOCO2,3,Bola,Power,P,-53,55.2,18.14,N
+BLOCO2,3,Bola,Power,P,-53,-53,18.14,N
 BLOCO2,4,Copo,Power,P,38,33.6,10.21,N
 BLOCO2,5,Barbeador,Tripod,T,67,-46.6,10.61,N
 BLOCO2,6,Pote,Power,P,8,4.1,14.94,N
@@ -37,7 +37,7 @@ BLOCO4,4,Pote,Power,P,-85,-78.2,10.66,N
 BLOCO4,5,Chave Allen,Tripod,T,89,-76.8,8.96,S
 BLOCO4,6,Câmera,Power,P,80,82.1,10.1,N
 BLOCO4,7,Pendrive,Tripod,T,-2,-0.5,15.06,N
-BLOCO4,8,Bola,Power,P,73,-5.8,11.37,N
+BLOCO4,8,Bola,Power,P,73,73,11.37,N
 BLOCO4,9,Chave,Tripod,T,64,60.1,12.51,N
 BLOCO5,0,Bateria,Tripod,T,-86,-85.1,14.02,N
 BLOCO5,1,Caixa,Power,P,-5,-4.2,11.91,N
