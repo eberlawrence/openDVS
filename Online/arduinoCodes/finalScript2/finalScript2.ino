@@ -159,11 +159,11 @@ void control_signal_callback()
     retified_signal = abs(raw_signal);
     int emg_signal = moving_average(retified_signal);
     emg_signal *= multiplier;
-//        Serial.print(higher_signal_threshold);
-//        Serial.print(",");
-//        Serial.print(lower_signal_threshold);
-//        Serial.print(",");
-//        Serial.println(emg_signal);
+        Serial.print(higher_signal_threshold);
+        Serial.print(",");
+        Serial.print(lower_signal_threshold);
+        Serial.print(",");
+        Serial.println(emg_signal);
 
 
     if (block == 1) {
