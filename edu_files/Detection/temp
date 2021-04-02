@@ -1,0 +1,74 @@
+
+import numpy as np
+import cv2 as cv
+import matplotlib.pyplot as plt
+from openAEDAT import aedatUtils
+import matplotlib.animation as animation
+from segmentationUtils import segmentationUtils
+import matplotlib.patches as patches
+
+# path = '/home/eduardo/Documentos/DVS/Eduardo work/Mestrado/Datasource/AEDAT_files/standardized data/Mug.aedat'
+#path = '/home/eduardo/Documentos/DVS/Eduardo work/Mestrado/Datasource/AEDAT_files/random data/shorter records/two_objects.aedat'
+path = '/home/eduardo/Documentos/DVS/Eduardo work/Mestrado/Datasource/AEDAT_files/random data/shorter records/key.aedat'
+#path = '/home/eduardo/Documentos/DVS/Eduardo work/Mestrado/Datasource/AEDAT_files/random data/shorter records/key_2.aedat'
+#path = '/home/eduardo/Documentos/DVS/Eduardo work/Mestrado/Datasource/AEDAT_files/random data/shorter records/multi_objects_2.aedat'
+
+model = aedatUtils.openModel('model/model.json',
+							  'model/model.h5')
+
+t, x, y, p = aedatUtils.loadaerdat(path)
+
+tI=50000 #50 ms
+
+totalImages = []
+totalImages = aedatUtils.getFramesTimeBased(t,p,x,y,tI)
+
+plotMask = False
+
+if plotMask:
+    fig, axarr = plt.subplots(1,2)
+    axarr[0].set_title('neuromorphic image')
+    axarr[1].set_title('watershed mask')
+else:
+    fig,axarr = plt.subplots(1)
+    handle = None
+
+count = []
+for f in totalImages:
+    watershedImage, mask, detection = segmentationUtils.watershed(f,'--avg --median --neuromorphic')
+    watershedImage = watershedImage.astype(np.uint8)
+    
+    f = f.reshape(1, 128, 128, 1)
+    resp, objectSet = aedatUtils.predictObject(f, model)
+    count.append(resp)
+    if plotMask:
+        axarr[0].imshow(np.dstack([watershedImage,watershedImage,watershedImage]))
+        axarr[1].imshow(mask)
+    else:
+        if handle is None:
+            handle = plt.imshow(np.dstack([watershedImage,watershedImage,watershedImage]))
+            if len(count) == 10:
+                count = np.bincount(count)
+                predict = objectSet[np.argmax(count)][1]
+                if len(detection) >0:
+                    plt.text(detection[0][0], detection[0][1], predict, fontsize=12)
+                axarr.set_title(predict)
+                count = []
+
+                
+        else:
+            handle.set_data(np.dstack([watershedImage,watershedImage,watershedImage]))
+            if len(count) == 10:
+                count = np.bincount(count)
+                predict = objectSet[np.argmax(count)][1]
+                if len(detection) >0:
+                    plt.text(detection[0][0], detection[0][1], predict, fontsize=12)
+                axarr.set_title(predict)
+                count = []
+
+
+    
+    plt.pause(0.01)
+    plt.draw()
+
+

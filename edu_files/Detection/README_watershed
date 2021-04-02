@@ -1,0 +1,74 @@
+To make the bounding boxes, first, we aggregate some events in a window of time.
+Then we make the image as type uint8
+then we binarize the image (grabbing all events and turn then in 0)
+then we apply an average filter in the image with a kernel size of (5,5), then we apply a median filter on the result.
+
+This result is applied to the watershed method.
+In that method, I grab all the segmentation made by the watershed method and calculate the min and max of these uniques shape that the watershed returns to me.
+In that method, I put some feature as filtering the bounding boxes who are smaller then a threshold (a percentage of the image, for default I put 2%, but you could change that if you want)
+
+Then, I calculate the centroid of the bounding boxes and increment this information to our vector of bounding boxes
+So, at this point we have a vector with the following information for the bounding boxes:
+[x, y, width, height, centroidx, centroidy]
+Then I transform this for:
+[x1, y1, x2, y2, centroidx, centroidy]
+
+x1,y1 -> top-left
+x2,y2 -> bottom-right
+
+After change the way that my vector is, I call the function to filter the detections.
+In this function, I will iterate with every bounding box and check the IOU of each of the one. If there is an IOU between the bounding box I merge then in one bigger one.
+In this same function I apply the filter of centroid distances, so if the distance between the two bounding boxes is smaller then 50 pixels I merge then in one.
+
+This is pretty much what I do. There is much to become better and improve, but we are trying to reach some robust method to segment the neuromorphic images. If you have any thoughts about how we can make this work better, let me know, please.
+
+Above I will put what you need of my git to apply my method in your system:
+
+-> You will need of numpy, matplotlib.patches and openCV (take a look at the imports, but I think that somethings are not needed to run the script and you could take off)
+--> the file:
+    --> https://github.com/eduardoborgesgouveia/HandStuff/blob/ubuntu/Detection/segmentationUtils.py
+    --> https://github.com/eduardoborgesgouveia/HandStuff/blob/ubuntu/Detection/iou.py
+    --> https://github.com/eduardoborgesgouveia/HandStuff/blob/ubuntu/Detection/filterUtils.py
+
+Then you will aggregate your events and make an image (128,128)
+then you will make:
+    image = image.astype(np.uint8) #to assure that your image is on uint8 type
+My image usually has 3 values:
+    127 to background
+    255 to positive event of contrast
+    0 to negative event of contrast
+Then I change all events that are 255 to 0 and this is my process to binarization the image
+after this, I apply the avg filter and the median filter to the image using:
+
+    imagem = filterUtils.avg(imagem)
+        imagem = filterUtils.median(imagem)
+
+after this I call my method of watershed using:
+
+watershedImage, mask, detection = segmentationUtils.watershed(imagem,'--neuromorphic',minimumSizeBox=0.5,smallBBFilter=True,centroidDistanceFilter = True, mergeOverlapingDetectionsFilter = True)
+
+    --> minimumSizeBox [optional]
+    --> smallBBFilter [optional]
+    --> centroidDistanceFilter [optional]
+    --> mergeOverlapingDetectionsFilter [optional]
+
+the 'detection' return is the list with all the bounding boxes that the method finds.
+the values are as type:
+[x, y, width, length, centroidx, centroidy]
+
+then, I use patches of matplotlib to print the bounding boxes using:
+
+#patches receive (y,x), length and width
+rect = patches.Rectangle((detection[j][1],detection[j][0]),detection[j][3],detection[j][2],linewidth=1,edgecolor='r',facecolor='none')
+                    plt.gca().add_patch(rect)
+
+
+
+
+In the file https://github.com/eduardoborgesgouveia/HandStuff/blob/ubuntu/Detection/classificationController.py you will be able to see all my script, but he is a little bit messy.
+
+If you want to talk about this, please send a message. I don't know if what I write is clear enough, but let me know if there is some doubt.
+
+
+
+

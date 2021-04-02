@@ -1,0 +1,3 @@
+from segmentationUtils import segmentationUtils
+
+segmentationUtils.watershed_demo()

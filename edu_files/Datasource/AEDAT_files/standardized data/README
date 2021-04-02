@@ -1,0 +1,22 @@
+##### DATASOURCE DOCUMENTATION #####
+
+The archives feature recordings of about 30 seconds 
+of an object in a single position, rotating around 
+its axis at a speed of 2 RPM.
+
+-- box.aedat
+-- cube.aedat
+-- mouse.aedat
+-- mug.aedat
+-- pencil.aedat
+-- phone.aedat
+-- scissor.aedat
+-- stapler.aedat
+-- stiletto.aedat
+
+P.S. files that is not too much in the same protocol:
+
+-- mug_.aedat
+-- mug_2.aedat
+-- mug_3.aedat
+-- stiletto_2.aedat

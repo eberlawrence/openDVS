@@ -1,0 +1,13 @@
+dependencias pip:
+copy
+math
+numpy
+cv2
+matplotlib
+skimage
+
+arquivos na mesma pasta:
+segmentationUtils.py
+openAEDAT.py
+iou.py
+filterUtils.py
