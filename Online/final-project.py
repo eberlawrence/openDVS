@@ -42,7 +42,7 @@ clock = pygame.time.Clock()
 
 model = utilsDVS128.openModel('model/new_model.json', 'model/new_model.h5')
 
-# ard = serial.Serial('/dev/ttyUSB1', 115200)
+ard = serial.Serial('/dev/ttyUSB1', 115200)
 
 def main():
 
@@ -57,9 +57,8 @@ def main():
 
 	result_counter = 1
 	while True:
-		# start_command = str(ard.readline())[2:7]
-		start_command = 'start'
-		input("\n\n\nAperte ENTER para gravar.\n\n\n")
+		start_command = str(ard.readline())[2:7]
+		# start_command = 'start'
 		if start_command == 'start':
 			tm.sleep(0.5)
 			while not stop:
@@ -88,27 +87,29 @@ def main():
 					utilsDVS128.plotBoundingBox(displayEvents.gameDisplay, detection, displayEvents.m)
 					imgROI, interpROI = segmentationUtils.getROI(detection, img)
 					ang = utilsDVS128.getOrientationROI(displayEvents.gameDisplay, imgROI, detection, 6)
-					# interpROI[interpROI == 0] = 255
-					# interpROI[interpROI < 200] = 0
-					# interpROI = interpROI.reshape(1, 128, 128, 1)
-					# resp, objectSet = utilsDVS128.predictShape(interpROI, model)
+					interpROI[interpROI == 0] = 255
+					interpROI[interpROI < 200] = 0
+					# plt.imshow(interpROI)
+					# plt.show()
+					interpROI = interpROI.reshape(1, 128, 128, 1)
+					resp, objectSet = utilsDVS128.predictShape(interpROI, model)
 
-					# countShape.append(resp)
+					countShape.append(resp)
 					countAngle.append(ang)
 					# print("Count: ", len(countShape))
 					# print("resp: ", resp)
 
-					if len(countAngle) == 50:
+					if len(countShape) == 50:
 						countShape = np.bincount(countShape) # array with the number of times that each number repeats.
 						countAngleAux = round(np.median(countAngle),1)
 						countAngle = round((1 / 2) * np.median(countAngle))
 						print("\n\n")
 						print("Classificação: " + str(result_counter))
-						# print("Preensão: " + objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
+						print("Preensão: " + objectSet[np.argmax(countShape)][1] + ": " + str([np.argmax(countShape)]))
 						print("Ângulo: " + str(countAngleAux) + " graus: " + str([int(countAngle + 45)]))
 						print("\n\n")
-						# ard.write(bytes([np.argmax(countShape)]))
-						# ard.write(bytes([int(countAngle + 45)]))
+						ard.write(bytes([np.argmax(countShape)]))
+						ard.write(bytes([int(countAngle + 45)]))
 						countShape, countAngle = [], []
 						stop = True
 						result_counter += 1
